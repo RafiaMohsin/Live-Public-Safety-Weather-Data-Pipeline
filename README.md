@@ -3,7 +3,7 @@
 Semester project: end-to-end Spark pipeline on Databricks using the Medallion Architecture
 (Bronze -> Silver -> Gold) with a Power BI dashboard.
 
-**Team:** <Name 1>, <Name 2>  
+**Team:** Rafia and Shanzay  
 **Course:** <course code / name>  
 **Phase 1 proposal:** `docs/proposal.pdf`
 
