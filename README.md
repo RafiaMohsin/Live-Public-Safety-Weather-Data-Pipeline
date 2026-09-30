@@ -4,7 +4,7 @@ Semester project: end-to-end Spark pipeline on Databricks using the Medallion Ar
 (Bronze -> Silver -> Gold) with a Power BI dashboard.
 
 **Team:** Rafia and Shanzay  
-**Course:** <course code / name>  
+**Course:** Data Analysis and Visualization  
 **Phase 1 proposal:** `docs/proposal.pdf`
 
 ## Data source
