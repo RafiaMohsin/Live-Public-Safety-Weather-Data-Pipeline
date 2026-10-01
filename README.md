@@ -25,10 +25,11 @@ Semester project: end-to-end Spark pipeline on Databricks using the Medallion Ar
 ├── requirements.txt
 ├── docs/
 │   └── proposal.pdf      # Phase 1 proposal
-├── samples/
-│   ├── full_load/        # alerts / forecasts / observations JSON
+├── data_raw/
+│   ├── full/        # alerts / forecasts / observations JSON
 │   └── incremental/      # alerts / forecasts / observations JSON
 └── notebooks/            # Databricks notebooks (Phase 2): bronze, silver, gold
+└── state.json
 ```
 
 ## How to run
