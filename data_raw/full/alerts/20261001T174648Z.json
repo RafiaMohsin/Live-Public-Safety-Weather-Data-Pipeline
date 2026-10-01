@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "@context": [
     "https://geojson.org/geojson-ld/geojson-context.jsonld",
@@ -4486,4 +4487,4494 @@
   ],
   "title": "Current watches, warnings, and advisories for Kansas",
   "updated": "2026-10-01T17:45:00+00:00"
+=======
+{
+  "@context": [
+    "https://geojson.org/geojson-ld/geojson-context.jsonld",
+    {
+      "@version": "1.1",
+      "wx": "https://api.weather.gov/ontology#",
+      "@vocab": "https://api.weather.gov/ontology#"
+    }
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0ce49eaef684d8bfb16a754044eb993c09c01422.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -96.58,
+              39.25
+            ],
+            [
+              -96.59,
+              39.26
+            ],
+            [
+              -96.08,
+              39.53
+            ],
+            [
+              -96.03,
+              39.37
+            ],
+            [
+              -96.03,
+              39.35
+            ],
+            [
+              -96.44,
+              39.19
+            ],
+            [
+              -96.46,
+              39.19
+            ],
+            [
+              -96.46,
+              39.18
+            ],
+            [
+              -96.48,
+              39.17
+            ],
+            [
+              -96.57,
+              39.25
+            ],
+            [
+              -96.58,
+              39.25
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0ce49eaef684d8bfb16a754044eb993c09c01422.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.0ce49eaef684d8bfb16a754044eb993c09c01422.001.1",
+        "areaDesc": "Pottawatomie, KS",
+        "geocode": {
+          "SAME": [
+            "020149"
+          ],
+          "UGC": [
+            "KSC149"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC149"
+        ],
+        "references": [],
+        "sent": "2026-10-01T12:19:00-05:00",
+        "effective": "2026-10-01T12:19:00-05:00",
+        "onset": "2026-10-01T12:19:00-05:00",
+        "expires": "2026-10-01T15:00:00-05:00",
+        "ends": "2026-10-01T15:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Advisory issued October 1 at 12:19PM CDT until October 1 at 3:00PM CDT by NWS Topeka KS",
+        "description": "* WHAT...Urban area and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...Southeastern Pottawatomie County in northeastern Kansas...\n\n* WHEN...Until 300 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nOverflowing poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1218 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. This will cause urban and small stream flooding.\nBetween 1 and 2 inches of rain have fallen since 11 AM.\n- Additional rainfall amounts up to 1 inch are expected over the\narea. This additional rain will result in minor flooding.\n- Some locations that may experience flooding include...\nOnaga, St. George, Louisville and Havensville.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011719"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 3 PM CDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KTOP.FA.Y.0091.261001T1719Z-261001T2000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T15:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b40723a89879ec0f75f3ed74c3983fb0c280f670.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.78,
+              39.22
+            ],
+            [
+              -98.73,
+              39.46
+            ],
+            [
+              -98.5,
+              39.69
+            ],
+            [
+              -98.14,
+              39.89
+            ],
+            [
+              -97.93,
+              39.85
+            ],
+            [
+              -97.93,
+              39.76
+            ],
+            [
+              -98.18,
+              39.49
+            ],
+            [
+              -98.35,
+              39.22
+            ],
+            [
+              -98.49,
+              39.22
+            ],
+            [
+              -98.49,
+              39.13
+            ],
+            [
+              -98.7,
+              39.13
+            ],
+            [
+              -98.78,
+              39.22
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b40723a89879ec0f75f3ed74c3983fb0c280f670.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.b40723a89879ec0f75f3ed74c3983fb0c280f670.001.1",
+        "areaDesc": "Jewell, KS; Mitchell, KS; Osborne, KS; Smith, KS",
+        "geocode": {
+          "SAME": [
+            "020089",
+            "020123",
+            "020141",
+            "020183"
+          ],
+          "UGC": [
+            "KSC089",
+            "KSC123",
+            "KSC141",
+            "KSC183"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC089",
+          "https://api.weather.gov/zones/county/KSC123",
+          "https://api.weather.gov/zones/county/KSC141",
+          "https://api.weather.gov/zones/county/KSC183"
+        ],
+        "references": [],
+        "sent": "2026-10-01T12:10:00-05:00",
+        "effective": "2026-10-01T12:10:00-05:00",
+        "onset": "2026-10-01T12:10:00-05:00",
+        "expires": "2026-10-01T21:00:00-05:00",
+        "ends": "2026-10-01T21:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hastings NE",
+        "headline": "Flood Advisory issued October 1 at 12:10PM CDT until October 1 at 9:00PM CDT by NWS Hastings NE",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southern Jewell County in north central Kansas...\nWestern Mitchell County in north central Kansas...\nEastern Osborne County in north central Kansas...\nSoutheastern Smith County in north central Kansas...\n\n* WHEN...Until 900 PM CDT Thursday.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1205 PM CDT, various rainfall observations, automated river\ngauges, and ground-truth reports from observers indicated that at\nleast 3 to 7 inches of rain had fallen within the area over the\nlast 24 to 48  hours, resulting in continued minor flooding along\narea creeks and rivers, and some rural roads. In most places,\nwater levels should continue to very slowly recede through the\nrest of today, as water increasingly drains into more mainstem\nrivers such as the Solomon River. As a result, the Solomon River\nitself is covered by separate Flood Warnings.\n\nThis areal Flood Advisory effectively replaces an areal Flood\nWarning in effect for the same area that is set to expire at 1215\nPM CDT this afternoon.\n- This includes the following streams and drainages...\nEast Fork Wolf Creek, Little Oak Creek, Fourmile Creek, Antelope\nCreek, Big Timber Creek, East Buffalo Creek, West Marsh Creek,\nMiddle Limestone Creek, Limestone Creek, Walnut Creek, North\nBranch Spillman Creek, Buffalo Creek, Turkey Creek, White Rock\nCreek, East Marsh Creek, Little Walnut Creek, Salt Creek, Center\nTwin Creek, Carr Creek, Mill Creek, Elm Creek, Twin Creek, Frog\nCreek, Wolf Creek, Bacon Creek, West Limestone Creek, Granite\nCreek, Oak Creek, Spring Creek, Plum Creek, Middle Buffalo Creek,\nWest Buffalo Creek, Johns Creek, Prairie Creek, Ash Creek, Covert\nCreek, Little Salt Creek, Mulberry Creek, Disappointment Creek\nand Twelvemile Creek.\n- Some locations that could experience flooding include...\nOsborne, Downs, Mankato, Cawker City, Glen Elder, Jewell, Tipton,\nFormoso, Ionia, Randall, Hunter and Montrose.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSGID"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KGID 011710"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 9 PM CDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KGID.FA.Y.0052.261001T1710Z-261002T0200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T21:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e4d1525d954898f08f6fb2ba7eba9a94f4a030be.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -97.89,
+              38.61
+            ],
+            [
+              -97.92,
+              38.61
+            ],
+            [
+              -97.93,
+              38.7
+            ],
+            [
+              -97.93,
+              38.96
+            ],
+            [
+              -97.38,
+              38.96
+            ],
+            [
+              -97.38,
+              38.61
+            ],
+            [
+              -97.89,
+              38.61
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e4d1525d954898f08f6fb2ba7eba9a94f4a030be.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e4d1525d954898f08f6fb2ba7eba9a94f4a030be.001.1",
+        "areaDesc": "Saline, KS",
+        "geocode": {
+          "SAME": [
+            "020169"
+          ],
+          "UGC": [
+            "KSC169"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC169"
+        ],
+        "references": [],
+        "sent": "2026-10-01T12:06:00-05:00",
+        "effective": "2026-10-01T12:06:00-05:00",
+        "onset": "2026-10-01T12:06:00-05:00",
+        "expires": "2026-10-01T15:00:00-05:00",
+        "ends": "2026-10-01T15:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Wichita KS",
+        "headline": "Flood Warning issued October 1 at 12:06PM CDT until October 1 at 3:00PM CDT by NWS Wichita KS",
+        "description": "* WHAT...Localized flooding caused by excessive rainfall is expected.\n\n* WHERE...Saline County in central Kansas...\n\n* WHEN...Until 300 PM CDT.\n\n* IMPACTS...Localized flooding of rivers, creeks, streams, and other\nlow-lying and flood-prone locations is likely.\n\n* ADDITIONAL DETAILS...\n- At 1206 PM CDT, Off-and-on showers and thunderstorms have\nproduced up to around 3 inches of rain across the county since\nyesterday.\n- Additional rainfall amounts up to 2 inches are possible in the\nwarned area through the afternoon.\n- Some locations that may experience localized floodinginclude...\nSalina, Assaria, Gypsum, Brookville, Smolan, New Cambria, Falun,\nGlendale, Salina Airport, Bridgeport and Kipp.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLWICT"
+          ],
+          "WMOidentifier": [
+            "WGUS43 KICT 011706"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING IN EFFECT UNTIL 3 PM CDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KICT.FA.W.0060.261001T1706Z-261001T2000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T15:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLW"
+          ],
+          "NationalWeatherService": [
+            "FAW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7bc468402816fa943034072c25e346b6ae19e49c.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.19,
+              39.47
+            ],
+            [
+              -95.11,
+              39.48
+            ],
+            [
+              -95,
+              39.2
+            ],
+            [
+              -95.11,
+              39.18
+            ],
+            [
+              -95.19,
+              39.47
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7bc468402816fa943034072c25e346b6ae19e49c.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7bc468402816fa943034072c25e346b6ae19e49c.001.1",
+        "areaDesc": "Atchison, KS; Leavenworth, KS",
+        "geocode": {
+          "SAME": [
+            "020005",
+            "020103"
+          ],
+          "UGC": [
+            "KSC005",
+            "KSC103"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC005",
+          "https://api.weather.gov/zones/county/KSC103"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.045456f867a1aed589ea9297b305344d15eb6850.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.045456f867a1aed589ea9297b305344d15eb6850.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T14:33:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b29e049b6b64ca3ed7ef2d851c8a1831d279a97e.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.b29e049b6b64ca3ed7ef2d851c8a1831d279a97e.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T22:40:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.af4eaa0ef8de4f59c34b10b6d83b218a4a9b4cbe.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.af4eaa0ef8de4f59c34b10b6d83b218a4a9b4cbe.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T08:46:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T12:03:00-05:00",
+        "effective": "2026-10-01T12:03:00-05:00",
+        "onset": "2026-10-01T12:51:00-05:00",
+        "expires": "2026-10-02T12:15:00-05:00",
+        "ends": "2026-10-03T14:02:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Flood Warning issued October 1 at 12:03PM CDT until October 3 at 2:02PM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nStranger Creek at Easton affecting Leavenworth and Atchison\nCounties.\n\n* WHAT...Moderate flooding is forecast.\n\n* WHERE...Stranger Creek at Easton.\n\n* WHEN...Until Saturday afternoon.\n\n* IMPACTS...At 17.0 feet, Water enters low-lying fields south of\nEaston. At 18.0 feet, 1st street in Easton and 231st street north\nand south of Easton begin to flood. At 19.5 feet, Highway 192 just\neast of Easton is closed due to swift current of water over the\nroad. At 20.0 feet, All roads out of Easton except for highway 192\nwest of 231st street in Easton are closed. In addition, water\ncovers Millwood Road, 3 miles north of Easton. Water depth is 6\ninches across the eastbound lane. At 21.5 feet, Most of Easton east\nof 231st Street floods. A campground in Easton floods. Several\nhomes experience water on the first floor. Water nearly surrounds\nbut does not enter the former Easton grade school.\n\n* ADDITIONAL DETAILS...\n- At 11:30 AM CDT Thursday the stage was 15.0 feet.\n- Forecast...The river is expected to rise above flood stage this\nafternoon to a crest of 20.1 feet just after midnight tonight. It\nwill then fall below flood stage early tomorrow afternoon.\n- Flood stage is 17.0 feet.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/kc/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSEAX"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KEAX 011703"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL SATURDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KEAX.FL.W.0193.261001T1751Z-261003T1902Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-03T14:02:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cb09834f8e7a9708d698b88e7f3b6fa09f8f4105.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.24,
+              39.42
+            ],
+            [
+              -98.16,
+              39.52
+            ],
+            [
+              -97.93,
+              39.77
+            ],
+            [
+              -97.93,
+              39.36
+            ],
+            [
+              -97.99,
+              39.38
+            ],
+            [
+              -98.26,
+              39.22
+            ],
+            [
+              -98.35,
+              39.22
+            ],
+            [
+              -98.24,
+              39.42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.cb09834f8e7a9708d698b88e7f3b6fa09f8f4105.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.cb09834f8e7a9708d698b88e7f3b6fa09f8f4105.001.1",
+        "areaDesc": "Jewell, KS; Mitchell, KS",
+        "geocode": {
+          "SAME": [
+            "020089",
+            "020123"
+          ],
+          "UGC": [
+            "KSC089",
+            "KSC123"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC089",
+          "https://api.weather.gov/zones/county/KSC123"
+        ],
+        "references": [],
+        "sent": "2026-10-01T12:02:00-05:00",
+        "effective": "2026-10-01T12:02:00-05:00",
+        "onset": "2026-10-01T12:02:00-05:00",
+        "expires": "2026-10-01T21:00:00-05:00",
+        "ends": "2026-10-01T21:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hastings NE",
+        "headline": "Flood Advisory issued October 1 at 12:02PM CDT until October 1 at 9:00PM CDT by NWS Hastings NE",
+        "description": "* WHAT...Flooding caused by earlier excessive rainfall is expected.\n\n* WHERE...Southeastern Jewell County in north central Kansas...\nEastern Mitchell County in north central Kansas...\n\n* WHEN...Until 900 PM CDT Thursday.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1159 AM CDT, various rainfall observations, automated river\ngauges, and ground-truth reports from observers indicated that at\nleast 3 to 6 inches of rain had fallen within the area mainly\nover the last 24 to 48  hours, resulting in continued minor\nflooding along area creeks and rivers, and some rural roads. In\nmost places, water levels should continue to very slowly recede\nthrough the rest of today, as water increasingly drains into more\nmainstem rivers such as the Solomon River. As a result, the\nSolomon River itself remains in separate Flood Warnings.\n\nThis areal Flood Advisory effectively replaces an areal Flood\nWarning in effect for the same area that expired at 12 PM CDT\ntoday.\n- This includes the following streams and drainages...\nAntelope Creek, West Marsh Creek, Buffalo Creek, Turkey Creek,\nAsher Creek, East Marsh Creek, Little Cheyenne Creek, Fifth\nCreek, Marsh Creek, Browns Creek, Salt Creek, Lost Creek, East\nAsher Creek, Fourth Creek, Plum Creek, Prairie Creek, Marshall\nCreek, Little Salt Creek, Rock Creek, West Rock Creek, Mulberry\nCreek, Dry Creek and West Asher Creek.\n- Some locations that could experience flooding include...\nBeloit, Asherville, Simpson, Randall, Scottsville and Victor.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSGID"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KGID 011702"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 9 PM CDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KGID.FA.Y.0051.261001T1702Z-261002T0200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T21:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.394880918b07ea1f03723668accc54a95fd21b74.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -102.04,
+              38.7
+            ],
+            [
+              -102.05,
+              38.95
+            ],
+            [
+              -102.05,
+              39.13
+            ],
+            [
+              -101.52,
+              39.13
+            ],
+            [
+              -101.45,
+              39.13
+            ],
+            [
+              -101.38,
+              39.14
+            ],
+            [
+              -101.38,
+              38.7
+            ],
+            [
+              -101.13,
+              38.7
+            ],
+            [
+              -101.13,
+              38.26
+            ],
+            [
+              -102.04,
+              38.26
+            ],
+            [
+              -102.04,
+              38.7
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.394880918b07ea1f03723668accc54a95fd21b74.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.394880918b07ea1f03723668accc54a95fd21b74.001.1",
+        "areaDesc": "Greeley, KS; Logan, KS; Wallace, KS; Wichita, KS",
+        "geocode": {
+          "SAME": [
+            "020071",
+            "020109",
+            "020199",
+            "020203"
+          ],
+          "UGC": [
+            "KSC071",
+            "KSC109",
+            "KSC199",
+            "KSC203"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC071",
+          "https://api.weather.gov/zones/county/KSC109",
+          "https://api.weather.gov/zones/county/KSC199",
+          "https://api.weather.gov/zones/county/KSC203"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ab20ecf2b74ad7eac47e1eae6c13d653b4b05693.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.ab20ecf2b74ad7eac47e1eae6c13d653b4b05693.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T03:28:00-06:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.72ce9b44f37696af7c5da684ddbb0afc2a0d4be5.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.72ce9b44f37696af7c5da684ddbb0afc2a0d4be5.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T08:58:00-06:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c17e0bcef287b211c5246248d8a444d42b10154e.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.c17e0bcef287b211c5246248d8a444d42b10154e.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T10:33:00-06:00"
+          }
+        ],
+        "sent": "2026-10-01T10:59:00-06:00",
+        "effective": "2026-10-01T10:59:00-06:00",
+        "onset": "2026-10-01T10:59:00-06:00",
+        "expires": "2026-10-01T15:45:00-06:00",
+        "ends": "2026-10-01T15:45:00-06:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Goodland KS",
+        "headline": "Flood Warning issued October 1 at 10:59AM MDT until October 1 at 3:45PM MDT by NWS Goodland KS",
+        "description": "* WHAT...Urban areas and small streams flooding caused by excessive\nrainfall continues.\n\n* WHERE...Greeley County in west central Kansas...\nWestern Logan County in west central Kansas...\nWallace County in west central Kansas...\nWichita County in west central Kansas...\n\n* WHEN...Until 345 PM MDT /445 PM CDT/.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring. Numerous roads\nremain closed due to flooding. Low-water crossings are inundated\nwith water and may not be passable.\n\n* ADDITIONAL DETAILS...\n- At 1058 AM MDT /1158 AM CDT/, emergency management reported that\nflooding is ongoing with numerous roads closed in Greeley county.\nBetween 2 and 5 inches of rain have fallen.\n- Additional rainfall amounts up to 1 inch are possible in the\nwarned area.\n- Some locations that will experience flooding include...\nLeoti, Sharon Springs, Tribune, Weskan, Horace, Wallace, Selkirk,\nMarienthal and Lydia.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLWGLD"
+          ],
+          "WMOidentifier": [
+            "WGUS43 KGLD 011659"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL 345 PM MDT /445 PM CDT/ THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KGLD.FA.W.0014.000000T0000Z-261001T2145Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T15:45:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLW"
+          ],
+          "NationalWeatherService": [
+            "FAW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8082630abfab5391a08180b069607ebe6fc14a3b.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -101.37,
+              39.14
+            ],
+            [
+              -101.37,
+              39.57
+            ],
+            [
+              -100.64,
+              39.57
+            ],
+            [
+              -100.59,
+              38.7
+            ],
+            [
+              -101.38,
+              38.7
+            ],
+            [
+              -101.37,
+              39.14
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8082630abfab5391a08180b069607ebe6fc14a3b.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8082630abfab5391a08180b069607ebe6fc14a3b.001.1",
+        "areaDesc": "Gove, KS; Logan, KS; Sheridan, KS; Thomas, KS",
+        "geocode": {
+          "SAME": [
+            "020063",
+            "020109",
+            "020179",
+            "020193"
+          ],
+          "UGC": [
+            "KSC063",
+            "KSC109",
+            "KSC179",
+            "KSC193"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC063",
+          "https://api.weather.gov/zones/county/KSC109",
+          "https://api.weather.gov/zones/county/KSC179",
+          "https://api.weather.gov/zones/county/KSC193"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1238af4e18761a2fa94e3b45e8794fea7e1fc4fc.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.1238af4e18761a2fa94e3b45e8794fea7e1fc4fc.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T09:31:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.15712839ce18be6843871deae46ea75918584ebe.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.15712839ce18be6843871deae46ea75918584ebe.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T11:33:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T11:59:00-05:00",
+        "effective": "2026-10-01T11:59:00-05:00",
+        "onset": "2026-10-01T11:59:00-05:00",
+        "expires": "2026-10-01T17:00:00-05:00",
+        "ends": "2026-10-01T17:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Goodland KS",
+        "headline": "Flood Warning issued October 1 at 11:59AM CDT until October 1 at 5:00PM CDT by NWS Goodland KS",
+        "description": "* WHAT...Urban areas and small streams flooding caused by excessive\nrainfall continues.\n\n* WHERE...Western Sheridan County in northwestern Kansas...\nThomas County in northwestern Kansas...\nWestern Gove County in west central Kansas...\nLogan County in west central Kansas...\n\n* WHEN...Until 500 PM CDT.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring. Low-water\ncrossings are inundated with water and may not be passable. Expect\nmany areas of slow moving or standing water.\n\n* ADDITIONAL DETAILS...\n- At 1158 AM CDT, Doppler radar indicated heavy rain. Flooding is\nongoing or expected to begin shortly in the warned area. Between\n2 and 5 inches of rain have fallen.\n- Additional rainfall amounts up to 1 inch are possible in the\nwarned area.\n- Some locations that will experience flooding include...\nColby, Oakley, Grinnell, Levant, Rexford, Winona, Monument, Gem,\nMenlo, Russell Springs, Mingo, Halford, Angelus and The Monument\nRocks.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLWGLD"
+          ],
+          "WMOidentifier": [
+            "WGUS43 KGLD 011659 RRA"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL 5 PM CDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KGLD.FA.W.0013.000000T0000Z-261001T2200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T17:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.279b1c4fbfd6c0d084ee5e2006aace76c4021407.001.1,2026-10-01T07:23:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f3d02c0e2f528de1f0cfd7d290328466dc71a89d.001.1,2026-10-01T05:57:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c77ba760df3eebb51a8b28a818896e0c898fa146.001.1,2026-09-30T18:40:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLW"
+          ],
+          "NationalWeatherService": [
+            "FAW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9687572ece92d1ac0994a402cb14470c5887902f.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.34,
+              40
+            ],
+            [
+              -98.27,
+              40
+            ],
+            [
+              -98.27,
+              40.35
+            ],
+            [
+              -97.74,
+              40.34
+            ],
+            [
+              -97.37,
+              40.34
+            ],
+            [
+              -97.37,
+              40
+            ],
+            [
+              -97.93,
+              40
+            ],
+            [
+              -97.93,
+              39.84
+            ],
+            [
+              -98.13,
+              39.89
+            ],
+            [
+              -98.5,
+              39.68
+            ],
+            [
+              -98.5,
+              39.71
+            ],
+            [
+              -98.34,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9687572ece92d1ac0994a402cb14470c5887902f.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.9687572ece92d1ac0994a402cb14470c5887902f.001.1",
+        "areaDesc": "Jewell, KS; Nuckolls, NE; Thayer, NE",
+        "geocode": {
+          "SAME": [
+            "020089",
+            "031129",
+            "031169"
+          ],
+          "UGC": [
+            "KSC089",
+            "NEC129",
+            "NEC169"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC089",
+          "https://api.weather.gov/zones/county/NEC129",
+          "https://api.weather.gov/zones/county/NEC169"
+        ],
+        "references": [],
+        "sent": "2026-10-01T11:56:00-05:00",
+        "effective": "2026-10-01T11:56:00-05:00",
+        "onset": "2026-10-01T11:56:00-05:00",
+        "expires": "2026-10-01T21:00:00-05:00",
+        "ends": "2026-10-01T21:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hastings NE",
+        "headline": "Flood Advisory issued October 1 at 11:56AM CDT until October 1 at 9:00PM CDT by NWS Hastings NE",
+        "description": "* WHAT...Flooding caused by earlier excessive rainfall is expected.\n\n* WHERE...Northern Jewell County in north central Kansas...\nNuckolls County in south central Nebraska...\nThayer County in south central Nebraska...\n\n* WHEN...Until 900 PM CDT Thursday.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 1152 AM CDT, various rainfall observations, automated river\ngauges, and ground-truth reports from observers indicated that at\nleast 3 to 5 inches of rain had fallen within the area mainly\nover the last 24 hours, resulting in continued minor flooding\nalong area creeks and rivers, and some rural roads. In most\nplaces, water levels should continue to very slowly recede\nthrough the rest of today, as water increasingly drains into more\nmainstem rivers such as the Republican River and Little Blue\nRiver. Portions of these rivers, along with the Big Sandy Creek\nin northern Thayer County, are actually covered by separate Flood\nWarnings at this time.\n\nThis areal Flood Advisory effectively replaces an areal Flood\nWarning in effect for the same area that was set to expire at 12\nPM CDT today.\n- This includes the following streams and drainages...\nTroublesome Creek, Little Oak Creek, Antelope Creek, Big Timber\nCreek, Middle Limestone Creek, Limestone Creek, Walnut Creek,\nBuffalo Creek, Dry Sandy Creek, White Rock Creek, East Marsh\nCreek, Rose Creek, Beaver Creek, Long Branch, Little Sandy Creek,\nBurr Oak Creek, Turtle Creek, Middle Creek, Spring Branch, Thawes\nCreek, Korb Creek, Lost Creek, Oxbow Creek, Elm Creek, South Fork\nBig Sandy Creek, Cottonwood Creek, Oak Creek, Crosby Creek, Elk\nCreek, Spring Creek, Crooked Auger Creek, Porcupine Creek,\nHumphrey Branch Rose Creek, Sand Creek.\n- Some locations that could experience flooding include...\nSuperior, Hebron, Deshler, Nelson, Lawrence, Davenport, Bruning,\nChester, Alexandria, Burr Oak, Hardy, Ruskin, Esbon, Carleton,\nByron, Hubbell, Oak, Belvidere, Gilead and Webber.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSGID"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KGID 011656"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 9 PM CDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KGID.FA.Y.0050.261001T1656Z-261002T0200Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T21:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8ac3c9b0aa440e9d84ee7a9b3c71af4a0cf5a0de.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8ac3c9b0aa440e9d84ee7a9b3c71af4a0cf5a0de.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8ac3c9b0aa440e9d84ee7a9b3c71af4a0cf5a0de.002.1",
+        "areaDesc": "Trego; Ellis; Scott; Lane; Ness; Rush; Hamilton; Kearny; Finney; Hodgeman; Pawnee; Stanton; Grant; Haskell; Gray; Ford; Morton; Stevens; Seward; Meade",
+        "geocode": {
+          "SAME": [
+            "020195",
+            "020051",
+            "020171",
+            "020101",
+            "020135",
+            "020165",
+            "020075",
+            "020093",
+            "020055",
+            "020083",
+            "020145",
+            "020187",
+            "020067",
+            "020081",
+            "020069",
+            "020057",
+            "020129",
+            "020189",
+            "020175",
+            "020119"
+          ],
+          "UGC": [
+            "KSZ030",
+            "KSZ031",
+            "KSZ043",
+            "KSZ044",
+            "KSZ045",
+            "KSZ046",
+            "KSZ061",
+            "KSZ062",
+            "KSZ063",
+            "KSZ064",
+            "KSZ065",
+            "KSZ074",
+            "KSZ075",
+            "KSZ076",
+            "KSZ077",
+            "KSZ078",
+            "KSZ084",
+            "KSZ085",
+            "KSZ086",
+            "KSZ087"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ030",
+          "https://api.weather.gov/zones/forecast/KSZ031",
+          "https://api.weather.gov/zones/forecast/KSZ043",
+          "https://api.weather.gov/zones/forecast/KSZ044",
+          "https://api.weather.gov/zones/forecast/KSZ045",
+          "https://api.weather.gov/zones/forecast/KSZ046",
+          "https://api.weather.gov/zones/forecast/KSZ061",
+          "https://api.weather.gov/zones/forecast/KSZ062",
+          "https://api.weather.gov/zones/forecast/KSZ063",
+          "https://api.weather.gov/zones/forecast/KSZ064",
+          "https://api.weather.gov/zones/forecast/KSZ065",
+          "https://api.weather.gov/zones/forecast/KSZ074",
+          "https://api.weather.gov/zones/forecast/KSZ075",
+          "https://api.weather.gov/zones/forecast/KSZ076",
+          "https://api.weather.gov/zones/forecast/KSZ077",
+          "https://api.weather.gov/zones/forecast/KSZ078",
+          "https://api.weather.gov/zones/forecast/KSZ084",
+          "https://api.weather.gov/zones/forecast/KSZ085",
+          "https://api.weather.gov/zones/forecast/KSZ086",
+          "https://api.weather.gov/zones/forecast/KSZ087"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c40aa90ce78914c07ba4cba97ef887be34981e52.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.c40aa90ce78914c07ba4cba97ef887be34981e52.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T21:08:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5dd176e6045e446e799bbebeb22695ba4e54dea5.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.5dd176e6045e446e799bbebeb22695ba4e54dea5.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T10:15:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T11:46:00-05:00",
+        "effective": "2026-10-01T11:46:00-05:00",
+        "onset": "2026-10-01T11:46:00-05:00",
+        "expires": "2026-10-01T19:00:00-05:00",
+        "ends": "2026-10-01T19:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Dodge City KS",
+        "headline": "Flood Watch issued October 1 at 11:46AM CDT until October 1 at 7:00PM CDT by NWS Dodge City KS",
+        "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of central, south central, southwest, and west\ncentral Kansas, including the following counties, in central\nKansas, Ellis and Rush. In south central Kansas, Pawnee. In\nsouthwest Kansas, Finney, Ford, Grant, Gray, Hamilton, Haskell,\nHodgeman, Kearny, Meade, Morton, Seward, Stanton and Stevens. In\nwest central Kansas, Lane, Ness, Scott and Trego.\n\n* WHEN...Until 7 PM CDT /6 PM MDT/ this evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Additional rain may result in flooding.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFADDC"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KDDC 011646"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH REMAINS IN EFFECT UNTIL 7 PM CDT /6 PM MDT/ THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KDDC.FA.A.0003.000000T0000Z-261002T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T19:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.05c4c31365b1a43b349b5db5dfd2fdb08ce6e2f7.001.1,2026-09-30T11:52:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.fed8b4a5856d9ecdd079f821dfd889dd1360e664.001.1,2026-09-30T03:21:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.365aac5174f4e5b151686695d5f20edfc2c84976.002.1,2026-09-29T19:02:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.365aac5174f4e5b151686695d5f20edfc2c84976.001.1,2026-09-29T19:02:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.b5d07c2d7260431965b6e9436630623d96ba8d8c.001.1,2026-09-28T23:57:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.15723ffa004175879c92646363ec288fd03d8fc2.002.1,2026-09-28T13:24:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.15723ffa004175879c92646363ec288fd03d8fc2.001.1,2026-09-28T13:24:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9acdb80aa681857f73723b4e60ea17b2e12988e5.001.1,2026-09-27T23:45:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8ac3c9b0aa440e9d84ee7a9b3c71af4a0cf5a0de.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8ac3c9b0aa440e9d84ee7a9b3c71af4a0cf5a0de.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8ac3c9b0aa440e9d84ee7a9b3c71af4a0cf5a0de.001.1",
+        "areaDesc": "Stafford; Edwards; Kiowa; Pratt; Clark; Comanche; Barber",
+        "geocode": {
+          "SAME": [
+            "020185",
+            "020047",
+            "020097",
+            "020151",
+            "020025",
+            "020033",
+            "020007"
+          ],
+          "UGC": [
+            "KSZ066",
+            "KSZ079",
+            "KSZ080",
+            "KSZ081",
+            "KSZ088",
+            "KSZ089",
+            "KSZ090"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ066",
+          "https://api.weather.gov/zones/forecast/KSZ079",
+          "https://api.weather.gov/zones/forecast/KSZ080",
+          "https://api.weather.gov/zones/forecast/KSZ081",
+          "https://api.weather.gov/zones/forecast/KSZ088",
+          "https://api.weather.gov/zones/forecast/KSZ089",
+          "https://api.weather.gov/zones/forecast/KSZ090"
+        ],
+        "references": [],
+        "sent": "2026-10-01T11:46:00-05:00",
+        "effective": "2026-10-01T11:46:00-05:00",
+        "onset": "2026-10-01T11:46:00-05:00",
+        "expires": "2026-10-01T19:00:00-05:00",
+        "ends": "2026-10-01T19:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Dodge City KS",
+        "headline": "Flood Watch issued October 1 at 11:46AM CDT until October 1 at 7:00PM CDT by NWS Dodge City KS",
+        "description": "* WHAT...Flash flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of south central and southwest Kansas, including\nthe following counties, in south central Kansas, Barber, Comanche,\nEdwards, Kiowa, Pratt and Stafford. In southwest Kansas, Clark.\n\n* WHEN...Until 7 PM CDT this evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Heavy rain may result in flooding.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be prepared to take action\nshould Flash Flood Warnings be issued.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFADDC"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KDDC 011646"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH IN EFFECT UNTIL 7 PM CDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXA.KDDC.FA.A.0003.000000T0000Z-261002T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T19:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dd52c7da22347be43b933ca7cbe4c98bd3877e50.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -101.54,
+              38.26
+            ],
+            [
+              -101.13,
+              38.26
+            ],
+            [
+              -101.13,
+              38.42
+            ],
+            [
+              -101.13,
+              38.7
+            ],
+            [
+              -100.94,
+              38.7
+            ],
+            [
+              -100.45,
+              38.7
+            ],
+            [
+              -100.17,
+              38.7
+            ],
+            [
+              -100.16,
+              38.26
+            ],
+            [
+              -100.23,
+              38.26
+            ],
+            [
+              -100.61,
+              38.3
+            ],
+            [
+              -100.63,
+              38.18
+            ],
+            [
+              -100.57,
+              37.72
+            ],
+            [
+              -101.09,
+              37.73
+            ],
+            [
+              -101.09,
+              37.74
+            ],
+            [
+              -101.31,
+              37.74
+            ],
+            [
+              -101.96,
+              37.75
+            ],
+            [
+              -101.95,
+              38.26
+            ],
+            [
+              -101.54,
+              38.26
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.dd52c7da22347be43b933ca7cbe4c98bd3877e50.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.dd52c7da22347be43b933ca7cbe4c98bd3877e50.001.1",
+        "areaDesc": "Finney, KS; Gray, KS; Hamilton, KS; Haskell, KS; Kearny, KS; Lane, KS; Ness, KS; Scott, KS",
+        "geocode": {
+          "SAME": [
+            "020055",
+            "020069",
+            "020075",
+            "020081",
+            "020093",
+            "020101",
+            "020135",
+            "020171"
+          ],
+          "UGC": [
+            "KSC055",
+            "KSC069",
+            "KSC075",
+            "KSC081",
+            "KSC093",
+            "KSC101",
+            "KSC135",
+            "KSC171"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC055",
+          "https://api.weather.gov/zones/county/KSC069",
+          "https://api.weather.gov/zones/county/KSC075",
+          "https://api.weather.gov/zones/county/KSC081",
+          "https://api.weather.gov/zones/county/KSC093",
+          "https://api.weather.gov/zones/county/KSC101",
+          "https://api.weather.gov/zones/county/KSC135",
+          "https://api.weather.gov/zones/county/KSC171"
+        ],
+        "references": [],
+        "sent": "2026-10-01T11:40:00-05:00",
+        "effective": "2026-10-01T11:40:00-05:00",
+        "onset": "2026-10-01T11:40:00-05:00",
+        "expires": "2026-10-01T17:45:00-05:00",
+        "ends": "2026-10-01T17:45:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Dodge City KS",
+        "headline": "Flood Advisory issued October 1 at 11:40AM CDT until October 1 at 5:45PM CDT by NWS Dodge City KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Finney County in southwestern Kansas...\nNorthwestern Gray County in southwestern Kansas...\nHamilton County in southwestern Kansas...\nNorthern Haskell County in southwestern Kansas...\nKearny County in southwestern Kansas...\nLane County in west central Kansas...\nWestern Ness County in west central Kansas...\nScott County in west central Kansas...\n\n* WHEN...Until 545 PM CDT /445 PM MDT/ Tonight.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways. Ponding of water in urban or other areas is\noccurring or is imminent.\n\n* ADDITIONAL DETAILS...\n- At 1140 AM CDT /1040 AM MDT/, Doppler radar indicated heavy rain\ndue to thunderstorms. Minor flooding is ongoing or expected to\nbegin shortly in the advisory area. Between 0.5 and 1.5 inches of\nrain have fallen.\n- Additional rainfall amounts up to 1 inch are expected over the\narea. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nGarden City, Scott City, Lakin, Holcomb, Syracuse, Dighton,\nDeerfield, Pierceville, Utica, Alamota, Kendall, Friend, Shallow\nWater, Modoc, Plymell, Grigston, Manning, Scott State Lake, Amy\nand Healy.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSDDC"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KDDC 011640"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 545 PM CDT /445 PM MDT/ THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KDDC.FA.Y.0011.261001T1640Z-261001T2245Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T17:45:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e3693b568cdf706feb5149dcd10510c5b03b0f60.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e3693b568cdf706feb5149dcd10510c5b03b0f60.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e3693b568cdf706feb5149dcd10510c5b03b0f60.002.1",
+        "areaDesc": "Russell; Lincoln; Barton; Ellsworth; Saline",
+        "geocode": {
+          "SAME": [
+            "020167",
+            "020105",
+            "020009",
+            "020053",
+            "020169"
+          ],
+          "UGC": [
+            "KSZ032",
+            "KSZ033",
+            "KSZ047",
+            "KSZ048",
+            "KSZ049"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ032",
+          "https://api.weather.gov/zones/forecast/KSZ033",
+          "https://api.weather.gov/zones/forecast/KSZ047",
+          "https://api.weather.gov/zones/forecast/KSZ048",
+          "https://api.weather.gov/zones/forecast/KSZ049"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f1952ef534800617a792246ff0f41e5bf9137e90.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.f1952ef534800617a792246ff0f41e5bf9137e90.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T02:53:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T11:30:00-05:00",
+        "effective": "2026-10-01T11:30:00-05:00",
+        "onset": "2026-10-01T11:30:00-05:00",
+        "expires": "2026-10-01T19:30:00-05:00",
+        "ends": "2026-10-02T00:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Wichita KS",
+        "headline": "Flood Watch issued October 1 at 11:30AM CDT until October 2 at 12:00AM CDT by NWS Wichita KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...A portion of central Kansas, including the following\ncounties, Barton, Ellsworth, Lincoln, Russell and Saline.\n\n* WHEN...Through this evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nCreeks and streams may rise out of their banks.\n\n* ADDITIONAL DETAILS...\n- Showers and storms producing heavy rainfall will persist across\ncentral Kansas today. This activity will produce high rainfall\nrates and potential flooding.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAICT"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KICT 011630"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH NOW IN EFFECT THROUGH THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KICT.FA.A.0007.000000T0000Z-261002T0500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T00:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.27f136c466fe32d3e892b5cbe92be1b7ddd6303e.001.1,2026-09-30T15:43:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c57217f7eba5a49390ac1c7efdb533f7550a1d98.002.1,2026-09-30T01:16:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.c57217f7eba5a49390ac1c7efdb533f7550a1d98.001.1,2026-09-30T01:16:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.7835cb1e457fad4ad73b2395466ca63d28a23e28.001.1,2026-09-29T14:45:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.0b6188bdcccdc288b46168c9ef07161018d79d45.001.1,2026-09-29T03:19:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.a37e40783a1b78887f471feb80f60dec79846a40.001.1,2026-09-28T12:52:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e3693b568cdf706feb5149dcd10510c5b03b0f60.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e3693b568cdf706feb5149dcd10510c5b03b0f60.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e3693b568cdf706feb5149dcd10510c5b03b0f60.001.1",
+        "areaDesc": "Rice; McPherson; Marion; Chase; Reno; Harvey; Butler; Greenwood; Kingman; Sedgwick; Harper; Sumner",
+        "geocode": {
+          "SAME": [
+            "020159",
+            "020113",
+            "020115",
+            "020017",
+            "020155",
+            "020079",
+            "020015",
+            "020073",
+            "020095",
+            "020173",
+            "020077",
+            "020191"
+          ],
+          "UGC": [
+            "KSZ050",
+            "KSZ051",
+            "KSZ052",
+            "KSZ053",
+            "KSZ067",
+            "KSZ068",
+            "KSZ069",
+            "KSZ070",
+            "KSZ082",
+            "KSZ083",
+            "KSZ091",
+            "KSZ092"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ050",
+          "https://api.weather.gov/zones/forecast/KSZ051",
+          "https://api.weather.gov/zones/forecast/KSZ052",
+          "https://api.weather.gov/zones/forecast/KSZ053",
+          "https://api.weather.gov/zones/forecast/KSZ067",
+          "https://api.weather.gov/zones/forecast/KSZ068",
+          "https://api.weather.gov/zones/forecast/KSZ069",
+          "https://api.weather.gov/zones/forecast/KSZ070",
+          "https://api.weather.gov/zones/forecast/KSZ082",
+          "https://api.weather.gov/zones/forecast/KSZ083",
+          "https://api.weather.gov/zones/forecast/KSZ091",
+          "https://api.weather.gov/zones/forecast/KSZ092"
+        ],
+        "references": [],
+        "sent": "2026-10-01T11:30:00-05:00",
+        "effective": "2026-10-01T11:30:00-05:00",
+        "onset": "2026-10-01T11:30:00-05:00",
+        "expires": "2026-10-01T19:30:00-05:00",
+        "ends": "2026-10-02T00:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Wichita KS",
+        "headline": "Flood Watch issued October 1 at 11:30AM CDT until October 2 at 12:00AM CDT by NWS Wichita KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of central, east central, south central, and\nsoutheast Kansas, including the following counties, in central\nKansas, Marion, McPherson and Rice. In east central Kansas, Chase.\nIn south central Kansas, Butler, Harper, Harvey, Kingman, Reno,\nSedgwick and Sumner. In southeast Kansas, Greenwood.\n\n* WHEN...Through this evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nCreeks and streams may rise out of their banks.\n\n* ADDITIONAL DETAILS...\n- Showers and storms producing heavy rainfall will continue to\ndevelop south and east across the area through this evening. This\nactivity will produce high rainfall rates and potential flooding.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAICT"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KICT 011630"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH IN EFFECT THROUGH THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXB.KICT.FA.A.0007.000000T0000Z-261002T0500Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T00:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6e9667aaedb3a2972f3d3a648b77d1ad6ca8092d.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -99.6,
+              38.73
+            ],
+            [
+              -100.11,
+              38.73
+            ],
+            [
+              -100.1,
+              39.11
+            ],
+            [
+              -99.23,
+              39.09
+            ],
+            [
+              -99.06,
+              39.1
+            ],
+            [
+              -99.05,
+              39.11
+            ],
+            [
+              -99.07,
+              38.72
+            ],
+            [
+              -99.6,
+              38.73
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6e9667aaedb3a2972f3d3a648b77d1ad6ca8092d.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.6e9667aaedb3a2972f3d3a648b77d1ad6ca8092d.001.1",
+        "areaDesc": "Ellis, KS; Trego, KS",
+        "geocode": {
+          "SAME": [
+            "020051",
+            "020195"
+          ],
+          "UGC": [
+            "KSC051",
+            "KSC195"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC051",
+          "https://api.weather.gov/zones/county/KSC195"
+        ],
+        "references": [],
+        "sent": "2026-10-01T10:26:00-05:00",
+        "effective": "2026-10-01T10:26:00-05:00",
+        "onset": "2026-10-01T10:26:00-05:00",
+        "expires": "2026-10-01T13:30:00-05:00",
+        "ends": "2026-10-01T13:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Immediate",
+        "event": "Flash Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Dodge City KS",
+        "headline": "Flash Flood Warning issued October 1 at 10:26AM CDT until October 1 at 1:30PM CDT by NWS Dodge City KS",
+        "description": "FFWDDC\n\nThe National Weather Service in Dodge City has issued a\n\n* Flash Flood Warning for...\nEllis County in central Kansas...\nTrego County in west central Kansas...\n\n* Until 130 PM CDT.\n\n* At 1026 AM CDT, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 1 and 2 inches of rain\nhave fallen. The expected rainfall rate is 0.5 to 1.5 inches in 1\nhour. Additional rainfall amounts of 1 to 2 inches are possible in\nthe warned area. Flash flooding is ongoing or expected to begin\nshortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Radar indicated.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nHays, Ellis, Wakeeney, Victoria, Catherine, Ogallah, Riga,\nYocemento, Cedar Bluff, Antonino, Trego Center, Munjor, Toulon,\nEmmeram and Voda.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFWDDC"
+          ],
+          "WMOidentifier": [
+            "WGUS53 KDDC 011526"
+          ],
+          "flashFloodDetection": [
+            "RADAR INDICATED"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KDDC.FF.W.0023.261001T1526Z-261001T1830Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T13:30:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFW"
+          ],
+          "NationalWeatherService": [
+            "FFW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e8348100fffd3f0ce7f11a9201f3b194733c4a3b.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.38,
+              39.57
+            ],
+            [
+              -98.44,
+              39.67
+            ],
+            [
+              -98.3,
+              39.69
+            ],
+            [
+              -98.25,
+              39.59
+            ],
+            [
+              -98.21,
+              39.49
+            ],
+            [
+              -98.19,
+              39.48
+            ],
+            [
+              -98.21,
+              39.45
+            ],
+            [
+              -98.28,
+              39.46
+            ],
+            [
+              -98.34,
+              39.5
+            ],
+            [
+              -98.38,
+              39.57
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e8348100fffd3f0ce7f11a9201f3b194733c4a3b.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e8348100fffd3f0ce7f11a9201f3b194733c4a3b.001.1",
+        "areaDesc": "Jewell, KS; Mitchell, KS",
+        "geocode": {
+          "SAME": [
+            "020089",
+            "020123"
+          ],
+          "UGC": [
+            "KSC089",
+            "KSC123"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC089",
+          "https://api.weather.gov/zones/county/KSC123"
+        ],
+        "references": [],
+        "sent": "2026-10-01T10:21:00-05:00",
+        "effective": "2026-10-01T10:21:00-05:00",
+        "onset": "2026-10-01T10:21:00-05:00",
+        "expires": "2026-10-02T12:00:00-05:00",
+        "ends": "2026-10-02T12:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hastings NE",
+        "headline": "Flood Warning issued October 1 at 10:21AM CDT until October 2 at 12:00PM CDT by NWS Hastings NE",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Southwestern Jewell County in north central Kansas...\nNorth Central Mitchell County in north central Kansas...\n\n* WHEN...Until noon CDT Friday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 1009 AM CDT, Various rainfall observations and river gauge\nreports indicated that at least 4-6 inches of rain had fallen\nwithin the Warning area over the last 48 hours, resulting in\ncontinued flooding along area creeks and rivers. In particular, a\ngauge along the Solomon River near Glen Elder reported a stage of\n23.4 feet as of 930 AM CDT Thursday, which is 2.4 feet above\nminor flood stage of 21.0 feet. The river appears to be starting\nto very slowly fall, but it will likely be sometime late Thursday\nnight or Friday morning before it slips below flood stage.\n- This includes the following streams and drainages...\nLittle Walnut CreekElm Creek, Solomon River, Ash Creek, Frog\nCreek, Browns Creek, Limestone Creek, West Limestone Creek,\nGranite Creek, Disappointment Creek and Turkey Creek.\n- Some locations that could experience flooding include...\nGlen Elder and Ionia, but this Warning is mainly geared toward\nminor flooding along the Solomon River in the Glen Elder area.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLWGID"
+          ],
+          "WMOidentifier": [
+            "WGUS43 KGID 011521"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING IN EFFECT UNTIL NOON CDT FRIDAY"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KGID.FA.W.0016.261001T1521Z-261002T1700Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T12:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLW"
+          ],
+          "NationalWeatherService": [
+            "FAW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.bd31b42006af953404684b3eead31bf3ca5c913f.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.bd31b42006af953404684b3eead31bf3ca5c913f.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.bd31b42006af953404684b3eead31bf3ca5c913f.002.1",
+        "areaDesc": "Cheyenne County; Rawlins; Decatur; Norton; Sherman; Thomas; Sheridan; Graham; Wallace; Logan; Gove; Greeley; Wichita",
+        "geocode": {
+          "SAME": [
+            "008017",
+            "020153",
+            "020039",
+            "020137",
+            "020181",
+            "020193",
+            "020179",
+            "020065",
+            "020199",
+            "020109",
+            "020063",
+            "020071",
+            "020203"
+          ],
+          "UGC": [
+            "COZ092",
+            "KSZ002",
+            "KSZ003",
+            "KSZ004",
+            "KSZ013",
+            "KSZ014",
+            "KSZ015",
+            "KSZ016",
+            "KSZ027",
+            "KSZ028",
+            "KSZ029",
+            "KSZ041",
+            "KSZ042"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/COZ092",
+          "https://api.weather.gov/zones/forecast/KSZ002",
+          "https://api.weather.gov/zones/forecast/KSZ003",
+          "https://api.weather.gov/zones/forecast/KSZ004",
+          "https://api.weather.gov/zones/forecast/KSZ013",
+          "https://api.weather.gov/zones/forecast/KSZ014",
+          "https://api.weather.gov/zones/forecast/KSZ015",
+          "https://api.weather.gov/zones/forecast/KSZ016",
+          "https://api.weather.gov/zones/forecast/KSZ027",
+          "https://api.weather.gov/zones/forecast/KSZ028",
+          "https://api.weather.gov/zones/forecast/KSZ029",
+          "https://api.weather.gov/zones/forecast/KSZ041",
+          "https://api.weather.gov/zones/forecast/KSZ042"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8b2e40276ece39c891ede5290bb11ccccac31f4c.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.8b2e40276ece39c891ede5290bb11ccccac31f4c.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T00:57:00-06:00"
+          }
+        ],
+        "sent": "2026-10-01T09:05:00-06:00",
+        "effective": "2026-10-01T09:05:00-06:00",
+        "onset": "2026-10-01T09:05:00-06:00",
+        "expires": "2026-10-01T18:00:00-06:00",
+        "ends": "2026-10-01T18:00:00-06:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Goodland KS",
+        "headline": "Flood Watch issued October 1 at 9:05AM MDT until October 1 at 6:00PM MDT by NWS Goodland KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of east central Colorado, including the following\narea, Cheyenne CO and Kansas, including the following areas,\nDecatur, Gove, Graham, Greeley, Logan, Norton, Rawlins, Sheridan,\nSherman, Thomas, Wallace and Wichita.\n\n* WHEN...Until 6 PM MDT /7 PM CDT/ this evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nFlooding may occur in poor drainage and urban areas.\n\n* ADDITIONAL DETAILS...\n- An additional 0.25-2.00\" of rain are forecast through Thursday\nafternoon. The heavier amounts will favor those closer to Central\nKansas while the lower amounts will favor those near the\nTri-State border. There may be a few pockets of 4-6\" rainfall\ntotals generally along and south I-70.",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAGLD"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KGLD 011505"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH REMAINS IN EFFECT UNTIL 6 PM MDT /7 PM CDT/ THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KGLD.FA.A.0006.000000T0000Z-261002T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T18:00:00-06:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.abeccfe4aed958d36883c10df6f9b5f0de48a1e2.001.1,2026-09-30T08:59:00-06:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f275b1bf50ca128b11531535415336e909a85348.001.1,2026-09-30T02:52:00-06:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2ae98f4b004bdeac110358f5abea3b1868cbe520.001.1,2026-09-29T07:56:00-06:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.df2e8b86af390e06e3c1f60eb43be8e97f9e329f.001.1,2026-09-29T01:53:00-06:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.ad07452d0f5bebcd950472d277503ab4ffe1e4c5.001.1,2026-09-28T11:59:00-06:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.006.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -97.93,
+              39.41
+            ],
+            [
+              -97.88,
+              39.4
+            ],
+            [
+              -97.73,
+              39.28
+            ],
+            [
+              -97.8,
+              39.25
+            ],
+            [
+              -97.93,
+              39.36
+            ],
+            [
+              -97.93,
+              39.41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.006.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.006.1",
+        "areaDesc": "Cloud, KS",
+        "geocode": {
+          "SAME": [
+            "020029"
+          ],
+          "UGC": [
+            "KSC029"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC029"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.586e6f6e8d25fd75a1b7a41e4dcea70aa3d0921c.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.586e6f6e8d25fd75a1b7a41e4dcea70aa3d0921c.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T22:02:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T10:00:00-05:00",
+        "effective": "2026-10-01T10:00:00-05:00",
+        "onset": "2026-10-03T06:24:00-05:00",
+        "expires": "2026-10-02T01:00:00-05:00",
+        "ends": "2026-10-04T13:47:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Warning issued October 1 at 10:00AM CDT until October 4 at 1:47PM CDT by NWS Topeka KS",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nBuffalo Creek near Jamestown affecting Cloud County.\n\nRepublican River near Scandia affecting Republic County.\n\nBlack Vermillion River near Frankfort affecting Marshall County.\n\nLittle Blue River near Barnes affecting Washington and Marshall\nCounties.\n\nRepublican River at Clay Center affecting Clay County.\n\n...The Flood Warning continues for the following rivers in Kansas...\n\nSolomon River near Glasco affecting Cloud County.\n\nBig Blue River near Blue Rapids affecting Marshall County.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Solomon River near Glasco.\n\n* WHEN...From Saturday morning to Sunday afternoon.\n\n* IMPACTS...At 22.0 feet, Minor lowland flooding occurs along the\nriver from the Cloud and Mitchell County line to Niles.\n\n* ADDITIONAL DETAILS...\n- At 8:35 AM CDT Thursday the stage was 4.7 feet.\n- Forecast...The river is expected to rise above flood stage\nSaturday morning to a crest of 22.7 feet early Saturday\nafternoon. It will then fall below flood stage Saturday evening.\n- Flood stage is 22.0 feet.",
+        "instruction": "Motorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/top/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011500"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT FROM SATURDAY MORNING TO SUNDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KTOP.FL.W.0061.261003T1124Z-261004T1847Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-04T13:47:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.005.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -97.41,
+              39.57
+            ],
+            [
+              -97.26,
+              39.57
+            ],
+            [
+              -97,
+              39.29
+            ],
+            [
+              -97.06,
+              39.26
+            ],
+            [
+              -97.41,
+              39.57
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.005.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.005.1",
+        "areaDesc": "Clay, KS",
+        "geocode": {
+          "SAME": [
+            "020027"
+          ],
+          "UGC": [
+            "KSC027"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC027"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.47e75f824ac3b1db682544cb09b3544888b8f1c2.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.47e75f824ac3b1db682544cb09b3544888b8f1c2.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T21:07:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6870020babe8878eb86dffb0a92efee39ddaa624.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.6870020babe8878eb86dffb0a92efee39ddaa624.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T03:33:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T10:00:00-05:00",
+        "effective": "2026-10-01T10:00:00-05:00",
+        "onset": "2026-10-02T17:48:00-05:00",
+        "expires": "2026-10-02T01:00:00-05:00",
+        "ends": "2026-10-04T16:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Warning issued October 1 at 10:00AM CDT until October 4 at 4:00PM CDT by NWS Topeka KS",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nBuffalo Creek near Jamestown affecting Cloud County.\n\nRepublican River near Scandia affecting Republic County.\n\nBlack Vermillion River near Frankfort affecting Marshall County.\n\nLittle Blue River near Barnes affecting Washington and Marshall\nCounties.\n\nRepublican River at Clay Center affecting Clay County.\n\n...The Flood Warning continues for the following rivers in Kansas...\n\nSolomon River near Glasco affecting Cloud County.\n\nBig Blue River near Blue Rapids affecting Marshall County.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Republican River at Clay Center.\n\n* WHEN...From Friday afternoon to Sunday afternoon.\n\n* IMPACTS...At 15.0 feet, Lowland agricultural flooding occurs from\nU.S. Highway 24 to Milford Lake. At 17.0 feet, Flooding occurs\nbetween 16th, 17th, and 18th Roads and between Limestone and Osage\nRoads.\n\n* ADDITIONAL DETAILS...\n- At 9:30 AM CDT Thursday the stage was 9.6 feet.\n- Forecast...The river is expected to rise above flood stage\ntomorrow afternoon to a crest of 15.6 feet early Saturday\nafternoon. It will then fall below flood stage early Sunday\nmorning.\n- Flood stage is 15.0 feet.",
+        "instruction": "Motorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/top/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011500"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT FROM FRIDAY AFTERNOON TO SUNDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KTOP.FL.W.0057.261002T2248Z-261004T2100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-04T16:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.76e35f2d32d3646544a7aad9ead7526eb8a53eb9.001.1,2026-09-30T14:36:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.05489924e0a52d5730852b466507273ffb3932b8.001.1,2026-09-30T09:42:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.004.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -96.95,
+              39.92
+            ],
+            [
+              -96.89,
+              39.92
+            ],
+            [
+              -96.66,
+              39.69
+            ],
+            [
+              -96.69,
+              39.67
+            ],
+            [
+              -96.85,
+              39.71
+            ],
+            [
+              -96.95,
+              39.92
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.004.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.004.1",
+        "areaDesc": "Marshall, KS; Washington, KS",
+        "geocode": {
+          "SAME": [
+            "020117",
+            "020201"
+          ],
+          "UGC": [
+            "KSC117",
+            "KSC201"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC117",
+          "https://api.weather.gov/zones/county/KSC201"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8570b51ec04a73709fa5f4f61871d0f94bf8b1a0.003.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.8570b51ec04a73709fa5f4f61871d0f94bf8b1a0.003.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T20:36:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.78df07fac483bdaf3903ef258a8a5f22c2f8f359.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.78df07fac483bdaf3903ef258a8a5f22c2f8f359.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T02:21:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.503b08ffe63140e781df30d20baafc39cd3b810a.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.503b08ffe63140e781df30d20baafc39cd3b810a.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T04:59:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T10:00:00-05:00",
+        "effective": "2026-10-01T10:00:00-05:00",
+        "onset": "2026-10-02T12:00:00-05:00",
+        "expires": "2026-10-02T01:00:00-05:00",
+        "ends": "2026-10-04T23:19:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Warning issued October 1 at 10:00AM CDT until October 4 at 11:19PM CDT by NWS Topeka KS",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nBuffalo Creek near Jamestown affecting Cloud County.\n\nRepublican River near Scandia affecting Republic County.\n\nBlack Vermillion River near Frankfort affecting Marshall County.\n\nLittle Blue River near Barnes affecting Washington and Marshall\nCounties.\n\nRepublican River at Clay Center affecting Clay County.\n\n...The Flood Warning continues for the following rivers in Kansas...\n\nSolomon River near Glasco affecting Cloud County.\n\nBig Blue River near Blue Rapids affecting Marshall County.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Little Blue River near Barnes.\n\n* WHEN...From Friday afternoon to Sunday evening.\n\n* IMPACTS...At 16.0 feet, Lowland agricultural flooding occurs from\n15th Road and Zenith Road in Washington County to Waterville in\nMarshall County. At 17.0 feet, Farm field, 4.5 miles north of\nBarnes, on the west side of Highway 148 floods north of the river.\nAt 19.0 feet, Farm field, 4.5 miles north of Barnes, south of the\nriver and east of Highway 148 floods. At 21.0 feet, Minor flooding\nof farm fields along the Little Blue River...south of the Sunflower\nRoad Bridge in Marshall county. At 23.0 feet, Sunflower Road floods\nabout 250 feet east of the Little Blue River in Marshall county.\nFarm field, 4.5 miles north of Barnes, floods north of the river\nand west of Highway 148 in Washington county.\n\n* ADDITIONAL DETAILS...\n- At 9:30 AM CDT Thursday the stage was 12.2 feet.\n- Forecast...The river is expected to rise above flood stage early\ntomorrow afternoon to a crest of 21.1 feet Saturday evening. It\nwill then fall below flood stage late Sunday morning.\n- Flood stage is 16.0 feet.",
+        "instruction": "Motorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/top/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011500"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT FROM FRIDAY AFTERNOON TO SUNDAY EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KTOP.FL.W.0058.261002T1700Z-261005T0419Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-04T23:19:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.7d3e79d07ad2011ac7bdb67130eb21236bae1f16.004.1,2026-09-30T16:03:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.22bf705fd17f23d8cffb4b83037db857a4e8577b.001.1,2026-09-30T09:42:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.007.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -96.66,
+              39.71
+            ],
+            [
+              -96.58,
+              39.68
+            ],
+            [
+              -96.55,
+              39.57
+            ],
+            [
+              -96.59,
+              39.57
+            ],
+            [
+              -96.69,
+              39.68
+            ],
+            [
+              -96.66,
+              39.71
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.007.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.007.1",
+        "areaDesc": "Marshall, KS",
+        "geocode": {
+          "SAME": [
+            "020117"
+          ],
+          "UGC": [
+            "KSC117"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC117"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8570b51ec04a73709fa5f4f61871d0f94bf8b1a0.004.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.8570b51ec04a73709fa5f4f61871d0f94bf8b1a0.004.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T20:36:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.24d0f11f446dc4d7b3b29a16f140edf7a7f3dba2.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.24d0f11f446dc4d7b3b29a16f140edf7a7f3dba2.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T02:18:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.362262d604bb09f318e4386b32b4413790ef6e3e.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.362262d604bb09f318e4386b32b4413790ef6e3e.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T04:57:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T10:00:00-05:00",
+        "effective": "2026-10-01T10:00:00-05:00",
+        "onset": "2026-10-01T10:00:00-05:00",
+        "expires": "2026-10-02T01:00:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Warning issued October 1 at 10:00AM CDT by NWS Topeka KS",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nBuffalo Creek near Jamestown affecting Cloud County.\n\nRepublican River near Scandia affecting Republic County.\n\nBlack Vermillion River near Frankfort affecting Marshall County.\n\nLittle Blue River near Barnes affecting Washington and Marshall\nCounties.\n\nRepublican River at Clay Center affecting Clay County.\n\n...The Flood Warning continues for the following rivers in Kansas...\n\nSolomon River near Glasco affecting Cloud County.\n\nBig Blue River near Blue Rapids affecting Marshall County.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Big Blue River near Blue Rapids.\n\n* WHEN...Until further notice.\n\n* IMPACTS...At 26.0 feet, Minor lowland flooding occurs from\nMarysville to Tuttle Creek Lake.\n\n* ADDITIONAL DETAILS...\n- At 9:15 AM CDT Thursday the stage was 31.6 feet.\n- Forecast...The river will rise to 32.4 feet this evening. It will\nthen fall tomorrow morning. It will rise to 39.9 feet Sunday\nmorning. It will then fall again but remain above flood stage.\n- Flood stage is 26.0 feet.",
+        "instruction": "Motorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/top/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011500"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING REMAINS IN EFFECT UNTIL FURTHER NOTICE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KTOP.FL.W.0054.000000T0000Z-000000T0000Z/"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.7d3e79d07ad2011ac7bdb67130eb21236bae1f16.002.1,2026-09-30T16:03:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.87d5f929f91ffe6aa7aa2f5325bdfbb941b8fef2.001.1,2026-09-30T09:45:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.1a9462c3b61402c49ea42c2baffbb5628914d7e2.001.1,2026-09-29T20:50:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.19fdbb881a7963057efc7f48e1bfc43a2e57918f.001.1,2026-09-29T09:54:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -97.93,
+              39.64
+            ],
+            [
+              -97.72,
+              39.6
+            ],
+            [
+              -97.72,
+              39.58
+            ],
+            [
+              -97.93,
+              39.61
+            ],
+            [
+              -97.93,
+              39.64
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.001.1",
+        "areaDesc": "Cloud, KS",
+        "geocode": {
+          "SAME": [
+            "020029"
+          ],
+          "UGC": [
+            "KSC029"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC029"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c991236374c6f802f46c91fdc04ef27b8948dd37.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.c991236374c6f802f46c91fdc04ef27b8948dd37.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T20:46:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a65293f43dbd286c08136f3f59ccfe464c0f8f99.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.a65293f43dbd286c08136f3f59ccfe464c0f8f99.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T03:36:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2b1f32cdc14ba52587bbcedf72779f5db5507e00.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.2b1f32cdc14ba52587bbcedf72779f5db5507e00.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T07:35:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T10:00:00-05:00",
+        "effective": "2026-10-01T10:00:00-05:00",
+        "onset": "2026-10-01T10:00:00-05:00",
+        "expires": "2026-10-02T01:00:00-05:00",
+        "ends": "2026-10-02T19:15:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Warning issued October 1 at 10:00AM CDT until October 2 at 7:15PM CDT by NWS Topeka KS",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nBuffalo Creek near Jamestown affecting Cloud County.\n\nRepublican River near Scandia affecting Republic County.\n\nBlack Vermillion River near Frankfort affecting Marshall County.\n\nLittle Blue River near Barnes affecting Washington and Marshall\nCounties.\n\nRepublican River at Clay Center affecting Clay County.\n\n...The Flood Warning continues for the following rivers in Kansas...\n\nSolomon River near Glasco affecting Cloud County.\n\nBig Blue River near Blue Rapids affecting Marshall County.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Buffalo Creek near Jamestown.\n\n* WHEN...Until Friday evening.\n\n* IMPACTS...At 12.7 feet, Farm field just north of Buffalo Creek on\nthe northwest side of north 40th Road floods. At 16.0 feet, Minor\nflooding begins along the creek as the south bank overflows. At\n16.9 feet, Farm field along the north bank of the Buffalo Creek\nfloods. At 18.0 feet, The north bank of the Buffalo Creek Floods.\nLowland flooding continues from 763 Road to the Republican River.\n\n* ADDITIONAL DETAILS...\n- At 6:51 AM CDT Thursday the stage was 15.5 feet.\n- Forecast...The river is expected to rise to a crest of 17.6 feet\nthis afternoon. It will then fall below flood stage just after\nmidnight tonight.\n- Flood stage is 16.0 feet.",
+        "instruction": "Motorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/top/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011500"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL FRIDAY EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KTOP.FL.W.0060.000000T0000Z-261003T0015Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T19:15:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.003.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -96.43,
+              39.72
+            ],
+            [
+              -96.39,
+              39.67
+            ],
+            [
+              -96.56,
+              39.57
+            ],
+            [
+              -96.57,
+              39.63
+            ],
+            [
+              -96.43,
+              39.72
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.003.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.003.1",
+        "areaDesc": "Marshall, KS",
+        "geocode": {
+          "SAME": [
+            "020117"
+          ],
+          "UGC": [
+            "KSC117"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC117"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8570b51ec04a73709fa5f4f61871d0f94bf8b1a0.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.8570b51ec04a73709fa5f4f61871d0f94bf8b1a0.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T20:36:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.ebac6aac8ed7b0a72bd6e7a6ca2dfff087e8e40e.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.ebac6aac8ed7b0a72bd6e7a6ca2dfff087e8e40e.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T02:17:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T10:00:00-05:00",
+        "effective": "2026-10-01T10:00:00-05:00",
+        "onset": "2026-10-01T10:00:00-05:00",
+        "expires": "2026-10-02T01:00:00-05:00",
+        "ends": "2026-10-02T19:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Warning issued October 1 at 10:00AM CDT until October 2 at 7:00PM CDT by NWS Topeka KS",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nBuffalo Creek near Jamestown affecting Cloud County.\n\nRepublican River near Scandia affecting Republic County.\n\nBlack Vermillion River near Frankfort affecting Marshall County.\n\nLittle Blue River near Barnes affecting Washington and Marshall\nCounties.\n\nRepublican River at Clay Center affecting Clay County.\n\n...The Flood Warning continues for the following rivers in Kansas...\n\nSolomon River near Glasco affecting Cloud County.\n\nBig Blue River near Blue Rapids affecting Marshall County.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Black Vermillion River near Frankfort.\n\n* WHEN...Until Friday evening.\n\n* IMPACTS...At 19.0 feet, Minor flooding of lowland areas occurs\nalong the river from Vermillion to the mouth of the Black\nVermillion River. At 26.0 feet, The west bank of the river floods.\nAt 27.5 feet, Area in the vicinity of 19th Terrace and Vista Roads\nfloods.\n\n* ADDITIONAL DETAILS...\n- At 9:30 AM CDT Thursday the stage was 25.2 feet.\n- Forecast...The river is expected to rise to a crest of 25.5 feet\nthis afternoon. It will then fall below flood stage tomorrow\nmorning.\n- Flood stage is 19.0 feet.",
+        "instruction": "Motorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/top/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011500"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL FRIDAY EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KTOP.FL.W.0056.000000T0000Z-261003T0000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T19:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.7d3e79d07ad2011ac7bdb67130eb21236bae1f16.001.1,2026-09-30T16:03:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.f8cd3cf3787240e0f338f18feac95e258a61dba8.001.1,2026-09-30T09:41:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.002.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -97.89,
+              39.92
+            ],
+            [
+              -97.82,
+              39.92
+            ],
+            [
+              -97.69,
+              39.6
+            ],
+            [
+              -97.73,
+              39.6
+            ],
+            [
+              -97.79,
+              39.62
+            ],
+            [
+              -97.89,
+              39.92
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.8a3e6e391ecff50edde84b03037a2b50fb434de0.002.1",
+        "areaDesc": "Republic, KS",
+        "geocode": {
+          "SAME": [
+            "020157"
+          ],
+          "UGC": [
+            "KSC157"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC157"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.47e75f824ac3b1db682544cb09b3544888b8f1c2.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.47e75f824ac3b1db682544cb09b3544888b8f1c2.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T21:07:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6870020babe8878eb86dffb0a92efee39ddaa624.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.6870020babe8878eb86dffb0a92efee39ddaa624.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T03:33:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T10:00:00-05:00",
+        "effective": "2026-10-01T10:00:00-05:00",
+        "onset": "2026-10-01T10:00:00-05:00",
+        "expires": "2026-10-02T01:00:00-05:00",
+        "ends": "2026-10-02T16:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Warning issued October 1 at 10:00AM CDT until October 2 at 4:00PM CDT by NWS Topeka KS",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nBuffalo Creek near Jamestown affecting Cloud County.\n\nRepublican River near Scandia affecting Republic County.\n\nBlack Vermillion River near Frankfort affecting Marshall County.\n\nLittle Blue River near Barnes affecting Washington and Marshall\nCounties.\n\nRepublican River at Clay Center affecting Clay County.\n\n...The Flood Warning continues for the following rivers in Kansas...\n\nSolomon River near Glasco affecting Cloud County.\n\nBig Blue River near Blue Rapids affecting Marshall County.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Republican River near Scandia.\n\n* WHEN...Until Friday afternoon.\n\n* IMPACTS...At 10.0 feet, Lowlands along the river flood. At 11.0\nfeet, Low lying rural roads flood.\n\n* ADDITIONAL DETAILS...\n- At 9:15 AM CDT Thursday the stage was 8.7 feet.\n- Forecast...The river is expected to rise above flood stage this\nevening to a crest of 10.2 feet this evening. It will then fall\nbelow flood stage late this evening.\n- Flood stage is 10.0 feet.",
+        "instruction": "Motorists should not attempt to drive around barricades or drive cars\nthrough flooded areas.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/top/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSTOP"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KTOP 011500"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL FRIDAY AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KTOP.FL.W.0059.000000T0000Z-261002T2100Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T16:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.0682243977d16003b0c704ae5fb3d131035a69b6.001.1,2026-09-30T14:37:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.604f0c253e1daecc9325e3011e6ee995c6a66223.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.19,
+              39.48
+            ],
+            [
+              -97.92,
+              39.39
+            ],
+            [
+              -97.92,
+              39.36
+            ],
+            [
+              -98.21,
+              39.45
+            ],
+            [
+              -98.19,
+              39.48
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.604f0c253e1daecc9325e3011e6ee995c6a66223.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.604f0c253e1daecc9325e3011e6ee995c6a66223.001.1",
+        "areaDesc": "Mitchell, KS",
+        "geocode": {
+          "SAME": [
+            "020123"
+          ],
+          "UGC": [
+            "KSC123"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC123"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d1e1cd0deb5e3b98f4b992efbff34238ead1406c.005.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.d1e1cd0deb5e3b98f4b992efbff34238ead1406c.005.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T21:33:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.6341d4ca80cb401f864f3afe653ad2a2764a91f6.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.6341d4ca80cb401f864f3afe653ad2a2764a91f6.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T05:34:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T09:49:00-05:00",
+        "effective": "2026-10-01T09:49:00-05:00",
+        "onset": "2026-10-01T09:49:00-05:00",
+        "expires": "2026-10-01T22:00:00-05:00",
+        "ends": "2026-10-02T19:36:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hastings NE",
+        "headline": "Flood Warning issued October 1 at 9:49AM CDT until October 2 at 7:36PM CDT by NWS Hastings NE",
+        "description": "...The Flood Warning is extended for the following rivers in\nKansas...\n\nSolomon River At Beloit affecting Mitchell County.\n\n* WHAT...Minor flooding is occurring and minor flooding is forecast.\n\n* WHERE...Solomon River at Beloit.\n\n* WHEN...Until Friday evening.\n\n* IMPACTS...At 20.0 feet, Flooding occurs in the Beloit city park and\nfairgrounds. Rural lowlands outside of Beloit flood at 18 feet.\n\n* ADDITIONAL DETAILS...\n- At 8:45 AM CDT Thursday the stage was 22.8 feet, which is 2.8\nfeet above minor flood stage of 20.0 feet.\n- Forecast...The river is currently expected to crest around 23.3\nfeet this afternoon. It is then forecast to begin slowly falling\nand slip below flood stage sometime Friday morning. However,\nbased on a river gage slightly upstream near Glen Elder...which\nwas also 2.8 feet above flood stage as of 830 AM CDT, it is\npossible that the current forecast for the crest and fall at the\nBeloit gage might not occur as quickly.\n- Flood stage is 20.0 feet.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSGID"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KGID 011449"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL FRIDAY EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KGID.FL.W.0006.000000T0000Z-261003T0036Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T19:36:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.397687422cba6039d52c466637d7dd716eada1d1.006.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.08,
+              39.42
+            ],
+            [
+              -94.92,
+              39.42
+            ],
+            [
+              -94.77,
+              39.31
+            ],
+            [
+              -94.9,
+              39.24
+            ],
+            [
+              -95.08,
+              39.42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.397687422cba6039d52c466637d7dd716eada1d1.006.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.397687422cba6039d52c466637d7dd716eada1d1.006.1",
+        "areaDesc": "Leavenworth, KS; Platte, MO",
+        "geocode": {
+          "SAME": [
+            "020103",
+            "029165"
+          ],
+          "UGC": [
+            "KSC103",
+            "MOC165"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC103",
+          "https://api.weather.gov/zones/county/MOC165"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7fa5903196ea286d2c21e327a998cceb103ae6a1.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.7fa5903196ea286d2c21e327a998cceb103ae6a1.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T16:42:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c6e576aac6ce82608edc988d8f72dd004b8c93f4.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.c6e576aac6ce82608edc988d8f72dd004b8c93f4.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T22:42:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T09:45:00-05:00",
+        "effective": "2026-10-01T09:45:00-05:00",
+        "onset": "2026-10-03T19:00:00-05:00",
+        "expires": "2026-10-02T09:45:00-05:00",
+        "ends": "2026-10-05T01:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Flood Warning issued October 1 at 9:45AM CDT until October 5 at 1:00AM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "...The Flood Warning continues for the following rivers in Kansas...\nMissouri...\n\nMissouri River at St Joseph affecting Doniphan, Andrew and Buchanan\nCounties.\n\nMissouri River at Napoleon affecting Ray, Jackson and Lafayette\nCounties.\n\nMissouri River at Waverly affecting Carroll, Saline and Lafayette\nCounties.\n\nMissouri River at Leavenworth affecting Leavenworth and Platte\nCounties.\n\n...The Flood Warning is extended for the following rivers in\nMissouri...\n\nMissouri River At Miami affecting Carroll, Chariton and Saline\nCounties.\n\nMissouri River at Glasgow affecting Saline, Chariton and Howard\nCounties.\n\nMissouri River at Boonville affecting Cooper, Moniteau, Howard and\nBoone Counties.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Missouri River at Leavenworth.\n\n* WHEN...From Saturday evening to late Sunday night.\n\n* IMPACTS...At 20.0 feet, Lowland flooding occurs along the east and\nwest banks of the river.\n\n* ADDITIONAL DETAILS...\n- At 9:30 AM CDT Thursday the stage was 9.3 feet.\n- Forecast...The river is expected to rise to a crest of 20.0 feet\nSaturday evening. It will then fall below flood stage early\nSunday morning.\n- Flood stage is 20.0 feet.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/kc/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSEAX"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KEAX 011445"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT FROM SATURDAY EVENING TO LATE SUNDAY NIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KEAX.FL.W.0208.261004T0000Z-261005T0600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-05T01:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.397687422cba6039d52c466637d7dd716eada1d1.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.01,
+              39.91
+            ],
+            [
+              -94.89,
+              39.9
+            ],
+            [
+              -94.83,
+              39.75
+            ],
+            [
+              -94.88,
+              39.64
+            ],
+            [
+              -95.05,
+              39.7
+            ],
+            [
+              -95.01,
+              39.91
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.397687422cba6039d52c466637d7dd716eada1d1.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.397687422cba6039d52c466637d7dd716eada1d1.001.1",
+        "areaDesc": "Doniphan, KS; Andrew, MO; Buchanan, MO",
+        "geocode": {
+          "SAME": [
+            "020043",
+            "029003",
+            "029021"
+          ],
+          "UGC": [
+            "KSC043",
+            "MOC003",
+            "MOC021"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC043",
+          "https://api.weather.gov/zones/county/MOC003",
+          "https://api.weather.gov/zones/county/MOC021"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.22b343657e560ffaa446edf4432cc583b2763455.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.22b343657e560ffaa446edf4432cc583b2763455.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T10:26:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d55696ea3d7c431b303b0b00c5bbc2f192f23676.007.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.d55696ea3d7c431b303b0b00c5bbc2f192f23676.007.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T16:13:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.3bc965fd93ab439ce02181e465888f52136aa958.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.3bc965fd93ab439ce02181e465888f52136aa958.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T22:41:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T09:45:00-05:00",
+        "effective": "2026-10-01T09:45:00-05:00",
+        "onset": "2026-10-02T04:00:00-05:00",
+        "expires": "2026-10-02T09:45:00-05:00",
+        "ends": "2026-10-05T22:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Flood Warning issued October 1 at 9:45AM CDT until October 5 at 10:30PM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "...The Flood Warning continues for the following rivers in Kansas...\nMissouri...\n\nMissouri River at St Joseph affecting Doniphan, Andrew and Buchanan\nCounties.\n\nMissouri River at Napoleon affecting Ray, Jackson and Lafayette\nCounties.\n\nMissouri River at Waverly affecting Carroll, Saline and Lafayette\nCounties.\n\nMissouri River at Leavenworth affecting Leavenworth and Platte\nCounties.\n\n...The Flood Warning is extended for the following rivers in\nMissouri...\n\nMissouri River At Miami affecting Carroll, Chariton and Saline\nCounties.\n\nMissouri River at Glasgow affecting Saline, Chariton and Howard\nCounties.\n\nMissouri River at Boonville affecting Cooper, Moniteau, Howard and\nBoone Counties.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Missouri River at St Joseph.\n\n* WHEN...From late tonight to Monday evening.\n\n* IMPACTS...At 17.0 feet, Lowland flooding upstream and downstream\nfrom St. Joseph occurs. At 19.0 feet, Backwater from the Missouri\nRiver floods property along the Nodaway river at Nodaway, Missouri.\nAt 21.0 feet, Riverfront Park in St. Joseph begins to flood.\n\n* ADDITIONAL DETAILS...\n- At 9:00 AM CDT Thursday the stage was 14.2 feet.\n- Forecast...The river is expected to rise above flood stage late\ntonight to a crest of 20.2 feet early Saturday afternoon. It will\nthen fall below flood stage late Sunday evening.\n- Flood stage is 17.0 feet.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nThis product along with additional weather and stream information is\navailable at www.weather.gov/kc/.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSEAX"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KEAX 011445"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT FROM LATE TONIGHT TO MONDAY EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KEAX.FL.W.0192.261002T0900Z-261006T0330Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-05T22:30:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.04c76d613eb1c4635ecca9f67ac4b963599c0971.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.22,
+              40.07
+            ],
+            [
+              -97.9,
+              40.01
+            ],
+            [
+              -97.82,
+              39.92
+            ],
+            [
+              -97.89,
+              39.92
+            ],
+            [
+              -98.24,
+              40.01
+            ],
+            [
+              -98.22,
+              40.07
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.04c76d613eb1c4635ecca9f67ac4b963599c0971.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.04c76d613eb1c4635ecca9f67ac4b963599c0971.001.1",
+        "areaDesc": "Jewell, KS; Republic, KS; Nuckolls, NE",
+        "geocode": {
+          "SAME": [
+            "020089",
+            "020157",
+            "031129"
+          ],
+          "UGC": [
+            "KSC089",
+            "KSC157",
+            "NEC129"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC089",
+          "https://api.weather.gov/zones/county/KSC157",
+          "https://api.weather.gov/zones/county/NEC129"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d1e1cd0deb5e3b98f4b992efbff34238ead1406c.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.d1e1cd0deb5e3b98f4b992efbff34238ead1406c.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-09-30T21:33:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.4a10de748036b5c3cb5651c6494ba804681399af.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.4a10de748036b5c3cb5651c6494ba804681399af.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T05:25:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T09:30:00-05:00",
+        "effective": "2026-10-01T09:30:00-05:00",
+        "onset": "2026-10-01T09:30:00-05:00",
+        "expires": "2026-10-01T20:30:00-05:00",
+        "ends": "2026-10-01T20:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Hastings NE",
+        "headline": "Flood Warning issued October 1 at 9:30AM CDT until October 1 at 8:30PM CDT by NWS Hastings NE",
+        "description": "...The Flood Warning continues for the following rivers in Kansas...\nNebraska...\n\nRepublican River Near Hardy affecting Jewell, Nuckolls and Republic\nCounties.\n\nRepublican River At Guide Rock affecting Webster and Nuckolls\nCounties.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Republican River near Hardy.\n\n* WHEN...Until this evening.\n\n* IMPACTS...At 11.0 feet, Water floods rural agricultural land.\n\n* ADDITIONAL DETAILS...\n- At 8:30 AM CDT Thursday the stage was 9.5 feet, which is still\nslightly below minor flood stage of 11.0 feet.\n- Forecast...The river is expected to rise just barely above flood\nstage this afternoon and crest around 11.1 feet. It is then\nforecast to slip back below flood stage by sunset this evening\nand continue gradually falling over the next few days.\n- Flood stage is 11.0 feet.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nAdditional information is available at www.weather.gov.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSGID"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KGID 011430"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING NOW IN EFFECT UNTIL THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXT.KGID.FL.W.0003.000000T0000Z-261002T0130Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T20:30:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLS"
+          ],
+          "NationalWeatherService": [
+            "FLW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.001.1",
+        "areaDesc": "Miami; Linn; Leavenworth; Wyandotte; Johnson; Clinton; Caldwell; Livingston; Linn; Macon; Platte; Clay; Ray; Carroll; Chariton; Randolph; Jackson; Lafayette; Saline; Howard; Cass; Johnson; Pettis; Cooper; Bates; Henry",
+        "geocode": {
+          "SAME": [
+            "020121",
+            "020107",
+            "020103",
+            "020209",
+            "020091",
+            "029049",
+            "029025",
+            "029117",
+            "029115",
+            "029121",
+            "029165",
+            "029047",
+            "029177",
+            "029033",
+            "029041",
+            "029175",
+            "029095",
+            "029107",
+            "029195",
+            "029089",
+            "029037",
+            "029101",
+            "029159",
+            "029053",
+            "029013",
+            "029083"
+          ],
+          "UGC": [
+            "KSZ057",
+            "KSZ060",
+            "KSZ103",
+            "KSZ104",
+            "KSZ105",
+            "MOZ021",
+            "MOZ022",
+            "MOZ023",
+            "MOZ024",
+            "MOZ025",
+            "MOZ028",
+            "MOZ029",
+            "MOZ030",
+            "MOZ031",
+            "MOZ032",
+            "MOZ033",
+            "MOZ037",
+            "MOZ038",
+            "MOZ039",
+            "MOZ040",
+            "MOZ043",
+            "MOZ044",
+            "MOZ045",
+            "MOZ046",
+            "MOZ053",
+            "MOZ054"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ057",
+          "https://api.weather.gov/zones/forecast/KSZ060",
+          "https://api.weather.gov/zones/forecast/KSZ103",
+          "https://api.weather.gov/zones/forecast/KSZ104",
+          "https://api.weather.gov/zones/forecast/KSZ105",
+          "https://api.weather.gov/zones/forecast/MOZ021",
+          "https://api.weather.gov/zones/forecast/MOZ022",
+          "https://api.weather.gov/zones/forecast/MOZ023",
+          "https://api.weather.gov/zones/forecast/MOZ024",
+          "https://api.weather.gov/zones/forecast/MOZ025",
+          "https://api.weather.gov/zones/forecast/MOZ028",
+          "https://api.weather.gov/zones/forecast/MOZ029",
+          "https://api.weather.gov/zones/forecast/MOZ030",
+          "https://api.weather.gov/zones/forecast/MOZ031",
+          "https://api.weather.gov/zones/forecast/MOZ032",
+          "https://api.weather.gov/zones/forecast/MOZ033",
+          "https://api.weather.gov/zones/forecast/MOZ037",
+          "https://api.weather.gov/zones/forecast/MOZ038",
+          "https://api.weather.gov/zones/forecast/MOZ039",
+          "https://api.weather.gov/zones/forecast/MOZ040",
+          "https://api.weather.gov/zones/forecast/MOZ043",
+          "https://api.weather.gov/zones/forecast/MOZ044",
+          "https://api.weather.gov/zones/forecast/MOZ045",
+          "https://api.weather.gov/zones/forecast/MOZ046",
+          "https://api.weather.gov/zones/forecast/MOZ053",
+          "https://api.weather.gov/zones/forecast/MOZ054"
+        ],
+        "references": [],
+        "sent": "2026-10-01T09:16:00-05:00",
+        "effective": "2026-10-01T09:16:00-05:00",
+        "onset": "2026-10-01T09:16:00-05:00",
+        "expires": "2026-10-02T00:30:00-05:00",
+        "ends": "2026-10-02T01:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Flood Watch issued October 1 at 9:16AM CDT until October 2 at 1:00AM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of Kansas, including the following areas, Johnson\nKS, Leavenworth, Linn KS, Miami and Wyandotte and Missouri,\nincluding the following areas, Bates, Caldwell, Carroll, Cass,\nChariton, Clay, Clinton, Cooper, Henry, Howard, Jackson, Johnson\nMO, Lafayette, Linn MO, Livingston, Macon, Pettis, Platte,\nRandolph, Ray and Saline.\n\n* WHEN...Through late tonight.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Rainfall overnight along with additional rainfall Thursday\nafternoon and evening.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAEAX"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KEAX 011416"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH IN EFFECT THROUGH LATE TONIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXA.KEAX.FA.A.0017.000000T0000Z-261002T0600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T01:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.002.1",
+        "areaDesc": "Doniphan; Atchison; Nodaway; Worth; Gentry; Harrison; Holt; Andrew",
+        "geocode": {
+          "SAME": [
+            "020043",
+            "029005",
+            "029147",
+            "029227",
+            "029075",
+            "029081",
+            "029087",
+            "029003"
+          ],
+          "UGC": [
+            "KSZ102",
+            "MOZ001",
+            "MOZ002",
+            "MOZ003",
+            "MOZ004",
+            "MOZ005",
+            "MOZ011",
+            "MOZ012"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ102",
+          "https://api.weather.gov/zones/forecast/MOZ001",
+          "https://api.weather.gov/zones/forecast/MOZ002",
+          "https://api.weather.gov/zones/forecast/MOZ003",
+          "https://api.weather.gov/zones/forecast/MOZ004",
+          "https://api.weather.gov/zones/forecast/MOZ005",
+          "https://api.weather.gov/zones/forecast/MOZ011",
+          "https://api.weather.gov/zones/forecast/MOZ012"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.248d4642236445d6e933f6459b89c6257d7f47e1.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.248d4642236445d6e933f6459b89c6257d7f47e1.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T02:08:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T09:16:00-05:00",
+        "effective": "2026-10-01T09:16:00-05:00",
+        "onset": "2026-10-01T09:16:00-05:00",
+        "expires": "2026-10-02T00:30:00-05:00",
+        "ends": "2026-10-02T01:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Flood Watch issued October 1 at 9:16AM CDT until October 2 at 1:00AM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of northeast Kansas, including the following area,\nDoniphan and Missouri, including the following areas, Andrew,\nAtchison MO, Gentry, Harrison, Holt, Nodaway and Worth.\n\n* WHEN...Through late tonight.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nCreeks and streams may rise out of their banks. Low-water crossings\nmay be flooded.\n\n* ADDITIONAL DETAILS...\n- Rainfall overnight along with additional rainfall Thursday\nafternoon and evening.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAEAX"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KEAX 011416"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH REMAINS IN EFFECT THROUGH LATE TONIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KEAX.FA.A.0017.000000T0000Z-261002T0600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T01:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9610521fd61a023cccea4a3b1cdc416deb885915.001.1,2026-09-30T12:47:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.d9ffecfef13fdde6e0d2f23161c27c203f7c32dd.001.1,2026-09-30T07:02:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.40e63e960dced46dc170e7ac0b4bcf80a5fc7644.002.1,2026-09-30T00:08:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.59cb2b867d9ebf3e96d92f5af5815331e69ee061.001.1,2026-09-29T15:24:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.0dfc9b4c217cbe6c782cc7ca8c53da2be49a39ab.001.1,2026-09-29T01:44:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.15f42253ceac18da1b7d574ff3bc0dbb1126818e.001.1,2026-09-28T13:21:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.003.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.003.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.048a971554973a63341b7c2455ba94299526050f.003.1",
+        "areaDesc": "Atchison; Mercer; Putnam; Schuyler; De Kalb; Daviess; Grundy; Sullivan; Adair; Buchanan",
+        "geocode": {
+          "SAME": [
+            "020005",
+            "029129",
+            "029171",
+            "029197",
+            "029063",
+            "029061",
+            "029079",
+            "029211",
+            "029001",
+            "029021"
+          ],
+          "UGC": [
+            "KSZ025",
+            "MOZ006",
+            "MOZ007",
+            "MOZ008",
+            "MOZ013",
+            "MOZ014",
+            "MOZ015",
+            "MOZ016",
+            "MOZ017",
+            "MOZ020"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ025",
+          "https://api.weather.gov/zones/forecast/MOZ006",
+          "https://api.weather.gov/zones/forecast/MOZ007",
+          "https://api.weather.gov/zones/forecast/MOZ008",
+          "https://api.weather.gov/zones/forecast/MOZ013",
+          "https://api.weather.gov/zones/forecast/MOZ014",
+          "https://api.weather.gov/zones/forecast/MOZ015",
+          "https://api.weather.gov/zones/forecast/MOZ016",
+          "https://api.weather.gov/zones/forecast/MOZ017",
+          "https://api.weather.gov/zones/forecast/MOZ020"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.248d4642236445d6e933f6459b89c6257d7f47e1.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.248d4642236445d6e933f6459b89c6257d7f47e1.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T02:08:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T09:16:00-05:00",
+        "effective": "2026-10-01T09:16:00-05:00",
+        "onset": "2026-10-01T09:16:00-05:00",
+        "expires": "2026-10-02T00:30:00-05:00",
+        "ends": "2026-10-02T01:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Flood Watch issued October 1 at 9:16AM CDT until October 2 at 1:00AM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of northeast Kansas, including the following area,\nAtchison KS and Missouri, including the following areas, Adair,\nBuchanan, Daviess, De Kalb, Grundy, Mercer, Putnam, Schuyler and\nSullivan.\n\n* WHEN...Through late tonight.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- Rainfall overnight along with additional rainfall Thursday\nafternoon and evening.\n- http://www.weather.gov/safety/flood",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFAEAX"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KEAX 011416"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH REMAINS IN EFFECT THROUGH LATE TONIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KEAX.FA.A.0017.000000T0000Z-261002T0600Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T01:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.9610521fd61a023cccea4a3b1cdc416deb885915.002.1,2026-09-30T12:47:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.d9ffecfef13fdde6e0d2f23161c27c203f7c32dd.002.1,2026-09-30T07:02:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.40e63e960dced46dc170e7ac0b4bcf80a5fc7644.001.1,2026-09-30T00:08:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e601092a5673f54be411f442f4fe3885858103e5.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e601092a5673f54be411f442f4fe3885858103e5.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e601092a5673f54be411f442f4fe3885858103e5.001.1",
+        "areaDesc": "Douglas; Lyon; Osage; Franklin; Coffey; Anderson",
+        "geocode": {
+          "SAME": [
+            "020045",
+            "020111",
+            "020139",
+            "020059",
+            "020031",
+            "020003"
+          ],
+          "UGC": [
+            "KSZ040",
+            "KSZ054",
+            "KSZ055",
+            "KSZ056",
+            "KSZ058",
+            "KSZ059"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ040",
+          "https://api.weather.gov/zones/forecast/KSZ054",
+          "https://api.weather.gov/zones/forecast/KSZ055",
+          "https://api.weather.gov/zones/forecast/KSZ056",
+          "https://api.weather.gov/zones/forecast/KSZ058",
+          "https://api.weather.gov/zones/forecast/KSZ059"
+        ],
+        "references": [],
+        "sent": "2026-10-01T09:00:00-05:00",
+        "effective": "2026-10-01T09:00:00-05:00",
+        "onset": "2026-10-01T09:00:00-05:00",
+        "expires": "2026-10-01T18:00:00-05:00",
+        "ends": "2026-10-02T04:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Watch issued October 1 at 9:00AM CDT until October 2 at 4:00AM CDT by NWS Topeka KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...A portion of east central Kansas, including the following\ncounties, Anderson, Coffey, Douglas, Franklin, Lyon and Osage.\n\n* WHEN...Through late tonight.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\nLow-water crossings may be flooded.\n\n* ADDITIONAL DETAILS...\n- One more round of rain is expected today. Widespread additional\ntotals of 0.5 to 1.5 inches are expected, with isolated totals of\naround 3 inches. Coupled with the 1 to 4 inches of rain that has\nfallen over the past 36 hours, flooding is possible.",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFATOP"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KTOP 011400"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH IN EFFECT THROUGH LATE TONIGHT"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.EXB.KTOP.FA.A.0010.000000T0000Z-261002T0900Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-02T04:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e601092a5673f54be411f442f4fe3885858103e5.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e601092a5673f54be411f442f4fe3885858103e5.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e601092a5673f54be411f442f4fe3885858103e5.002.1",
+        "areaDesc": "Republic; Washington; Marshall; Nemaha; Brown; Cloud; Clay; Riley; Pottawatomie; Jackson; Jefferson; Ottawa; Dickinson; Geary; Morris; Wabaunsee; Shawnee",
+        "geocode": {
+          "SAME": [
+            "020157",
+            "020201",
+            "020117",
+            "020131",
+            "020013",
+            "020029",
+            "020027",
+            "020161",
+            "020149",
+            "020085",
+            "020087",
+            "020143",
+            "020041",
+            "020061",
+            "020127",
+            "020197",
+            "020177"
+          ],
+          "UGC": [
+            "KSZ008",
+            "KSZ009",
+            "KSZ010",
+            "KSZ011",
+            "KSZ012",
+            "KSZ020",
+            "KSZ021",
+            "KSZ022",
+            "KSZ023",
+            "KSZ024",
+            "KSZ026",
+            "KSZ034",
+            "KSZ035",
+            "KSZ036",
+            "KSZ037",
+            "KSZ038",
+            "KSZ039"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ008",
+          "https://api.weather.gov/zones/forecast/KSZ009",
+          "https://api.weather.gov/zones/forecast/KSZ010",
+          "https://api.weather.gov/zones/forecast/KSZ011",
+          "https://api.weather.gov/zones/forecast/KSZ012",
+          "https://api.weather.gov/zones/forecast/KSZ020",
+          "https://api.weather.gov/zones/forecast/KSZ021",
+          "https://api.weather.gov/zones/forecast/KSZ022",
+          "https://api.weather.gov/zones/forecast/KSZ023",
+          "https://api.weather.gov/zones/forecast/KSZ024",
+          "https://api.weather.gov/zones/forecast/KSZ026",
+          "https://api.weather.gov/zones/forecast/KSZ034",
+          "https://api.weather.gov/zones/forecast/KSZ035",
+          "https://api.weather.gov/zones/forecast/KSZ036",
+          "https://api.weather.gov/zones/forecast/KSZ037",
+          "https://api.weather.gov/zones/forecast/KSZ038",
+          "https://api.weather.gov/zones/forecast/KSZ039"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.adb47f84d82b27b24f5b43847585dafbe55bf05d.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.adb47f84d82b27b24f5b43847585dafbe55bf05d.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2026-10-01T01:18:00-05:00"
+          }
+        ],
+        "sent": "2026-10-01T09:00:00-05:00",
+        "effective": "2026-10-01T09:00:00-05:00",
+        "onset": "2026-10-01T09:00:00-05:00",
+        "expires": "2026-10-01T18:00:00-05:00",
+        "ends": "2026-10-01T18:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Flood Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Flood Watch issued October 1 at 9:00AM CDT until October 1 at 6:00PM CDT by NWS Topeka KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...Portions of central, east central, north central, and\nnortheast Kansas, including the following counties, in central\nKansas, Dickinson. In east central Kansas, Geary, Morris, Shawnee\nand Wabaunsee. In north central Kansas, Clay, Cloud, Ottawa,\nRepublic and Washington. In northeast Kansas, Brown, Jackson,\nJefferson, Marshall, Nemaha, Pottawatomie and Riley.\n\n* WHEN...Until 6 PM CDT this evening.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, and other low-lying and flood-prone locations.\n\n* ADDITIONAL DETAILS...\n- One more round of rain is expected today. Widespread additional\ntotals of 0.5 to 1.5 inches are expected, with isolated totals of\naround 3 inches. Coupled with the 1 to 4 inches of rain that has\nfallen across most of the Flood Watch area over the past 36\nhours, flooding remains possible.",
+        "instruction": "You should monitor later forecasts and be alert for possible Flood\nWarnings. Those living in areas prone to flooding should be prepared\nto take action should flooding develop.",
+        "response": "Prepare",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFATOP"
+          ],
+          "WMOidentifier": [
+            "WGUS63 KTOP 011400"
+          ],
+          "NWSheadline": [
+            "FLOOD WATCH REMAINS IN EFFECT UNTIL 6 PM CDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KTOP.FA.A.0010.000000T0000Z-261001T2300Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T18:00:00-05:00"
+          ],
+          "expiredReferences": [
+            "w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.32cf703971495bd5e460650d9b4e616a1ce8ed94.001.1,2026-09-30T13:35:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.884185cabc16cb36db937a6e798cba81f7475ed3.002.1,2026-09-30T01:08:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.884185cabc16cb36db937a6e798cba81f7475ed3.001.1,2026-09-30T01:08:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.48bf831e540ca0bf406c81d78508cff4e8766a0d.001.1,2026-09-29T13:30:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.632a8243443802b995944a7b8ec6a29739fd0780.001.1,2026-09-29T01:43:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.7657e1fa17ce47fd5b503acbb92082621adbaa21.001.1,2026-09-28T14:03:00-05:00 w-nws.webmaster@noaa.gov,urn:oid:2.49.0.1.840.0.2b5a205571a25f5f3757c356d77932047d964d16.001.1,2026-09-28T13:49:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFA"
+          ],
+          "NationalWeatherService": [
+            "FAA"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b76a86bb26c1801217e0b36e0294ed72e81b5138.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.36,
+              39.42
+            ],
+            [
+              -95.1,
+              39.6
+            ],
+            [
+              -95.08,
+              39.58
+            ],
+            [
+              -95.1,
+              39.58
+            ],
+            [
+              -95.11,
+              39.57
+            ],
+            [
+              -95.11,
+              39.54
+            ],
+            [
+              -95.05,
+              39.5
+            ],
+            [
+              -95.05,
+              39.48
+            ],
+            [
+              -95.04,
+              39.46
+            ],
+            [
+              -94.99,
+              39.44
+            ],
+            [
+              -94.97,
+              39.42
+            ],
+            [
+              -94.95,
+              39.41
+            ],
+            [
+              -94.94,
+              39.39
+            ],
+            [
+              -94.93,
+              39.39
+            ],
+            [
+              -94.93,
+              39.36
+            ],
+            [
+              -95.18,
+              39.36
+            ],
+            [
+              -95.18,
+              39.42
+            ],
+            [
+              -95.36,
+              39.42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b76a86bb26c1801217e0b36e0294ed72e81b5138.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.b76a86bb26c1801217e0b36e0294ed72e81b5138.001.1",
+        "areaDesc": "Atchison, KS; Leavenworth, KS",
+        "geocode": {
+          "SAME": [
+            "020005",
+            "020103"
+          ],
+          "UGC": [
+            "KSC005",
+            "KSC103"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC005",
+          "https://api.weather.gov/zones/county/KSC103"
+        ],
+        "references": [],
+        "sent": "2026-10-01T08:22:00-05:00",
+        "effective": "2026-10-01T08:22:00-05:00",
+        "onset": "2026-10-01T08:22:00-05:00",
+        "expires": "2026-10-01T14:15:00-05:00",
+        "ends": "2026-10-01T14:15:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Immediate",
+        "event": "Flash Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Kansas City/Pleasant Hill MO",
+        "headline": "Flash Flood Warning issued October 1 at 8:22AM CDT until October 1 at 2:15PM CDT by NWS Kansas City/Pleasant Hill MO",
+        "description": "FFWEAX\n\nThe National Weather Service in Pleasant Hill has issued a\n\n* Flash Flood Warning for...\nSoutheastern Atchison County in northeastern Kansas...\nNorthwestern Leavenworth County in northeastern Kansas...\n\n* Until 215 PM CDT.\n\n* At 822 AM CDT, Emergency management reported thunderstorms\nproducing heavy rain across the warned area. Between 1 and 2 inches\nof rain have fallen. The expected rainfall rate is 2 to 2.5 inches\nin 1 hour. Additional rainfall amounts of 0.5 to 1 inch are\npossible in the warned area. Flash flooding is ongoing or expected\nto begin shortly.\n\nHAZARD...Flash flooding caused by thunderstorms.\n\nSOURCE...Emergency management reported. Road 210 has standing water\nwith several ditches full.\n\nIMPACT...Flash flooding of small creeks and streams, urban areas,\nhighways, streets and underpasses as well as other poor\ndrainage and low-lying areas.\n\n* Some locations that will experience flash flooding include...\nAtchison, Potter, Lowemont and Cummings.",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FFWEAX"
+          ],
+          "WMOidentifier": [
+            "WGUS53 KEAX 011322"
+          ],
+          "flashFloodDetection": [
+            "OBSERVED"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KEAX.FF.W.0066.261001T1322Z-261001T1915Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T14:15:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FFW"
+          ],
+          "NationalWeatherService": [
+            "FFW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1fba95bbd5808902400c0195a0ebc62a1383c7ee.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -99.04,
+              39.13
+            ],
+            [
+              -98.49,
+              39.13
+            ],
+            [
+              -98.49,
+              39.22
+            ],
+            [
+              -97.93,
+              39.22
+            ],
+            [
+              -97.93,
+              38.65
+            ],
+            [
+              -98.48,
+              38.62
+            ],
+            [
+              -99.03,
+              38.56
+            ],
+            [
+              -99.03,
+              38.7
+            ],
+            [
+              -99.04,
+              38.7
+            ],
+            [
+              -99.04,
+              39.13
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.1fba95bbd5808902400c0195a0ebc62a1383c7ee.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.1fba95bbd5808902400c0195a0ebc62a1383c7ee.001.1",
+        "areaDesc": "Barton, KS; Ellsworth, KS; Lincoln, KS; Russell, KS",
+        "geocode": {
+          "SAME": [
+            "020009",
+            "020053",
+            "020105",
+            "020167"
+          ],
+          "UGC": [
+            "KSC009",
+            "KSC053",
+            "KSC105",
+            "KSC167"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC009",
+          "https://api.weather.gov/zones/county/KSC053",
+          "https://api.weather.gov/zones/county/KSC105",
+          "https://api.weather.gov/zones/county/KSC167"
+        ],
+        "references": [],
+        "sent": "2026-10-01T08:16:00-05:00",
+        "effective": "2026-10-01T08:16:00-05:00",
+        "onset": "2026-10-01T08:16:00-05:00",
+        "expires": "2026-10-01T15:00:00-05:00",
+        "ends": "2026-10-01T15:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Wichita KS",
+        "headline": "Flood Warning issued October 1 at 8:16AM CDT until October 1 at 3:00PM CDT by NWS Wichita KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northern Barton County in central Kansas...\nEllsworth County in central Kansas...\nLincoln County in central Kansas...\nRussell County in central Kansas...\n\n* WHEN...Until 300 PM CDT Thursday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DETAILS...\n- At 816 AM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Flooding is ongoing or expected to begin shortly\nin the warned area. Between 2 and 5 inches of rain have fallen.\n- Additional rainfall amounts of 1 to 4 inches are possible in the\nwarned area.\n- Some locations that will experience flooding include...\nRussell, Ellsworth, Wilson, Kanopolis, Lincoln, Lucas, Gorham,\nSylvan Grove, Luray, Dorrance, Beverly, Barnard, Milberger,\nBunker Hill, Paradise, Galatia, Susank, Waldo, Wilson State Park\nand Wilson Lake.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nBe aware of your surroundings and do not drive on flooded roads.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLWICT"
+          ],
+          "WMOidentifier": [
+            "WGUS43 KICT 011316"
+          ],
+          "NWSheadline": [
+            "FLOOD WARNING IN EFFECT UNTIL 3 PM CDT THIS AFTERNOON"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KICT.FA.W.0059.261001T1316Z-261001T2000Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T15:00:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "FLW"
+          ],
+          "NationalWeatherService": [
+            "FAW"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.75215f2dfd573fe96dbf1e0f3a668b4626659d2d.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.75215f2dfd573fe96dbf1e0f3a668b4626659d2d.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.75215f2dfd573fe96dbf1e0f3a668b4626659d2d.001.1",
+        "areaDesc": "Cloud, KS",
+        "geocode": {
+          "SAME": [
+            "020029"
+          ],
+          "UGC": [
+            "KSC029"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC029"
+        ],
+        "references": [],
+        "sent": "2026-09-30T14:41:00-05:00",
+        "effective": "2026-09-30T14:41:00-05:00",
+        "onset": "2026-09-30T14:41:00-05:00",
+        "expires": "2026-10-01T14:45:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Hydrologic Outlook",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Hydrologic Outlook issued September 30 at 2:41PM CDT by NWS Topeka KS",
+        "description": "ESFTOP\n\nBuffalo Creek near Jamestown\n\nThis hydrologic outlook is based on the forecast rainfall for the\nnext 24 hours and estimated runoff from earlier rainfall. Crests may\nvary if actual rainfall or runoff is greater or less than\nanticipated.\n\nLocation: Buffalo Creek near Jamestown\nFlood stage: 16.0 feet\nMaximum Forecast Stage: 16.6 feet at 7 PM Thursday Oct 01\n\nLater statements, possibly warnings, may be issued as additional\ninformation becomes available.",
+        "instruction": null,
+        "response": "Monitor",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "ESFTOP"
+          ],
+          "WMOidentifier": [
+            "FGUS73 KTOP 301941"
+          ],
+          "NWSheadline": [
+            "The National Weather Service in Topeka has issued a Hydrologic Outlook for the following river"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "ESF"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.59b5e4bf5e8822138aa06053bcd3bad66ac51462.001.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.59b5e4bf5e8822138aa06053bcd3bad66ac51462.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.59b5e4bf5e8822138aa06053bcd3bad66ac51462.001.1",
+        "areaDesc": "Cloud, KS",
+        "geocode": {
+          "SAME": [
+            "020029"
+          ],
+          "UGC": [
+            "KSC029"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC029"
+        ],
+        "references": [],
+        "sent": "2026-09-30T14:40:00-05:00",
+        "effective": "2026-09-30T14:40:00-05:00",
+        "onset": "2026-09-30T14:40:00-05:00",
+        "expires": "2026-10-01T14:45:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Unknown",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Hydrologic Outlook",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Topeka KS",
+        "headline": "Hydrologic Outlook issued September 30 at 2:40PM CDT by NWS Topeka KS",
+        "description": "ESFTOP\n\nSolomon River near Glasco\n\nThis hydrologic outlook is based on the forecast rainfall for the\nnext 24 hours and estimated runoff from earlier rainfall. Crests may\nvary if actual rainfall or runoff is greater or less than\nanticipated.\n\nLocation: Solomon River near Glasco\nFlood stage: 22.0 feet\nMaximum Forecast Stage: 24.4 feet at 7 AM Sunday Oct 04\n\n\nFld   Obs             Forecasts\nLocation        Stg   Stg   Day/Time  Wed   Thu   Thu\n7pm   7am   7pm\nSolomon River\nGlasco          22.0  MSG   MSG       5.0   6.1   7.8\n\n\nLater statements, possibly warnings, may be issued as additional\ninformation becomes available.",
+        "instruction": null,
+        "response": "Monitor",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "ESFTOP"
+          ],
+          "WMOidentifier": [
+            "FGUS73 KTOP 301940"
+          ],
+          "NWSheadline": [
+            "The National Weather Service in Topeka has issued a Hydrologic Outlook for the following river"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "ESF"
+          ]
+        }
+      }
+    }
+  ],
+  "title": "Current watches, warnings, and advisories for Kansas",
+  "updated": "2026-10-01T17:45:00+00:00"
+>>>>>>> c5ebde962815104956fbc3b98eb651bec5c86e89
 }
