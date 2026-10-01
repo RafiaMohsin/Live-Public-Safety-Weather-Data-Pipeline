@@ -19,7 +19,7 @@ import requests
 BASE = "https://api.weather.gov"
 # NWS asks for a descriptive User-Agent. CHANGE THE EMAIL to a real one.
 HEADERS = {
-    "User-Agent": "(NWS-Medallion-Student-Project, your_email@example.com)",
+    "User-Agent": "(NWS-Medallion-Student-Project, l242595@lhr.nu.edu.pk)",
     "Accept": "application/geo+json",
 }
 STATE_CODE = "KS"
