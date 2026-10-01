@@ -1,0 +1,267 @@
+{
+  "@context": [
+    "https://geojson.org/geojson-ld/geojson-context.jsonld",
+    {
+      "@version": "1.1",
+      "wx": "https://api.weather.gov/ontology#",
+      "@vocab": "https://api.weather.gov/ontology#"
+    }
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e82b4a7742c4fb8102ce28be11ea1cb2c0228de2.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -100.53,
+              38.07
+            ],
+            [
+              -100.4,
+              37.72
+            ],
+            [
+              -101.04,
+              37.68
+            ],
+            [
+              -101.02,
+              38.09
+            ],
+            [
+              -100.53,
+              38.07
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.e82b4a7742c4fb8102ce28be11ea1cb2c0228de2.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.e82b4a7742c4fb8102ce28be11ea1cb2c0228de2.001.1",
+        "areaDesc": "Finney; Haskell; Gray",
+        "geocode": {
+          "SAME": [
+            "020055",
+            "020081",
+            "020069"
+          ],
+          "UGC": [
+            "KSZ063",
+            "KSZ076",
+            "KSZ077"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/forecast/KSZ063",
+          "https://api.weather.gov/zones/forecast/KSZ076",
+          "https://api.weather.gov/zones/forecast/KSZ077"
+        ],
+        "references": [],
+        "sent": "2026-10-01T12:51:00-05:00",
+        "effective": "2026-10-01T12:51:00-05:00",
+        "onset": "2026-10-01T12:51:00-05:00",
+        "expires": "2026-10-01T13:30:00-05:00",
+        "ends": null,
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Moderate",
+        "certainty": "Observed",
+        "urgency": "Expected",
+        "event": "Special Weather Statement",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Dodge City KS",
+        "headline": "Special Weather Statement issued October 1 at 12:51PM CDT by NWS Dodge City KS",
+        "description": "At 1250 PM CDT, Doppler radar was tracking a strong thunderstorm near\nCharleston, moving west at 20 mph.\n\nHAZARD...Wind gusts of 50 to 55 mph.\n\nSOURCE...Automated equipment. GCK ASOS measured a wind gust of 57\nmph at 1242 pm.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nThis strong thunderstorm will be near...\nPierceville around 1255 PM CDT.",
+        "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.\n\nFrequent cloud to ground lightning is occurring with this storm.\nLightning can strike 10 miles away from a thunderstorm. Seek a safe\nshelter inside a building or vehicle.",
+        "response": "Execute",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "SPSDDC"
+          ],
+          "WMOidentifier": [
+            "WWUS83 KDDC 011751"
+          ],
+          "NWSheadline": [
+            "A STRONG THUNDERSTORM WILL IMPACT SOUTHWESTERN FINNEY... NORTHWESTERN GRAY AND NORTHERN HASKELL COUNTIES THROUGH 130 PM CDT"
+          ],
+          "eventMotionDescription": [
+            "2026-10-01T17:50:00-00:00...storm...081DEG...19KT...37.92,-100.61"
+          ],
+          "maxWindGust": [
+            "55 MPH"
+          ],
+          "maxHailSize": [
+            "0.00"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "SPS"
+          ],
+          "NationalWeatherService": [
+            "SPS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0641acebf5682a14977393ffabc6a930a5e887db.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -100.11,
+              38.7
+            ],
+            [
+              -100.13,
+              39.13
+            ],
+            [
+              -99.04,
+              39.13
+            ],
+            [
+              -99.04,
+              38.84
+            ],
+            [
+              -99.04,
+              38.7
+            ],
+            [
+              -99.03,
+              38.7
+            ],
+            [
+              -99.03,
+              38.37
+            ],
+            [
+              -99.63,
+              38.37
+            ],
+            [
+              -99.59,
+              38.07
+            ],
+            [
+              -100.09,
+              38.06
+            ],
+            [
+              -100.11,
+              38.7
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0641acebf5682a14977393ffabc6a930a5e887db.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.0641acebf5682a14977393ffabc6a930a5e887db.001.1",
+        "areaDesc": "Ellis, KS; Hodgeman, KS; Ness, KS; Rush, KS; Trego, KS",
+        "geocode": {
+          "SAME": [
+            "020051",
+            "020083",
+            "020135",
+            "020165",
+            "020195"
+          ],
+          "UGC": [
+            "KSC051",
+            "KSC083",
+            "KSC135",
+            "KSC165",
+            "KSC195"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/KSC051",
+          "https://api.weather.gov/zones/county/KSC083",
+          "https://api.weather.gov/zones/county/KSC135",
+          "https://api.weather.gov/zones/county/KSC165",
+          "https://api.weather.gov/zones/county/KSC195"
+        ],
+        "references": [],
+        "sent": "2026-10-01T12:47:00-05:00",
+        "effective": "2026-10-01T12:47:00-05:00",
+        "onset": "2026-10-01T12:47:00-05:00",
+        "expires": "2026-10-01T18:45:00-05:00",
+        "ends": "2026-10-01T18:45:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Minor",
+        "certainty": "Likely",
+        "urgency": "Expected",
+        "event": "Flood Advisory",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Dodge City KS",
+        "headline": "Flood Advisory issued October 1 at 12:47PM CDT until October 1 at 6:45PM CDT by NWS Dodge City KS",
+        "description": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Ellis County in central Kansas...\nRush County in central Kansas...\nNorthern Hodgeman County in southwestern Kansas...\nNess County in west central Kansas...\nTrego County in west central Kansas...\n\n* WHEN...Until 645 PM CDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\nWater over roadways.\n\n* ADDITIONAL DETAILS...\n- At 1247 PM CDT, Doppler radar indicated heavy rain due to\nthunderstorms. Minor flooding is ongoing or expected to begin\nshortly in the advisory area. Between 0.5 and 2 inches of rain\nhave fallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected over\nthe area. This additional rain will result in minor flooding.\n- Some locations that will experience flooding include...\nHays, Gray, Ellis, Wakeeney, Ness City, La Crosse, Victoria,\nJetmore, Walker, Bazine, Catherine, Ransom, Otis, Bison,\nSchoenchen, Hanston, McCracken, Ogallah, Rush Center and Collyer.\n- http://www.weather.gov/safety/flood",
+        "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.\n\nPlease report observed flooding to local emergency services or law\nenforcement and request they pass this information to the National\nWeather Service when you can do so safely.",
+        "response": "Avoid",
+        "note": null,
+        "parameters": {
+          "AWIPSidentifier": [
+            "FLSDDC"
+          ],
+          "WMOidentifier": [
+            "WGUS83 KDDC 011747"
+          ],
+          "NWSheadline": [
+            "FLOOD ADVISORY IN EFFECT UNTIL 645 PM CDT THIS EVENING"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "VTEC": [
+            "/O.NEW.KDDC.FA.Y.0012.261001T1747Z-261001T2345Z/"
+          ],
+          "eventEndingTime": [
+            "2026-10-01T18:45:00-05:00"
+          ]
+        },
+        "scope": "Public",
+        "code": "IPAWSv1.0",
+        "language": "en-US",
+        "web": "http://www.weather.gov",
+        "eventCode": {
+          "SAME": [
+            "NWS"
+          ],
+          "NationalWeatherService": [
+            "FAY"
+          ]
+        }
+      }
+    }
+  ],
+  "title": "Current watches, warnings, and advisories for Kansas",
+  "updated": "2026-10-01T17:51:43+00:00"
+}
