@@ -1,0 +1,4 @@
+data_raw/
+state.json
+__pycache__/
+.env

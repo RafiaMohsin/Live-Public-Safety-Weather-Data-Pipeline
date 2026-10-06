@@ -3,96 +3,368 @@
 Data Analysis and Visualisation semester project. An automated Spark pipeline on Databricks using the
 Medallion Architecture (Bronze -> Silver -> Gold) with a Power BI dashboard.
 
-**Team:** <Rafia Mohsin>, <Shanzay Khan>
-**Course:** <Data Analysis and Visualization>
-**Phase 1 proposal:** `docs/NWS_Phase1_Proposal.docx`
+**Team:** <Name 1>, <Name 2>
+**Course:** <course code / name>
+**Phase 1 proposal:** `docs/NWS_Phase1_Proposal_Updated.docx`; **Phase 2:** Bronze + Silver (this repository)
 
 ## Project summary
-We ingest live weather forecasts, hazardous-weather alerts and station observations for the state of Kansas
-(10 grid points, 10 stations) from the U.S. National Weather Service. The goal is to answer:
-where is weather risk concentrated, how reliable are forecasts at different lead times, and whether forecast data
-could warn of floods before an official alert.
+We ingest live weather forecasts, hazardous-weather alerts and station observations for Kansas
+(10 grid points, 10 stations) from the U.S. National Weather Service, plus a historical observation baseline.
+The goal is to answer: where is weather risk concentrated, how reliable are forecasts at different lead times,
+and could forecast data warn of floods before an official alert.
 
-## Data source
-- National Weather Service API: `https://api.weather.gov` (public domain, no API key, a descriptive `User-Agent` header is required)
-- Endpoints used:
-
-| Endpoint | Data |
-|---|---|
-| `/points/{lat},{lon}` | Lookup of forecast grid and nearest stations |
-| `/gridpoints/{office}/{x},{y}/forecast` | 7-day forecast, 14 half-day periods |
-| `/alerts/active?area=KS` | Active watches, warnings and advisories |
-| `/stations/{id}/observations` | Observed conditions (supports `start` and `end` filters) |
-
-## Load strategy
-| Load | What it does | Sample files |
+## Data sources
+| Source | Used for | Format |
 |---|---|---|
-| **Full load** (baseline) | All active alerts, a forecast snapshot of 10 grids, and up to 7 days of observations for 10 stations | `samples/full_load/` |
-| **Incremental load** | Only new alert IDs, a fresh forecast snapshot, and observations newer than the stored watermark | `samples/incremental/` |
+| NWS API `https://api.weather.gov` (public domain, no key, User-Agent required) | **Incremental** loads: alerts, forecasts, observations | JSON |
+| Iowa Environmental Mesonet ASOS archive (`mesonet.agron.iastate.edu/cgi-bin/request/asos.py`) | **Historical full-load baseline** for observations (same airport stations) | CSV |
 
-Known limitation: the observations endpoint returned at most 500 records per station, so the sampled full load
-covers about 1.5 days instead of 7. Pagination will be added in Phase 2.
+Forecasts have no public history, so they are collected live only. Samples are in `samples/` (full and incremental).
 
-## Sample data (collected 1 Oct 2026, 17:46-17:52 UTC)
-| File | Type | Load | Size | Contents |
-|---|---|---|---|---|
-| `samples/full_load/alerts/20261001T174648Z.json` | Alerts | Full | 0.18 MB | 36 active alerts |
-| `samples/full_load/forecasts/20261001T174655Z.json` | Forecasts | Full | 0.12 MB | 10 grids x 14 periods = 140 periods |
-| `samples/full_load/observations/20261001T174713Z.json` | Observations | Full | 18.2 MB | 5,000 observations (500 per station) |
-| `samples/incremental/alerts/20261001T175211Z.json` | Alerts | Incremental | 9.3 KB | 2 new alerts |
-| `samples/incremental/forecasts/20261001T175215Z.json` | Forecasts | Incremental | 0.12 MB | 140 periods, unchanged `generatedAt` |
-| `samples/incremental/observations/20261001T175222Z.json` | Observations | Incremental | 1.4 KB | 0 new observations |
+## Architecture (Phase 2)
+```
+raw files (Volume)                Bronze (Delta)                 Silver (Delta)
+full/{alerts,forecasts,observations}/*.json  --\
+incremental/{alerts,forecasts,observations}/*.json -> bronze_alerts / bronze_forecast_periods / bronze_observations -> silver_alerts / silver_forecast_periods
+history/iem_asos/*.csv  ------------------------> bronze_iem_asos -----------------------------------------------> silver_observations (both sources)
+                                   \__ quarantine_records (rejected records)      pipeline_execution_logs (every file / table run)
+```
+How each Phase 2 requirement is met:
 
-File names are the UTC ingestion timestamp (`YYYYMMDDTHHMMSSZ`).
-
-## Volume estimates
-| | Estimate |
+| Requirement | Implementation |
 |---|---|
-| Full load | about 18.5 MB as sampled (about 80 MB with 7 full days of observations) |
-| Incremental, forecasts | about 2.9 MB/day (hourly, 140 periods per poll) |
-| Incremental, observations | about 11 MB/day (hourly, 10 stations) |
-| Incremental, alerts | 0 to 0.5 MB/day (new alert IDs only) |
-| Incremental total | about 14 MB/day at most, about 0.4 GB per 30 days |
+| Strict schema-on-read | Every read uses an explicit `StructType` from `nws_pipeline/schemas.py`; no `inferSchema` anywhere |
+| Types and casting | Bronze keeps raw values; Silver casts timestamps (`try_cast`), converts units and parses wind text |
+| `load_timestamp` everywhere | Present in every Bronze, Silver and quarantine table |
+| Idempotency | `MERGE INTO` in Bronze (key `record_key` + `_source_file`) and Silver (business key, `row_hash` skips unchanged rows) |
+| Parameterised backfills | `mode`, `start_date`, `end_date`, `sources`, `load_type`, `lookback_days`, `bronze_batch_id` notebook parameters; no hardcoded paths or dates |
+| Schema drift | New source fields are detected, logged and preserved in `_raw_json`; type changes, malformed records and unparseable files go to `quarantine_records` without stopping the batch; `autoMerge` is enabled for Delta schema evolution |
+| Audit logging | `pipeline_execution_logs`: layer, file/parameter, start/end time, status, rows inserted / updated / quarantined, for every file and table |
+| Fault tolerance | A failing file is logged as `Failure` and the run continues with the next file |
 
 ## Repository structure
 ```
 .
 ├── README.md
-├── collect_nws.py          # polling script (full / incremental)
+├── collect_nws.py                 # live NWS collector (full / incremental), runs locally
+├── fix_conflicts.py               # helper: removes git conflict markers from JSON files
 ├── requirements.txt
-├── .gitignore
-├── docs/
-│   └── NWS_Phase1_Proposal.docx
-├── samples/
-│   ├── full_load/{alerts,forecasts,observations}/
-│   └── incremental/{alerts,forecasts,observations}/
-└── notebooks/              # Databricks notebooks (Phase 2)
+├── nws_pipeline/                  # PySpark code
+│   ├── config.py                  # sources, table names, parameter + file-window helpers
+│   ├── schemas.py                 # ALL explicit StructType schemas (raw, Bronze, Silver, ops)
+│   ├── bronze.py                  # raw -> Bronze
+│   ├── silver.py                  # Bronze -> Silver
+│   ├── delta_utils.py             # MERGE INTO, table creation, quarantine
+│   ├── audit.py                   # execution logging
+│   └── pipeline.py                # orchestration entry points
+├── notebooks/                     # Databricks notebooks (import the package above)
+│   ├── 00_setup.py   01_raw_to_bronze.py   02_bronze_to_silver.py   03_demo_idempotency_and_audit.py
+├── scripts/
+│   ├── download_iem_asos.py       # historical baseline downloader
+│   └── generate_data_dictionary.py
+├── tests/test_transformations_local.py
+├── docs/                          # proposal, data_dictionary.md
+└── samples/{full_load,incremental}/{alerts,forecasts,observations}/
 ```
 
-## How to run the collector
+## Execution guide
+
+### One-time setup (Databricks)
+1. Workspace -> Create -> **Git folder**, paste this repository's URL.
+2. Run `notebooks/00_setup` (creates schema `workspace.nws`, Volume `raw`, and all tables from the explicit schemas).
+3. Upload raw files to the Volume `/Volumes/workspace/nws/raw/`:
+   - `samples/full_load/<type>/*.json` -> `raw/full/<type>/`
+   - `samples/incremental/<type>/*.json` -> `raw/incremental/<type>/`
+   - IEM history: run `python scripts/download_iem_asos.py --start 2024-10-01 --end 2026-10-01` on your computer, then upload the CSVs to `raw/history/iem_asos/`.
+   - Keep the timestamp prefix in each file name (`YYYYMMDDTHHMMSSZ...`): it defines the file's date.
+
+### Standard incremental load
+Run `01_raw_to_bronze` then `02_bronze_to_silver` with the defaults: `mode = incremental`, `lookback_days = 1`.
+It processes files dated today and yesterday. Because loads are idempotent, overlapping windows are safe.
+
+### Backfill (any historical timeframe)
+Set `mode = backfill` plus the window, for example:
+
+| Goal | Parameters |
+|---|---|
+| Reload everything from 1 Oct 2026 | `mode=backfill`, `start_date=2026-10-01`, `end_date=2026-10-01` |
+| Reload only observations for a month | add `sources=observations` (and `load_type=full`) |
+| Load the historical IEM files | `sources=iem_asos`, `load_type=history`, `mode=backfill` with a window that covers the download date |
+| Re-run Silver for one Bronze batch | notebook 02: `bronze_batch_id=<batch id from pipeline_execution_logs>` |
+
+### Prove idempotency
+Run `notebooks/03_demo_idempotency_and_audit`: it re-runs both layers on the same data, asserts that no table
+changed, and shows the audit log (rows_inserted and rows_updated are 0 on the re-run).
+
+### Collecting live data (incremental source)
 ```bash
 pip install -r requirements.txt
-# 1. edit the User-Agent email in collect_nws.py
-python collect_nws.py full           # baseline load
-python collect_nws.py incremental    # repeat on a schedule (hourly)
+python collect_nws.py full           # baseline snapshot
+python collect_nws.py incremental    # run hourly; writes data_raw/incremental/...
 ```
-Raw output is written to `data_raw/<full|incremental>/<alerts|forecasts|observations>/<timestamp>.json`
-and a `state.json` stores the watermark and the alert IDs already seen. Both are git-ignored.
-Representative files are copied into `samples/`.
+Edit the User-Agent email in `collect_nws.py` and `scripts/download_iem_asos.py` first. Upload new files to the Volume,
+then run the notebooks.
 
-## Medallion design (summary)
-- **Bronze:** `bronze_alerts`, `bronze_forecast_periods`, `bronze_observations`. Raw rows with source file and `load_timestamp`; non-conforming records are quarantined.
-- **Silver:** typed, validated tables `silver_alerts`, `silver_forecast_periods`, `silver_observations`, plus `silver_zones`, `silver_grids`, `silver_stations`. Loaded with MERGE so reruns create no duplicates. Forecast key: grid + `generatedAt` + period number. Alert update chains resolved through `references`.
-- **Gold:** facts `fact_alert_event`, `fact_forecast_accuracy`; dimensions `dim_zone`, `dim_grid`, `dim_station`, `dim_date`.
-  Core aggregations: alert-days per county, temperature error by lead time, precipitation calibration.
-- **Dashboard:** Power BI on the Gold tables.
+### Local tests (no Databricks needed)
+`pip install pyspark==3.5.3 && python tests/test_transformations_local.py` checks explicit-schema reads, drift detection,
+quarantine, casting and validation on the sample files.
+
+## Known limitations
+- The NWS observations endpoint returns at most 500 records per station per request (about 1.5 days); the IEM archive provides the historical baseline instead.
+- Alert update chains (`referenced_alert_ids`) are stored in Silver; grouping them into events is part of the Gold layer (Phase 3).
+- The Gold layer, dashboard and a scheduled Databricks job are Phase 3.
 
 ## Security and PII
-No PII. The data is public-domain government weather data with no personal records; the alert `sender` field is a
-shared agency mailbox, not a person. `sender` and protocol/broadcast fields are dropped before Silver. Free-text alert
-fields are kept for reference only. Gold exposes only aggregated zone- or grid-level metrics.
+No PII. The data is public-domain government weather data with no personal records; the alert `sender` field is a shared
+agency mailbox, not a person. Free-text alert fields are kept for reference only.
 
 ## Infrastructure and FinOps
-Databricks Free Edition with scheduled (not continuous) jobs, one state during development, bounded Bronze retention,
-and testing on the small sample files first. Early in Phase 2 we will confirm that Databricks can call
-`api.weather.gov`; if outbound access is blocked, the collector runs locally and raw files are uploaded to a Databricks Volume.
+Databricks Free Edition (serverless), manual or scheduled runs only, one state, small files, no cluster left running.
+Estimated volume: about 14 MB/day incremental, a few tens of MB for the historical baseline.
+
+## Data dictionary
+
+Generated from `nws_pipeline/schemas.py` by `scripts/generate_data_dictionary.py`.
+
+### Bronze layer
+Raw values with minimal typing plus metadata columns. Every table has `load_timestamp`.
+
+### `bronze_alerts`
+Raw NWS alerts, one row per alert message and source file
+
+**Primary key:** `record_key` + `_source_file`
+
+| Column | Type | Description |
+|---|---|---|
+| `alert_id` | string | NWS alert identifier (urn:oid:...) |
+| `area_desc` | string |  |
+| `geocode_ugc` | array<string> |  |
+| `geocode_same` | array<string> |  |
+| `affected_zones` | array<string> |  |
+| `referenced_alert_ids` | array<string> | Earlier alerts this alert updates (used to resolve update chains) |
+| `sent` | string |  |
+| `effective` | string |  |
+| `onset` | string |  |
+| `expires` | string |  |
+| `ends` | string |  |
+| `status` | string |  |
+| `message_type` | string |  |
+| `category` | string |  |
+| `severity` | string |  |
+| `certainty` | string |  |
+| `urgency` | string |  |
+| `event` | string |  |
+| `sender_name` | string |  |
+| `headline` | string |  |
+| `description` | string |  |
+| `instruction` | string |  |
+| `response` | string |  |
+| `record_key` | string | SHA-256 of source + business key; identifies the record inside a file |
+| `_raw_json` | string | Original record as received (keeps fields the schema does not know about) |
+| `_source_file` | string | Raw file the record came from |
+| `ingest_date` | date | Date taken from the raw file name (used for backfill windows) |
+| `batch_id` | string | Label of the pipeline run that loaded the record |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `bronze_forecast_periods`
+Raw NWS forecast periods, one row per grid, forecast version and period
+
+**Primary key:** `record_key` + `_source_file`
+
+| Column | Type | Description |
+|---|---|---|
+| `location_name` | string | Project location (one of 10 Kansas grid points) |
+| `forecast_generated_at` | string | When NWS generated the forecast; identifies a forecast version |
+| `forecast_update_time` | string |  |
+| `source_ingestion_time` | string |  |
+| `period_number` | int |  |
+| `period_name` | string |  |
+| `start_time` | string |  |
+| `end_time` | string |  |
+| `is_daytime` | boolean |  |
+| `temperature` | double |  |
+| `temperature_unit` | string |  |
+| `precip_probability_value` | double |  |
+| `wind_speed` | string |  |
+| `wind_direction` | string |  |
+| `short_forecast` | string |  |
+| `detailed_forecast` | string |  |
+| `record_key` | string | SHA-256 of source + business key; identifies the record inside a file |
+| `_raw_json` | string | Original record as received (keeps fields the schema does not know about) |
+| `_source_file` | string | Raw file the record came from |
+| `ingest_date` | date | Date taken from the raw file name (used for backfill windows) |
+| `batch_id` | string | Label of the pipeline run that loaded the record |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `bronze_observations`
+Raw NWS station observations, one row per station and timestamp
+
+**Primary key:** `record_key` + `_source_file`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_id` | string |  |
+| `observation_timestamp` | string |  |
+| `text_description` | string |  |
+| `temperature_value` | double |  |
+| `dewpoint_value` | double |  |
+| `wind_direction_value` | double |  |
+| `wind_speed_value` | double |  |
+| `wind_gust_value` | double |  |
+| `barometric_pressure_value` | double |  |
+| `visibility_value` | double |  |
+| `relative_humidity_value` | double |  |
+| `precipitation_last_hour_value` | double |  |
+| `record_key` | string | SHA-256 of source + business key; identifies the record inside a file |
+| `_raw_json` | string | Original record as received (keeps fields the schema does not know about) |
+| `_source_file` | string | Raw file the record came from |
+| `ingest_date` | date | Date taken from the raw file name (used for backfill windows) |
+| `batch_id` | string | Label of the pipeline run that loaded the record |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `bronze_iem_asos`
+Raw IEM historical ASOS observations (all values kept as text)
+
+**Primary key:** `record_key` + `_source_file`
+
+| Column | Type | Description |
+|---|---|---|
+| `station` | string |  |
+| `valid` | string |  |
+| `tmpf` | string |  |
+| `dwpf` | string |  |
+| `relh` | string |  |
+| `drct` | string |  |
+| `sknt` | string |  |
+| `p01i` | string |  |
+| `mslp` | string |  |
+| `vsby` | string |  |
+| `gust` | string |  |
+| `wxcodes` | string |  |
+| `record_key` | string | SHA-256 of source + business key; identifies the record inside a file |
+| `_raw_json` | string | Original record as received (keeps fields the schema does not know about) |
+| `_source_file` | string | Raw file the record came from |
+| `ingest_date` | date | Date taken from the raw file name (used for backfill windows) |
+| `batch_id` | string | Label of the pipeline run that loaded the record |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### Silver layer
+Strictly typed, validated, one row per business key. Every table has `load_timestamp`.
+
+### `silver_alerts`
+Cleaned NWS alerts; test/exercise alerts are rejected
+
+**Primary key:** `alert_id`
+
+| Column | Type | Description |
+|---|---|---|
+| `alert_id` | string | NWS alert identifier (urn:oid:...) |
+| `sent_ts` | timestamp |  |
+| `effective_ts` | timestamp |  |
+| `onset_ts` | timestamp |  |
+| `expires_ts` | timestamp |  |
+| `ends_ts` | timestamp |  |
+| `status` | string |  |
+| `message_type` | string |  |
+| `category` | string |  |
+| `severity` | string |  |
+| `certainty` | string |  |
+| `urgency` | string |  |
+| `event` | string |  |
+| `sender_name` | string |  |
+| `headline` | string |  |
+| `description` | string |  |
+| `instruction` | string |  |
+| `response` | string |  |
+| `area_desc` | string |  |
+| `ugc_codes` | array<string> |  |
+| `affected_zones` | array<string> |  |
+| `referenced_alert_ids` | array<string> | Earlier alerts this alert updates (used to resolve update chains) |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `silver_forecast_periods`
+Forecast periods per forecast version; units standardised
+
+**Primary key:** `location_name` + `forecast_generated_at` + `period_number`
+
+| Column | Type | Description |
+|---|---|---|
+| `location_name` | string | Project location (one of 10 Kansas grid points) |
+| `forecast_generated_at` | timestamp | When NWS generated the forecast; identifies a forecast version |
+| `period_number` | int |  |
+| `period_name` | string |  |
+| `start_time` | timestamp |  |
+| `end_time` | timestamp |  |
+| `is_daytime` | boolean |  |
+| `temperature_f` | double | Forecast temperature in Fahrenheit (converted if source unit was C) |
+| `precip_probability_pct` | double |  |
+| `wind_speed_min_mph` | double | Lower wind speed parsed from text such as '5 to 8 mph' |
+| `wind_speed_max_mph` | double | Upper wind speed parsed from text such as '5 to 8 mph' |
+| `wind_direction` | string |  |
+| `short_forecast` | string |  |
+| `detailed_forecast` | string |  |
+| `forecast_update_time` | timestamp |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `silver_observations`
+Observations from the live NWS API and the IEM historical baseline in SI units
+
+**Primary key:** `station_id` + `observation_ts` + `source`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_id` | string |  |
+| `observation_ts` | timestamp | Time of the observation (UTC) |
+| `source` | string | nws_api (live) or iem_asos (historical baseline) |
+| `text_description` | string |  |
+| `temperature_c` | double | Degrees Celsius (IEM Fahrenheit values converted) |
+| `dewpoint_c` | double |  |
+| `wind_direction_deg` | double |  |
+| `wind_speed_kmh` | double | km/h (IEM knots converted) |
+| `wind_gust_kmh` | double |  |
+| `pressure_pa` | double | Pascal (IEM millibar converted) |
+| `visibility_m` | double | Metres (IEM miles converted) |
+| `humidity_pct` | double |  |
+| `precip_last_hour_mm` | double | Millimetres (IEM inches converted; trace = 0) |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### Operational tables
+
+### `pipeline_execution_logs`
+One row per file (raw_to_bronze) or table run (bronze_to_silver)
+
+**Primary key:** none (append-only log)
+
+| Column | Type | Description |
+|---|---|---|
+| `run_id` | string |  |
+| `batch_id` | string | Label of the pipeline run that loaded the record |
+| `layer` | string | raw_to_bronze or bronze_to_silver |
+| `source` | string | nws_api (live) or iem_asos (historical baseline) |
+| `load_type` | string |  |
+| `parameter` | string | File path (raw_to_bronze) or date window (bronze_to_silver) that was processed |
+| `start_time` | timestamp |  |
+| `end_time` | timestamp |  |
+| `status` | string |  |
+| `rows_inserted` | int | Rows inserted by this step |
+| `rows_updated` | int | Rows updated by this step |
+| `rows_quarantined` | int | Rows rejected into quarantine_records by this step |
+| `message` | string |  |
+
+### `quarantine_records`
+Records rejected by schema, type or business-rule checks
+
+**Primary key:** `layer` + `source` + `record_key` + `reason`
+
+| Column | Type | Description |
+|---|---|---|
+| `layer` | string | raw_to_bronze or bronze_to_silver |
+| `source` | string | nws_api (live) or iem_asos (historical baseline) |
+| `record_key` | string | SHA-256 of source + business key; identifies the record inside a file |
+| `reason` | string | Why the record was rejected |
+| `raw_payload` | string | The rejected record (or file content) as received |
+| `batch_id` | string | Label of the pipeline run that loaded the record |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |

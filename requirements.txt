@@ -1,1 +1,2 @@
 requests
+# pyspark==3.5.3   (only needed to run tests/test_transformations_local.py locally)
