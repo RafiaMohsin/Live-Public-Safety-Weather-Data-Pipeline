@@ -28,7 +28,7 @@ SERVICE = "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py"
 IEM_COLUMNS = ["station", "valid", "tmpf", "dwpf", "relh", "drct", "sknt", "p01i", "mslp",
                "vsby", "gust", "wxcodes"]                      # keep in sync with nws_pipeline/schemas.py
 KANSAS_STATIONS = ["DDC", "EMP", "GCK", "HUT", "ICT", "LWC", "MHK", "MKC", "SLN", "TOP"]
-HEADERS = {"User-Agent": "(NWS-Medallion-Student-Project, your_email@example.com)"}  # CHANGE THE EMAIL
+HEADERS = {"User-Agent": "(NWS-Medallion-Student-Project, l242595@lhr.nu.edu.pk)"}  # CHANGE THE EMAIL
 
 
 def build_url(station, start, end, report_types):

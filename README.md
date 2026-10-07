@@ -3,8 +3,8 @@
 Data Analysis and Visualisation semester project. An automated Spark pipeline on Databricks using the
 Medallion Architecture (Bronze -> Silver -> Gold) with a Power BI dashboard.
 
-**Team:** <Name 1>, <Name 2>
-**Course:** <course code / name>
+**Team:** <Rafia Mohsin>, <Shanzay Khan>
+**Course:** <Data Analysis and Visualization>
 **Phase 1 proposal:** `docs/NWS_Phase1_Proposal_Updated.docx`; **Phase 2:** Bronze + Silver (this repository)
 
 ## Project summary
@@ -64,7 +64,7 @@ How each Phase 2 requirement is met:
 │   └── generate_data_dictionary.py
 ├── tests/test_transformations_local.py
 ├── docs/                          # proposal, data_dictionary.md
-└── samples/{full_load,incremental}/{alerts,forecasts,observations}/
+└── data_raw/{full_load,incremental}/{alerts,forecasts,observations}/
 ```
 
 ## Execution guide
