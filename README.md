@@ -3,8 +3,8 @@
 Data Analysis and Visualisation semester project. An automated Spark pipeline on Databricks using the
 Medallion Architecture (Bronze -> Silver -> Gold) with a Power BI dashboard.
 
-**Team:** <Rafia Mohsin>, <Shanzay Khan>
-**Course:** <Data Analysis and Visualization>
+**Team:** Rafia Mohsin, Shanzay Khan
+**Course:** Data Analysis and Visualization
 **Phase 1 proposal:** `docs/NWS_Phase1_Proposal_Updated.docx`; **Phase 2:** Bronze + Silver (this repository)
 
 ## Project summary
