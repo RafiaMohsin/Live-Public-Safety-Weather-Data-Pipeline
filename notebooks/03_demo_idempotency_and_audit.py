@@ -1,8 +1,4 @@
 # Databricks notebook source
-# /// script
-# [tool.databricks.environment]
-# environment_version = "6"
-# ///
 # MAGIC %md
 # MAGIC # 03 - Demo: idempotency, quarantine and audit log
 # MAGIC Run notebooks 00-02 first. This notebook re-executes the pipeline on the **same raw data** and proves that
@@ -17,8 +13,8 @@ from nws_pipeline.pipeline import run_raw_to_bronze, run_bronze_to_silver
 
 dbutils.widgets.text("db", "workspace.nws", "Catalog.Schema")
 dbutils.widgets.text("raw_base", "/Volumes/workspace/nws/raw", "Raw folder (Volume path)")
-dbutils.widgets.text("start_date", "2026-10-09", "Backfill start")
-dbutils.widgets.text("end_date", "2026-10-09", "Backfill end")
+dbutils.widgets.text("start_date", "2026-10-01", "Backfill start")
+dbutils.widgets.text("end_date", "2026-10-01", "Backfill end")
 g = dbutils.widgets.get
 cfg = Config(db=g("db"), raw_base=g("raw_base"))
 
@@ -59,43 +55,3 @@ display(spark.sql(f"""
 # COMMAND ----------
 
 display(spark.sql(f"SELECT layer, source, reason, count(*) AS n FROM {cfg.db}.quarantine_records GROUP BY ALL"))
-
-# COMMAND ----------
-
-tables = [
-    "bronze_alerts",
-    "bronze_forecast_periods",
-    "bronze_observations",
-    "bronze_iem_asos",
-    "silver_alerts",
-    "silver_forecast_periods",
-    "silver_observations"
-]
-
-for table in tables:
-    df = spark.table(f"workspace.nws.{table}")
-    has_column = "load_timestamp" in df.columns
-    print(f"{table}: {'PASS' if has_column else 'MISSING load_timestamp'}")
-
-# COMMAND ----------
-
-from pyspark.sql import functions as F
-
-tables = [
-    "bronze_alerts",
-    "bronze_forecast_periods",
-    "bronze_observations",
-    "bronze_iem_asos",
-    "silver_alerts",
-    "silver_forecast_periods",
-    "silver_observations"
-]
-
-for table in tables:
-    df = spark.table(f"workspace.nws.{table}")
-    null_count = df.filter(F.col("load_timestamp").isNull()).count()
-    print(f"{table}: {null_count} null timestamps")
-    
-
-# COMMAND ----------
-
