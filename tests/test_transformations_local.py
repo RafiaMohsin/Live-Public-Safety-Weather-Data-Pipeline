@@ -20,12 +20,14 @@ from nws_pipeline.config import SILVER_TABLES  # noqa: E402
 from nws_pipeline.delta_utils import conform  # noqa: E402
 from nws_pipeline.schemas import BRONZE_SCHEMAS, IEM_COLUMNS, SILVER_SCHEMAS  # noqa: E402
 
-SAMPLES = os.path.join(os.path.dirname(__file__), "..", "samples")
-spark = (SparkSession.builder.master("local[2]").appName("nws-tests")
-         .config("spark.sql.session.timeZone", "UTC").config("spark.ui.enabled", "false")
-         .config("spark.sql.shuffle.partitions", "4").getOrCreate())
-spark.sparkContext.setLogLevel("ERROR")
-tmp = tempfile.mkdtemp()
+SAMPLES = os.path.join(os.path.dirname(__file__), "..", "data_raw")
+spark = SparkSession.getActiveSession()
+
+if spark is None:
+    spark = SparkSession.builder.getOrCreate()
+
+tmp = "/Volumes/workspace/nws/raw/_test_temp"
+os.makedirs(tmp, exist_ok=True)
 
 
 def to_bronze(source, path):
@@ -49,9 +51,9 @@ def to_silver(source, b):
 
 
 def test_real_samples():
-    for source, rel, rows in [("alerts", "full_load/alerts/20261001T174648Z.json", 36),
-                              ("forecasts", "full_load/forecasts/20261001T174655Z.json", 140),
-                              ("observations", "full_load/observations/20261001T174713Z.json", 5000)]:
+    for source, rel, rows in [("alerts", "full/alerts/20261001T174648Z.json", 36),
+                              ("forecasts", "full/forecasts/20261001T174655Z.json", 140),
+                              ("observations", "full/observations/20261001T174713Z.json", 5000)]:
         b, q, drift = to_bronze(source, os.path.join(SAMPLES, rel))
         assert b.count() == rows and q == 0 and drift == [], (source, b.count(), q, drift)
         g, reasons = to_silver(source, b)

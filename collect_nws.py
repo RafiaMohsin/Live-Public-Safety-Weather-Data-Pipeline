@@ -19,7 +19,7 @@ import requests
 BASE = "https://api.weather.gov"
 # NWS asks for a descriptive User-Agent. CHANGE THE EMAIL to a real one.
 HEADERS = {
-    "User-Agent": "(NWS-Medallion-Student-Project, your_email@example.com)",
+    "User-Agent": "(NWS-Medallion-Student-Project, l227451@lhr.nu.edu.pk)",
     "Accept": "application/geo+json",
 }
 STATE_CODE = "KS"
@@ -32,8 +32,9 @@ POINTS = {
     "Garden City": (37.97, -100.87), "Emporia": (38.40, -96.18),
 }
 
-ROOT = pathlib.Path(__file__).parent
-STATE_FILE = ROOT / "state.json"
+ROOT = pathlib.Path(__file__).parent if "__file__" in globals() else pathlib.Path.cwd()
+RAW_BASE = pathlib.Path("/Volumes/workspace/nws/raw")
+STATE_FILE = RAW_BASE / "state.json"
 
 
 def get(url, **params):
@@ -60,7 +61,7 @@ def load_state():
 
 
 def save(mode, endpoint, payload):
-    folder = ROOT / "data_raw" / mode / endpoint
+    folder = RAW_BASE / mode / endpoint
     folder.mkdir(parents=True, exist_ok=True)
     path = folder / f"{now_utc().strftime('%Y%m%dT%H%M%SZ')}.json"
     path.write_text(json.dumps(payload, indent=2))
@@ -121,6 +122,8 @@ def main(mode):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2 or sys.argv[1] not in ("full", "incremental"):
-        sys.exit("usage: python collect_nws.py [full|incremental]")
-    main(sys.argv[1])
+    mode = next(
+        (arg for arg in sys.argv[1:] if arg in ("full", "incremental")),
+        "incremental"
+    )
+    main(mode)
