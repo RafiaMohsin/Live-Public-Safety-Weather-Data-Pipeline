@@ -62,12 +62,14 @@ How each Phase 2 requirement is met:
 ├── scripts/
 │   ├── download_iem_asos.py       # historical baseline downloader
 │   └── generate_data_dictionary.py
-├── tests/test_transformations_local.py
+├── tests/test_transformations_local.py  # optional local test suite; pipeline execution is in Databricks
 ├── docs/                          # proposal, data_dictionary.md, Phase 2 implementation report
 └── data_raw/{full_load,incremental}/{alerts,forecasts,observations}/  # local sample files; Volume folders are full/ and incremental/
 ```
 
-## Execution guide
+## Execution guide (Databricks-first)
+
+The project's operational workflow is carried out in Databricks: the notebooks read from the Databricks Volume, write to Delta tables, and record execution results in the audit tables. The terminal commands shown in the optional developer notes below are not required for normal notebook execution.
 
 ### One-time setup (Databricks)
 1. Workspace -> Create -> **Git folder**, paste this repository's URL.
@@ -75,7 +77,7 @@ How each Phase 2 requirement is met:
 3. Upload the repository's sample files to the Databricks Volume `/Volumes/workspace/nws/raw/`:
    - `data_raw/full_load/<type>/*.json` -> `raw/full/<type>/`
    - `data_raw/incremental/<type>/*.json` -> `raw/incremental/<type>/`
-   - For historical IEM/ASOS data, run `python scripts/download_iem_asos.py --start 2024-10-01 --end 2026-10-01` in an environment with the required Python dependencies, then upload the resulting CSV files to `raw/history/iem_asos/`.
+   - Historical IEM/ASOS CSV files used in this project are stored in the Volume at `raw/history/iem_asos/`. If those files are already present, no download command is needed. `scripts/download_iem_asos.py` is an optional helper for obtaining additional historical data; it is not a required step for running the Databricks transformation notebooks.
    - Keep the timestamp prefix in each file name (`YYYYMMDDTHHMMSSZ...`). The pipeline uses this date to select files for a backfill.
 
    Note: `data_raw/full_load/` and `data_raw/incremental/` are local repository sample-data folders. The corresponding Databricks Volume folders are named `full/` and `incremental/`.
@@ -139,33 +141,31 @@ A successful notebook run does not, by itself, prove that every expected source 
 Run `notebooks/03_demo_idempotency_and_audit`: it re-runs both layers on the same data, asserts that no table
 changed, and shows the audit log (rows_inserted and rows_updated are 0 on the re-run).
 
-### Collecting live data (incremental source)
+### Running the pipeline in Databricks
 
-`collect_nws.py` is configured to write to `/Volumes/workspace/nws/raw/full/` or `/Volumes/workspace/nws/raw/incremental/`. Run it in an environment where that Databricks Volume is mounted, or adapt `RAW_BASE` before running it on a regular local computer.
+1. Ensure the raw files are available in the Databricks Volume `/Volumes/workspace/nws/raw/` under the expected `full/`, `incremental/`, or `history/iem_asos/` folders.
+2. Run `01_raw_to_bronze` with the required incremental or backfill widget parameters.
+3. Run `02_bronze_to_silver` with the matching window and, when needed, the Bronze batch ID.
+4. Review `pipeline_execution_logs`, table counts, and `quarantine_records` to verify the outcome.
+5. The configured Databricks job uses a six-hourly schedule. During testing it ran approximately four to five times, and all recorded runs were successful. It was paused during later verification, so it should not be described as currently active.
 
-```bash
-pip install -r requirements.txt
-python collect_nws.py full          # baseline snapshot
-python collect_nws.py incremental   # collect newly available data
-```
+The repository also contains `collect_nws.py` and `scripts/download_iem_asos.py` as data-collection utilities. They are not terminal steps required to run the Bronze and Silver notebooks when the input data is already present in the Volume. If the collection scripts are used to obtain new data, ensure their output is placed in the correct Volume folders before running notebooks 01 and 02.
 
-Edit the User-Agent email in `collect_nws.py` and `scripts/download_iem_asos.py` first. After collecting data, run notebooks 01 and 02. For the repository's sample files, upload from `data_raw/full_load/` or `data_raw/incremental/` into the matching Volume folders `raw/full/` or `raw/incremental/`.
+### Optional local validation
 
-### Local tests (no Databricks needed)
-`pip install pyspark==3.5.3 && python tests/test_transformations_local.py` checks explicit-schema reads, drift detection,
-quarantine, casting and validation on the sample files.
+The repository includes `tests/test_transformations_local.py` for testing transformations outside Databricks. This is a developer test utility, not part of the normal Databricks execution sequence. The recorded project validation included seven passing local tests covering representative input data, casting and validation, malformed input, and schema drift.
 
 ## Known limitations
 - The NWS observations endpoint returns at most 500 records per station per request (about 1.5 days); the IEM archive provides the historical baseline instead.
 - Alert update chains (`referenced_alert_ids`) are stored in Silver; grouping them into events is part of the Gold layer (Phase 3).
-- The Gold layer, dashboard and a scheduled Databricks job are Phase 3.
+- The Gold layer and dashboard are Phase 3. A Databricks job for six-hourly pipeline execution was also configured and successfully ran approximately four to five times during testing; it was paused during later verification.
 
 ## Security and PII
 No PII. The data is public-domain government weather data with no personal records; the alert `sender` field is a shared
 agency mailbox, not a person. Free-text alert fields are kept for reference only.
 
 ## Infrastructure and FinOps
-Databricks Free Edition (serverless), manual or scheduled runs only, one state, small files, no cluster left running.
+Databricks Free Edition (serverless), with manual execution and a configured six-hourly Databricks job. The scheduled job completed approximately four to five successful runs during testing and was later paused; it was not active at the time of final verification. One state, small files, no cluster left running.
 Estimated volume: about 14 MB/day incremental, a few tens of MB for the historical baseline.
 
 ## Data dictionary
