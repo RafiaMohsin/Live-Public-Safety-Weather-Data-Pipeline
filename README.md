@@ -19,7 +19,7 @@ and could forecast data warn of floods before an official alert.
 | NWS API `https://api.weather.gov` (public domain, no key, User-Agent required) | **Incremental** loads: alerts, forecasts, observations | JSON |
 | Iowa Environmental Mesonet ASOS archive (`mesonet.agron.iastate.edu/cgi-bin/request/asos.py`) | **Historical full-load baseline** for observations (same airport stations) | CSV |
 
-Forecasts have no public history, so they are collected live only. Samples are in `samples/` (full and incremental).
+Forecasts have no public history, so they are collected live only. Repository sample files are under `data_raw/full_load/` and `data_raw/incremental/`. These are local sample-data folders; the Databricks Volume uses the runtime folder names `full/` and `incremental/`.
 
 ## Architecture (Phase 2)
 ```
@@ -40,13 +40,13 @@ How each Phase 2 requirement is met:
 | Parameterised backfills | `mode`, `start_date`, `end_date`, `sources`, `load_type`, `lookback_days`, `bronze_batch_id` notebook parameters; no hardcoded paths or dates |
 | Schema drift | New source fields are detected, logged and preserved in `_raw_json`; type changes, malformed records and unparseable files go to `quarantine_records` without stopping the batch; `autoMerge` is enabled for Delta schema evolution |
 | Audit logging | `pipeline_execution_logs`: layer, file/parameter, start/end time, status, rows inserted / updated / quarantined, for every file and table |
-| Fault tolerance | A failing file is logged as `Failure` and the run continues with the next file |
+| Fault tolerance | Each file/table operation is audited. An operation failure is logged and processing continues with other units; the notebook checks returned statuses and raises an error if any audited operation reports `Failure`. End-to-end recovery by replaying failed work and verifying completeness has not yet been tested. |
 
 ## Repository structure
 ```
 .
 ├── README.md
-├── collect_nws.py                 # live NWS collector (full / incremental), runs locally
+├── collect_nws.py                 # live NWS collector (full / incremental), writes to Databricks Volume
 ├── fix_conflicts.py               # helper: removes git conflict markers from JSON files
 ├── requirements.txt
 ├── nws_pipeline/                  # PySpark code
@@ -63,8 +63,8 @@ How each Phase 2 requirement is met:
 │   ├── download_iem_asos.py       # historical baseline downloader
 │   └── generate_data_dictionary.py
 ├── tests/test_transformations_local.py
-├── docs/                          # proposal, data_dictionary.md
-└── data_raw/{full_load,incremental}/{alerts,forecasts,observations}/
+├── docs/                          # proposal, data_dictionary.md, Phase 2 implementation report
+└── data_raw/{full_load,incremental}/{alerts,forecasts,observations}/  # local sample files; Volume folders are full/ and incremental/
 ```
 
 ## Execution guide
@@ -72,38 +72,84 @@ How each Phase 2 requirement is met:
 ### One-time setup (Databricks)
 1. Workspace -> Create -> **Git folder**, paste this repository's URL.
 2. Run `notebooks/00_setup` (creates schema `workspace.nws`, Volume `raw`, and all tables from the explicit schemas).
-3. Upload raw files to the Volume `/Volumes/workspace/nws/raw/`:
-   - `samples/full_load/<type>/*.json` -> `raw/full/<type>/`
-   - `samples/incremental/<type>/*.json` -> `raw/incremental/<type>/`
-   - IEM history: run `python scripts/download_iem_asos.py --start 2024-10-01 --end 2026-10-01` on your computer, then upload the CSVs to `raw/history/iem_asos/`.
-   - Keep the timestamp prefix in each file name (`YYYYMMDDTHHMMSSZ...`): it defines the file's date.
+3. Upload the repository's sample files to the Databricks Volume `/Volumes/workspace/nws/raw/`:
+   - `data_raw/full_load/<type>/*.json` -> `raw/full/<type>/`
+   - `data_raw/incremental/<type>/*.json` -> `raw/incremental/<type>/`
+   - For historical IEM/ASOS data, run `python scripts/download_iem_asos.py --start 2024-10-01 --end 2026-10-01` in an environment with the required Python dependencies, then upload the resulting CSV files to `raw/history/iem_asos/`.
+   - Keep the timestamp prefix in each file name (`YYYYMMDDTHHMMSSZ...`). The pipeline uses this date to select files for a backfill.
+
+   Note: `data_raw/full_load/` and `data_raw/incremental/` are local repository sample-data folders. The corresponding Databricks Volume folders are named `full/` and `incremental/`.
 
 ### Standard incremental load
-Run `01_raw_to_bronze` then `02_bronze_to_silver` with the defaults: `mode = incremental`, `lookback_days = 1`.
-It processes files dated today and yesterday. Because loads are idempotent, overlapping windows are safe.
+
+Run `01_raw_to_bronze` and then `02_bronze_to_silver`. Use these widget values in both notebooks:
+
+| Parameter | Raw-to-Bronze (`01_raw_to_bronze`) | Bronze-to-Silver (`02_bronze_to_silver`) |
+|---|---|---|
+| `mode` | `incremental` | `incremental` |
+| `lookback_days` | `1` | `1` |
+| `sources` | `all` or a comma-separated list | `all` or a comma-separated list |
+| `load_type` | `all`, `full`, `incremental`, or `history` | Not used |
+| `start_date`, `end_date` | Leave empty | Leave empty |
+| `batch_id` | Optional run label | Optional run label |
+| `bronze_batch_id` | Not used | Optional filter for one Bronze batch |
+
+With `lookback_days = 1`, the pipeline selects file dates / Bronze `ingest_date` values from yesterday through today (UTC). Overlapping windows are safe to rerun because the pipeline uses idempotent `MERGE INTO` operations.
+
+Valid `sources` are `alerts`, `forecasts`, `observations`, and `iem_asos`. You can use `all` or a comma-separated selection such as `observations,forecasts`.
 
 ### Backfill (any historical timeframe)
-Set `mode = backfill` plus the window, for example:
 
-| Goal | Parameters |
-|---|---|
-| Reload everything from 1 Oct 2026 | `mode=backfill`, `start_date=2026-10-01`, `end_date=2026-10-01` |
-| Reload only observations for a month | add `sources=observations` (and `load_type=full`) |
-| Load the historical IEM files | `sources=iem_asos`, `load_type=history`, `mode=backfill` with a window that covers the download date |
-| Re-run Silver for one Bronze batch | notebook 02: `bronze_batch_id=<batch id from pipeline_execution_logs>` |
+Run Raw-to-Bronze first, then Bronze-to-Silver. Set `mode = backfill` and provide both `start_date` and `end_date` in `YYYY-MM-DD` format. The dates are matched against the timestamp date in raw filenames and the `ingest_date` assigned to Bronze rows—not necessarily the observation timestamp inside the data.
+
+**Raw-to-Bronze (`01_raw_to_bronze`)**
+
+| Parameter | Example value | Meaning |
+|---|---|---|
+| `mode` | `backfill` | Selects an explicit date window |
+| `start_date` | `2026-10-01` | First included file date |
+| `end_date` | `2026-10-01` | Last included file date |
+| `sources` | `observations` or `all` | Source(s) to process; multiple sources are comma-separated |
+| `load_type` | `full`, `incremental`, `history`, or `all` | Selects corresponding raw subfolder(s) |
+| `batch_id` | `observations-backfill-20261001` | Optional traceable batch label |
+
+**Bronze-to-Silver (`02_bronze_to_silver`)**
+
+| Parameter | Example value | Meaning |
+|---|---|---|
+| `mode` | `backfill` | Selects an explicit ingestion-date window |
+| `start_date` | `2026-10-01` | First included Bronze `ingest_date` |
+| `end_date` | `2026-10-01` | Last included Bronze `ingest_date` |
+| `sources` | `observations` or `all` | Source(s) to process; multiple sources are comma-separated |
+| `batch_id` | `silver-backfill-20261001` | Optional Silver run label |
+| `bronze_batch_id` | `observations-backfill-20261001` | Optional filter to one previously loaded Bronze batch |
+
+Examples:
+- **Backfill NWS observations for a day:** Raw-to-Bronze: `mode=backfill`, `sources=observations`, `load_type=all`, `start_date=2026-10-01`, `end_date=2026-10-01`. Then Silver: `mode=backfill`, `sources=observations`, with the same date window.
+- **Load historical IEM/ASOS files:** Raw-to-Bronze: `mode=backfill`, `sources=iem_asos`, `load_type=history`, and a date window covering the timestamp dates in the CSV filenames. Then Silver: `mode=backfill`, `sources=iem_asos`, with a window covering the resulting Bronze `ingest_date` values. For a targeted replay, also provide `bronze_batch_id=<batch id>` from the audit log.
+- **Re-run Silver for one Bronze batch:** notebook 02: set `mode=backfill`, the appropriate `start_date` and `end_date`, `sources=<source>`, and `bronze_batch_id=<batch id from pipeline_execution_logs>`. |
+
+### Failure handling and recovery
+
+Each file operation in Raw-to-Bronze and each source/table operation in Bronze-to-Silver writes an entry to `pipeline_execution_logs`, including status and row counts. Processing is designed to continue after an individual operation fails so other files or sources can still be attempted. At the end of each notebook, a status check raises a notebook error if any returned audited operation has status `Failure`; inspect `pipeline_execution_logs` and `quarantine_records` to investigate.
+
+A successful notebook run does not, by itself, prove that every expected source file was present or that all records were complete. A zero-insert/zero-update replay can mean the data was already processed. End-to-end recovery testing—replaying failed work and verifying final completeness—remains pending.
 
 ### Prove idempotency
 Run `notebooks/03_demo_idempotency_and_audit`: it re-runs both layers on the same data, asserts that no table
 changed, and shows the audit log (rows_inserted and rows_updated are 0 on the re-run).
 
 ### Collecting live data (incremental source)
+
+`collect_nws.py` is configured to write to `/Volumes/workspace/nws/raw/full/` or `/Volumes/workspace/nws/raw/incremental/`. Run it in an environment where that Databricks Volume is mounted, or adapt `RAW_BASE` before running it on a regular local computer.
+
 ```bash
 pip install -r requirements.txt
-python collect_nws.py full           # baseline snapshot
-python collect_nws.py incremental    # run hourly; writes data_raw/incremental/...
+python collect_nws.py full          # baseline snapshot
+python collect_nws.py incremental   # collect newly available data
 ```
-Edit the User-Agent email in `collect_nws.py` and `scripts/download_iem_asos.py` first. Upload new files to the Volume,
-then run the notebooks.
+
+Edit the User-Agent email in `collect_nws.py` and `scripts/download_iem_asos.py` first. After collecting data, run notebooks 01 and 02. For the repository's sample files, upload from `data_raw/full_load/` or `data_raw/incremental/` into the matching Volume folders `raw/full/` or `raw/incremental/`.
 
 ### Local tests (no Databricks needed)
 `pip install pyspark==3.5.3 && python tests/test_transformations_local.py` checks explicit-schema reads, drift detection,
