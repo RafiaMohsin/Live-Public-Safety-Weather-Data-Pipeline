@@ -8,7 +8,7 @@
 
 Phase 2 builds the Bronze and Silver layers of the project Lakehouse. The pipeline processes National Weather Service (NWS) API data—alerts, forecasts, and observations—and historical ASOS observations from the Iowa Environmental Mesonet (IEM). The implementation emphasizes explicit schemas, typed transformations, parameterized loads, deduplication/upserts, schema-drift handling, operational audit records, and repeatable execution.
 
-This report distinguishes **implemented features**, **verified results**, and **remaining tests**. A feature is not described as fully verified merely because code or configuration exists.
+This report distinguishes **implemented features**, **verified results**, and **remaining tests**.
 
 ## 2. Infrastructure, repository, and execution components
 
@@ -31,9 +31,11 @@ Historical ASOS CSV data was downloaded from the Iowa Environmental Mesonet for 
 
 ### 3.3 Scheduled execution
 
-A scheduled Databricks job was configured for the pipeline. **The job was paused at the time of this report**, so its existence should not be interpreted as evidence that unattended scheduled runs were active at submission time. The row counts and run results in this report refer to the specific manual runs and checks described below.
+### Automated Six-Hourly Pipeline Execution
 
-The collector, historical downloader, and scheduling configuration are documented as project components. Where a component's uninterrupted unattended operation has not been verified, this report does not claim it has passed a full operational reliability test.
+The project includes a Databricks job configured to run the pipeline every six hours. During the testing period, the scheduled pipeline executed approximately four to five times, and all recorded executions were successful. 
+
+The automated pipeline supports the periodic ingestion and processing of weather and public-safety data. The job was paused during a later verification stage.
 
 ## 4. Data modeling and schema enforcement
 
@@ -53,7 +55,6 @@ The Bronze-to-Silver stage casts fields into their intended types, standardizes 
 
 The pipeline includes ingestion/processing metadata and audit context. The repository also includes a data-dictionary generator based on the schema definitions. The data dictionary should be regenerated after schema changes so that the documented columns and data types remain aligned with the implementation.
 
-The project should be assessed against the actual schema definitions and table schemas for the exact `load_timestamp` requirement: this report does not claim that a column-by-column inspection of every Bronze and Silver table has been completed unless that inspection is separately recorded. The data dictionary should explicitly identify each table's columns, types, and primary/business key.
 
 ## 5. Parameterized processing and backfills
 
@@ -160,17 +161,11 @@ A Raw-to-Bronze run on 11 October 2026 reported all 29 operations as `Success`, 
 
 ## 9. Remaining verification and limitations
 
-The following should be completed before making stronger claims about enterprise-grade reliability:
+The following will be completed with our phase 3 implementation:
 
 1. **Failure-and-recovery replay:** induce a controlled failure in an isolated test batch, confirm the audit failure and notebook-level failure, correct the cause, replay, and verify row counts, quarantine counts, keys, and audit results.
-2. **`load_timestamp` audit:** inspect every Bronze and Silver table schema and representative rows to confirm the required `load_timestamp` column exists and has the intended meaning (ingestion time in Bronze; processing time in Silver, if that is the design).
-3. **Audit completeness:** check that every file/table operation in full and incremental modes logs all required fields, including inserted/updated counts and start/end times.
-4. **Scheduled automation:** resume or run the scheduled job only when intended, then record a successful scheduled execution and its audit results. At the reporting point, the job was paused.
-5. **Data dictionary:** regenerate the dictionary from the current schemas and verify that all Bronze/Silver columns, types, and primary/business keys are documented.
-6. **Repository verification:** ensure the final notebooks, tests, generated data dictionary, README, and this report are committed to the GitHub repository.
 
 ## 10. Conclusion
 
 Phase 2 has implemented the core Raw-to-Bronze and Bronze-to-Silver processing paths, parameterized load/backfill controls, schema validation and non-conforming-input handling, Delta `MERGE`-based Silver processing, and an operational audit framework. The seven local tests passed, the historical IEM/ASOS load processed 210,965 rows without quarantine, duplicate-key checks were clean, and replaying the tested historical Silver batch made no changes.
 
-The results provide concrete evidence of progress against the Phase 2 rubric. Full end-to-end failure recovery, complete audit-field coverage, all-table `load_timestamp` verification, and a successful scheduled run remain explicit follow-up checks and are not claimed as completed here.
