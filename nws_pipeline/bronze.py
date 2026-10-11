@@ -128,21 +128,70 @@ def _split(shaped):
     return good, bad
 
 
+
 def _prepare_nws(spark, source, path):
-    top = (spark.read.schema(RAW_TOP_SCHEMAS[source]).option("multiLine", True)
-           .options(**PERMISSIVE).json(path))
-    top = top.select("_corrupt_record", *[c for c in top.columns if c != "_corrupt_record"])
+    # Read the original JSON as text first so unexpected top-level
+    # fields are not silently discarded by the explicit schema.
+    raw_lines = (
+        spark.read.text(path)
+        .select(F.col("value").alias("_raw_line"))
+    )
+
+    # Parse each complete JSON document into a map for top-level
+    # field detection. This works for the collector's JSON files,
+    # which contain one JSON document per file.
+    raw_json = spark.read.text(path).agg(
+        F.concat_ws("\n", F.collect_list("value")).alias("_raw_text")
+    ).first()["_raw_text"]
+
+    try:
+        payload = __import__("json").loads(raw_json)
+    except Exception:
+        return None, _file_quarantine(
+            spark, path, "unparseable JSON file", raw_json
+        ), []
+
+    expected = set(RAW_TOP_SCHEMAS[source].fieldNames())
+    expected.discard("_corrupt_record")
+    top_level_fields = set(payload.keys()) if isinstance(payload, dict) else set()
+    new_top_fields = sorted(top_level_fields - expected)
+
+    top = (
+        spark.read.schema(RAW_TOP_SCHEMAS[source])
+        .option("multiLine", True)
+        .options(**PERMISSIVE)
+        .json(path)
+    )
+    top = top.select(
+        "_corrupt_record",
+        *[c for c in top.columns if c != "_corrupt_record"]
+    )
+
     corrupt = top.filter(F.col("_corrupt_record").isNotNull()).limit(1).collect()
     if corrupt:
-        return None, _file_quarantine(spark, path, "unparseable or non-conforming file",
-                                      corrupt[0]["_corrupt_record"]), []
+        return None, _file_quarantine(
+            spark, path, "unparseable or non-conforming file",
+            corrupt[0]["_corrupt_record"]
+        ), new_top_fields
+
     records = EXTRACT[source](top)
+
     known = F.array(*[F.lit(k) for k in sorted(KNOWN_FIELDS[source])])
     keys = F.map_keys(F.from_json("_record_json", MapType(STR, STR)))
-    new_fields = sorted(r[0] for r in records.select(
-        F.explode(F.array_except(keys, known)).alias("k")).distinct().collect())
-    typed = records.withColumn("r", F.from_json("_record_json", RECORD_SCHEMAS[source], PERMISSIVE))
+    new_record_fields = sorted(
+        r[0] for r in records.select(
+            F.explode(F.array_except(keys, known)).alias("k")
+        ).distinct().collect()
+    )
+
+    typed = records.withColumn(
+        "r", F.from_json("_record_json", RECORD_SCHEMAS[source], PERMISSIVE)
+    )
     good, bad = _split(SHAPE[source](typed))
+
+    new_fields = sorted(set(new_top_fields + new_record_fields))
+    print("Top-level fields detected:", new_top_fields)
+    print("Record-level fields detected:", new_record_fields)
     return good, bad, new_fields
 
 

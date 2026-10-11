@@ -1,4 +1,8 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "6"
+# ///
 # MAGIC %md
 # MAGIC # 02 - Bronze -> Silver
 # MAGIC Casts to strict types, validates business rules, quarantines rejected rows and upserts with `MERGE INTO`.
@@ -30,12 +34,25 @@ setup_tables(spark, cfg)
 
 # COMMAND ----------
 
+
 results = run_bronze_to_silver(
     spark, cfg, sources=g("sources"), mode=g("mode"),
-    start_date=g("start_date") or None, end_date=g("end_date") or None,
+    start_date=g("start_date") or None,
+    end_date=g("end_date") or None,
     lookback_days=int(g("lookback_days") or 1),
-    batch_id=g("batch_id") or None, bronze_batch_id=g("bronze_batch_id") or None)
+    batch_id=g("batch_id") or None,
+    bronze_batch_id=g("bronze_batch_id") or None
+)
+
 display(spark.createDataFrame(results))
+
+failures = [r for r in results if r.get("status") == "Failure"]
+
+if failures:
+    raise RuntimeError(
+        f"{len(failures)} Bronze-to-Silver operation(s) failed. "
+        "Check pipeline_execution_logs for details."
+    )
 
 # COMMAND ----------
 
@@ -47,6 +64,3 @@ display(spark.sql("""
   SELECT source, count(*) AS n, min(observation_ts) AS first_ts, max(observation_ts) AS last_ts,
          round(avg(temperature_c),1) AS avg_temp_c, round(max(temperature_c),1) AS max_temp_c
   FROM workspace.nws.silver_observations GROUP BY source"""))
-
-# COMMAND ----------
-

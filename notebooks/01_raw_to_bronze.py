@@ -1,4 +1,8 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "6"
+# ///
 # MAGIC %md
 # MAGIC # 01 - Raw -> Bronze
 # MAGIC Reads raw files with **explicit StructType schemas**, quarantines non-conforming records, and loads the rest with
@@ -40,6 +44,13 @@ results = run_raw_to_bronze(
     start_date=g("start_date") or None, end_date=g("end_date") or None,
     lookback_days=int(g("lookback_days") or 1), batch_id=g("batch_id") or None)
 display(spark.createDataFrame(results))
+failures = [r for r in results if r.get("status") == "Failure"]
+
+if failures:
+    raise RuntimeError(
+        f"{len(failures)} Raw-to-Bronze operation(s) failed. "
+        "Check pipeline_execution_logs for details."
+    )
 
 # COMMAND ----------
 

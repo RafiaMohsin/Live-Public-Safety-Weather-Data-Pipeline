@@ -26,7 +26,8 @@ QV = StructType([fld("value", DBL)])          # NWS "quantitative value": {unitC
 # cannot fail a whole file) and then parsed record by record with the typed schemas below.
 # ----------------------------------------------------------------------------------------------
 RAW_TOP_SCHEMAS = {
-    "alerts": StructType([fld("features", ArrayType(STR)), CORRUPT]),
+    "alerts": StructType([fld("@context", STR), fld("features", ArrayType(STR)),
+                         fld("title", STR), fld("type", STR), fld("updated", STR), CORRUPT]),
     "forecasts": StructType([fld("ingestion_time", STR), fld("grids", MapType(STR, STR)), CORRUPT]),
     "observations": StructType([fld("ingestion_time", STR), fld("start", STR),
                                 fld("stations", MapType(STR, STR)), CORRUPT]),

@@ -121,8 +121,40 @@ def test_iem_header_drift():
     print("ok  CSV with an extra column loads (kept in _raw_json); CSV with a changed header is quarantined")
 
 
+
+def test_nws_top_level_schema_drift():
+    """Verify unexpected top-level NWS fields are detected."""
+    path = os.path.join(tmp, "top_level_drift.json")
+
+    payload = {
+        "unexpectedTopLevelField": "new-value",
+        "features": []
+    }
+
+    with open(path, "w") as f:
+        json.dump(payload, f)
+
+    good, bad, drift = bronze._prepare_nws(spark, "alerts", path)
+
+    assert good is not None, "Expected the JSON file to be processed"
+    assert bad.count() == 0, "Expected no quarantined records"
+    assert drift == ["unexpectedTopLevelField"], drift
+
+    print("ok  unexpected top-level NWS field detected")
+
+
+
 if __name__ == "__main__":
-    for t in (test_real_samples, test_type_change_and_new_field, test_corrupt_file,
-              test_non_actual_alert, test_iem_history, test_iem_header_drift):
+    for t in (
+        test_real_samples,
+        test_type_change_and_new_field,
+        test_corrupt_file,
+        test_non_actual_alert,
+        test_iem_history,
+        test_iem_header_drift,
+        test_nws_top_level_schema_drift,
+    ):
         t()
+
     print("\nALL TESTS PASSED")
+
