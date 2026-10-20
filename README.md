@@ -1,11 +1,17 @@
 # Live Public-Safety Weather Data Pipeline (NWS API)
 
-Data Analysis and Visualisation semester project. An automated Spark pipeline on Databricks using the
+Data Analysis and Visualisation semester project. 
+
+An automated Spark pipeline on Databricks using the
 Medallion Architecture (Bronze -> Silver -> Gold) with a Power BI dashboard.
 
 **Team:** Rafia Mohsin, Shanzay Shahid
+
 **Course:** Data Analysis and Visualization
-**Phase 1 proposal:** `docs/NWS_Phase1_Proposal_Updated.docx`; **Phase 2:** Bronze + Silver (this repository)
+
+**Phase 1 proposal:** `docs/NWS_Phase1_Proposal_Updated.docx`; 
+
+**Phase 2:** Bronze + Silver (this repository)
 
 ## Project summary
 We ingest live weather forecasts, hazardous-weather alerts and station observations for Kansas
@@ -19,7 +25,7 @@ and could forecast data warn of floods before an official alert.
 | NWS API `https://api.weather.gov` (public domain, no key, User-Agent required) | **Incremental** loads: alerts, forecasts, observations | JSON |
 | Iowa Environmental Mesonet ASOS archive (`mesonet.agron.iastate.edu/cgi-bin/request/asos.py`) | **Historical full-load baseline** for observations (same airport stations) | CSV |
 
-Forecasts have no public history, so they are collected live only. Repository sample files are under `data_raw/full_load/` and `data_raw/incremental/`. These are local sample-data folders; the Databricks Volume uses the runtime folder names `full/` and `incremental/`.
+Forecasts have no public history, so they are collected live only. Repository sample files are under `data_raw/full/` and `data_raw/incremental/`. These are local sample-data folders; the Databricks Volume uses the runtime folder names `full/` and `incremental/`.
 
 ## Architecture (Phase 2)
 ```
