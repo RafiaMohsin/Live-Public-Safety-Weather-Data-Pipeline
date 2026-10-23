@@ -6,8 +6,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from nws_pipeline.config import BRONZE_TABLES, LOG_TABLE, QUARANTINE_TABLE  # noqa: E402
-from nws_pipeline.schemas import (BRONZE_SCHEMAS, LOG_SCHEMA, QUARANTINE_KEYS,  # noqa: E402
+from nws_pipeline.config import BRONZE_TABLES, GOLD_TABLES, LOG_TABLE, QUARANTINE_TABLE  # noqa: E402
+from nws_pipeline.schemas import (BRONZE_SCHEMAS, GOLD_FKS, GOLD_KEYS, GOLD_SCHEMAS, LOG_SCHEMA, QUARANTINE_KEYS,  # noqa: E402
                                   QUARANTINE_SCHEMA, SILVER_KEYS, SILVER_SCHEMAS)
 
 NOTES = {
@@ -38,7 +38,20 @@ NOTES = {
     "rows_updated": "Rows updated by this step",
     "rows_quarantined": "Rows rejected into quarantine_records by this step",
     "parameter": "File path (raw_to_bronze) or date window (bronze_to_silver) that was processed",
-    "layer": "raw_to_bronze or bronze_to_silver",
+    "layer": "raw_to_bronze, bronze_to_silver or silver_to_gold",
+    "date_key": "Surrogate key yyyymmdd; joins to dim_date",
+    "station_key": "Surrogate key (xxhash64 of station_id); joins to dim_station",
+    "location_key": "Surrogate key (xxhash64 of location_name); joins to dim_location",
+    "alert_type_key": "Surrogate key (xxhash64 of event, category, severity, certainty, urgency); joins to dim_alert_type",
+    "sent_date_key": "Date alert was sent; role of dim_date",
+    "onset_date_key": "Date the hazard begins; role of dim_date",
+    "start_date_key": "Date the forecast period starts; role of dim_date",
+    "severity_rank": "Extreme 4, Severe 3, Moderate 2, Minor 1, other 0 (for sorting in BI)",
+    "is_update": "True when the alert updates or cancels an earlier alert",
+    "duration_hours": "Hours between effective and expires",
+    "lead_time_hours": "Hours between sent and onset (warning lead time)",
+    "obs_count": "Observations aggregated into the day",
+    "precip_sum_mm": "Sum of hourly precipitation for the day",
 }
 BRONZE_DESC = {
     "alerts": "Raw NWS alerts, one row per alert message and source file",
@@ -74,6 +87,21 @@ def build():
                         "none (append-only log)"))
     out.append(table_md(QUARANTINE_TABLE, "Records rejected by schema, type or business-rule checks", QUARANTINE_SCHEMA,
                         " + ".join(f"`{k}`" for k in QUARANTINE_KEYS)))
+    out.append("### Gold layer (star schema)\nDimensions and facts joined on deterministic surrogate keys. "
+               "Full ER diagram in `docs/gold_model.md`.\n")
+    gdesc = {
+        "dim_date": "Calendar dimension, one row per day", "dim_station": "Weather stations (NWS and IEM)",
+        "dim_location": "Forecast locations (Kansas grid points)", "dim_alert_type": "Alert event, severity, certainty and urgency",
+        "fact_alerts": "One row per alert; measures duration, lead time and affected zones",
+        "fact_observations": "One row per station, timestamp and source",
+        "fact_forecast_periods": "One row per location, forecast version and period",
+        "fact_daily_weather": "Daily per-station aggregate of observations (aggregate fact)"}
+    for name in GOLD_TABLES:
+        pk = " + ".join(f"`{k}`" for k in GOLD_KEYS[name])
+        fks = GOLD_FKS.get(name)
+        if fks:
+            pk += "  \n**Foreign keys:** " + ", ".join(f"`{c}` -> `{d}`" for c, d in fks.items())
+        out.append(table_md(name, gdesc[name], GOLD_SCHEMAS[name], pk))
     return "\n".join(out)
 
 
