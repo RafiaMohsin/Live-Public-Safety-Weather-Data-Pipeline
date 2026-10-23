@@ -2,12 +2,12 @@
 import uuid
 from datetime import datetime, timezone
 
-from . import bronze, silver
+from . import bronze, gold, silver
 from .audit import Audit
-from .config import (BRONZE_TABLES, LOG_TABLE, QUARANTINE_TABLE, SILVER_TABLES, SOURCES,
+from .config import (BRONZE_TABLES, GOLD_TABLES, LOG_TABLE, QUARANTINE_TABLE, SILVER_TABLES, SOURCES,
                      list_raw_files, resolve_window)
 from .delta_utils import create_table
-from .schemas import BRONZE_SCHEMAS, LOG_SCHEMA, QUARANTINE_SCHEMA, SILVER_SCHEMAS
+from .schemas import BRONZE_SCHEMAS, GOLD_SCHEMAS, LOG_SCHEMA, QUARANTINE_SCHEMA, SILVER_SCHEMAS
 
 
 def setup_tables(spark, cfg):
@@ -23,6 +23,8 @@ def setup_tables(spark, cfg):
         create_table(spark, cfg.t(name), BRONZE_SCHEMAS[source])
     for name, schema in SILVER_SCHEMAS.items():
         create_table(spark, cfg.t(name), schema)
+    for name in GOLD_TABLES:
+        create_table(spark, cfg.t(name), GOLD_SCHEMAS[name])
     create_table(spark, cfg.t(LOG_TABLE), LOG_SCHEMA)
     create_table(spark, cfg.t(QUARANTINE_TABLE), QUARANTINE_SCHEMA)
 
@@ -76,5 +78,29 @@ def run_bronze_to_silver(spark, cfg, sources="all", mode="incremental", start_da
         param = f"{start}..{end}" + (f" bronze_batch={bronze_batch_id}" if bronze_batch_id else "")
         with Audit(spark, cfg, run_id, batch_id, "bronze_to_silver", source, mode, param) as a:
             silver.process_table(spark, cfg, source, start, end, bronze_batch_id, batch_id, a)
+        results.append(a.summary())
+    return results
+
+
+def run_silver_to_gold(spark, cfg, mode="incremental", start_date=None, end_date=None,
+                       lookback_days=1, batch_id=None, tables=None):
+    """Refresh the Gold star schema from Silver.
+
+    mode='incremental' -> Silver rows loaded in the last `lookback_days` days (facts) + affected daily aggregates
+    mode='backfill'    -> Silver rows whose load_timestamp date is between start_date and end_date
+    mode='full'        -> rebuild everything from the whole Silver layer (use for the first Gold load)
+    Dimensions are always rebuilt from full Silver (small) and merged; unchanged rows are skipped.
+    """
+    since, until = gold.window_bounds(mode, start_date, end_date, lookback_days)
+    run_id, batch_id = _ids(batch_id)
+    param = "all silver rows" if since is None else f"silver load_timestamp {since}..{until}"
+    chosen = GOLD_TABLES if tables in (None, "all") else [t.strip() for t in tables.split(",")]
+    unknown = [t for t in chosen if t not in GOLD_TABLES]
+    if unknown:
+        raise ValueError(f"unknown Gold table(s) {unknown}; choose from {GOLD_TABLES}")
+    results = []
+    for name in [t for t in GOLD_TABLES if t in chosen]:            # keep dimension-first order
+        with Audit(spark, cfg, run_id, batch_id, "silver_to_gold", name, mode, param) as a:
+            gold.process_table(spark, cfg, name, since, until, a)
         results.append(a.summary())
     return results

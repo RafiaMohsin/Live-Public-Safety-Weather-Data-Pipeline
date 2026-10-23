@@ -24,6 +24,9 @@ SILVER_TABLES = {
     "observations": "silver_observations",
     "iem_asos": "silver_observations",
 }
+# build order matters: dimensions first, then facts, then the aggregate fact
+GOLD_TABLES = ["dim_date", "dim_station", "dim_location", "dim_alert_type",
+               "fact_alerts", "fact_observations", "fact_forecast_periods", "fact_daily_weather"]
 LOG_TABLE = "pipeline_execution_logs"
 QUARANTINE_TABLE = "quarantine_records"
 

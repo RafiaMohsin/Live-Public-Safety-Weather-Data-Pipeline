@@ -170,3 +170,85 @@ QUARANTINE_SCHEMA = StructType([
     fld("raw_payload", STR), fld("batch_id", STR), fld("load_timestamp", TS),
 ])
 QUARANTINE_KEYS = ["layer", "source", "record_key", "reason"]
+
+# ----------------------------------------------------------------------------------------------
+# GOLD tables: star schema (dimensions + facts + one daily aggregate fact).
+# Surrogate keys are deterministic (xxhash64 of the natural key) so MERGE is idempotent and
+# facts and dimensions can be loaded independently without a key-lookup step.
+# ----------------------------------------------------------------------------------------------
+from pyspark.sql.types import LongType  # noqa: E402
+
+LONG = LongType()
+_G_TAIL = [fld("row_hash", STR), fld("load_timestamp", TS)]
+
+GOLD_SCHEMAS = {
+    "dim_date": StructType([
+        fld("date_key", INT), fld("date", DATE), fld("year", INT), fld("quarter", INT),
+        fld("month", INT), fld("month_name", STR), fld("week_of_year", INT), fld("day", INT),
+        fld("day_of_week", INT), fld("day_name", STR), fld("is_weekend", BOOL),
+    ] + _G_TAIL),
+    "dim_station": StructType([
+        fld("station_key", LONG), fld("station_id", STR), fld("sources", STR),
+        fld("first_observation_ts", TS), fld("last_observation_ts", TS),
+    ] + _G_TAIL),
+    "dim_location": StructType([
+        fld("location_key", LONG), fld("location_name", STR),
+        fld("first_forecast_ts", TS), fld("last_forecast_ts", TS),
+    ] + _G_TAIL),
+    "dim_alert_type": StructType([
+        fld("alert_type_key", LONG), fld("event", STR), fld("category", STR), fld("severity", STR),
+        fld("severity_rank", INT), fld("certainty", STR), fld("urgency", STR),
+    ] + _G_TAIL),
+    "fact_alerts": StructType([
+        fld("alert_id", STR), fld("alert_type_key", LONG), fld("sent_date_key", INT),
+        fld("onset_date_key", INT), fld("sent_ts", TS), fld("effective_ts", TS), fld("onset_ts", TS),
+        fld("expires_ts", TS), fld("ends_ts", TS), fld("status", STR), fld("message_type", STR),
+        fld("is_update", BOOL), fld("duration_hours", DBL), fld("lead_time_hours", DBL),
+        fld("affected_zone_count", INT), fld("ugc_code_count", INT), fld("area_desc", STR),
+        fld("headline", STR), fld("sender_name", STR),
+    ] + _G_TAIL),
+    "fact_observations": StructType([
+        fld("station_key", LONG), fld("date_key", INT), fld("observation_ts", TS), fld("source", STR),
+        fld("observation_hour", INT), fld("text_description", STR), fld("temperature_c", DBL),
+        fld("dewpoint_c", DBL), fld("wind_direction_deg", DBL), fld("wind_speed_kmh", DBL),
+        fld("wind_gust_kmh", DBL), fld("pressure_pa", DBL), fld("visibility_m", DBL),
+        fld("humidity_pct", DBL), fld("precip_last_hour_mm", DBL),
+    ] + _G_TAIL),
+    "fact_forecast_periods": StructType([
+        fld("location_key", LONG), fld("forecast_generated_at", TS), fld("period_number", INT),
+        fld("start_date_key", INT), fld("period_name", STR), fld("start_time", TS), fld("end_time", TS),
+        fld("is_daytime", BOOL), fld("temperature_f", DBL), fld("temperature_c", DBL),
+        fld("precip_probability_pct", DBL), fld("wind_speed_min_mph", DBL),
+        fld("wind_speed_max_mph", DBL), fld("wind_direction", STR), fld("short_forecast", STR),
+    ] + _G_TAIL),
+    "fact_daily_weather": StructType([
+        fld("station_key", LONG), fld("date_key", INT), fld("source", STR), fld("obs_count", INT),
+        fld("avg_temp_c", DBL), fld("min_temp_c", DBL), fld("max_temp_c", DBL),
+        fld("avg_humidity_pct", DBL), fld("avg_wind_speed_kmh", DBL), fld("max_wind_gust_kmh", DBL),
+        fld("avg_pressure_pa", DBL), fld("min_visibility_m", DBL), fld("precip_sum_mm", DBL),
+    ] + _G_TAIL),
+}
+GOLD_KEYS = {
+    "dim_date": ["date_key"],
+    "dim_station": ["station_key"],
+    "dim_location": ["location_key"],
+    "dim_alert_type": ["alert_type_key"],
+    "fact_alerts": ["alert_id"],
+    "fact_observations": ["station_key", "observation_ts", "source"],
+    "fact_forecast_periods": ["location_key", "forecast_generated_at", "period_number"],
+    "fact_daily_weather": ["station_key", "date_key", "source"],
+}
+# Foreign keys (fact column -> dimension table), used by the data dictionary / ER diagram
+GOLD_FKS = {
+    "fact_alerts": {"alert_type_key": "dim_alert_type", "sent_date_key": "dim_date", "onset_date_key": "dim_date"},
+    "fact_observations": {"station_key": "dim_station", "date_key": "dim_date"},
+    "fact_forecast_periods": {"location_key": "dim_location", "start_date_key": "dim_date"},
+    "fact_daily_weather": {"station_key": "dim_station", "date_key": "dim_date"},
+}
+# Liquid Clustering columns: the join keys that BI queries filter and join on most
+GOLD_CLUSTER_BY = {
+    "fact_alerts": ["sent_date_key", "alert_type_key"],
+    "fact_observations": ["date_key", "station_key"],
+    "fact_forecast_periods": ["start_date_key", "location_key"],
+    "fact_daily_weather": ["date_key", "station_key"],
+}
