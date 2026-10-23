@@ -218,7 +218,7 @@ One row per file (raw_to_bronze) or table run (bronze_to_silver)
 |---|---|---|
 | `run_id` | string |  |
 | `batch_id` | string | Label of the pipeline run that loaded the record |
-| `layer` | string | raw_to_bronze or bronze_to_silver |
+| `layer` | string | raw_to_bronze, bronze_to_silver or silver_to_gold |
 | `source` | string | nws_api (live) or iem_asos (historical baseline) |
 | `load_type` | string |  |
 | `parameter` | string | File path (raw_to_bronze) or date window (bronze_to_silver) that was processed |
@@ -237,10 +237,186 @@ Records rejected by schema, type or business-rule checks
 
 | Column | Type | Description |
 |---|---|---|
-| `layer` | string | raw_to_bronze or bronze_to_silver |
+| `layer` | string | raw_to_bronze, bronze_to_silver or silver_to_gold |
 | `source` | string | nws_api (live) or iem_asos (historical baseline) |
 | `record_key` | string | SHA-256 of source + business key; identifies the record inside a file |
 | `reason` | string | Why the record was rejected |
 | `raw_payload` | string | The rejected record (or file content) as received |
 | `batch_id` | string | Label of the pipeline run that loaded the record |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### Gold layer (star schema)
+Dimensions and facts joined on deterministic surrogate keys. Full ER diagram in `docs/gold_model.md`.
+
+### `dim_date`
+Calendar dimension, one row per day
+
+**Primary key:** `date_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `date_key` | int | Surrogate key yyyymmdd; joins to dim_date |
+| `date` | date |  |
+| `year` | int |  |
+| `quarter` | int |  |
+| `month` | int |  |
+| `month_name` | string |  |
+| `week_of_year` | int |  |
+| `day` | int |  |
+| `day_of_week` | int |  |
+| `day_name` | string |  |
+| `is_weekend` | boolean |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `dim_station`
+Weather stations (NWS and IEM)
+
+**Primary key:** `station_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_key` | bigint | Surrogate key (xxhash64 of station_id); joins to dim_station |
+| `station_id` | string |  |
+| `sources` | string |  |
+| `first_observation_ts` | timestamp |  |
+| `last_observation_ts` | timestamp |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `dim_location`
+Forecast locations (Kansas grid points)
+
+**Primary key:** `location_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `location_key` | bigint | Surrogate key (xxhash64 of location_name); joins to dim_location |
+| `location_name` | string | Project location (one of 10 Kansas grid points) |
+| `first_forecast_ts` | timestamp |  |
+| `last_forecast_ts` | timestamp |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `dim_alert_type`
+Alert event, severity, certainty and urgency
+
+**Primary key:** `alert_type_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `alert_type_key` | bigint | Surrogate key (xxhash64 of event, category, severity, certainty, urgency); joins to dim_alert_type |
+| `event` | string |  |
+| `category` | string |  |
+| `severity` | string |  |
+| `severity_rank` | int | Extreme 4, Severe 3, Moderate 2, Minor 1, other 0 (for sorting in BI) |
+| `certainty` | string |  |
+| `urgency` | string |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_alerts`
+One row per alert; measures duration, lead time and affected zones
+
+**Primary key:** `alert_id`  
+**Foreign keys:** `alert_type_key` -> `dim_alert_type`, `sent_date_key` -> `dim_date`, `onset_date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `alert_id` | string | NWS alert identifier (urn:oid:...) |
+| `alert_type_key` | bigint | Surrogate key (xxhash64 of event, category, severity, certainty, urgency); joins to dim_alert_type |
+| `sent_date_key` | int | Date alert was sent; role of dim_date |
+| `onset_date_key` | int | Date the hazard begins; role of dim_date |
+| `sent_ts` | timestamp |  |
+| `effective_ts` | timestamp |  |
+| `onset_ts` | timestamp |  |
+| `expires_ts` | timestamp |  |
+| `ends_ts` | timestamp |  |
+| `status` | string |  |
+| `message_type` | string |  |
+| `is_update` | boolean | True when the alert updates or cancels an earlier alert |
+| `duration_hours` | double | Hours between effective and expires |
+| `lead_time_hours` | double | Hours between sent and onset (warning lead time) |
+| `affected_zone_count` | int |  |
+| `ugc_code_count` | int |  |
+| `area_desc` | string |  |
+| `headline` | string |  |
+| `sender_name` | string |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_observations`
+One row per station, timestamp and source
+
+**Primary key:** `station_key` + `observation_ts` + `source`  
+**Foreign keys:** `station_key` -> `dim_station`, `date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_key` | bigint | Surrogate key (xxhash64 of station_id); joins to dim_station |
+| `date_key` | int | Surrogate key yyyymmdd; joins to dim_date |
+| `observation_ts` | timestamp | Time of the observation (UTC) |
+| `source` | string | nws_api (live) or iem_asos (historical baseline) |
+| `observation_hour` | int |  |
+| `text_description` | string |  |
+| `temperature_c` | double | Degrees Celsius (IEM Fahrenheit values converted) |
+| `dewpoint_c` | double |  |
+| `wind_direction_deg` | double |  |
+| `wind_speed_kmh` | double | km/h (IEM knots converted) |
+| `wind_gust_kmh` | double |  |
+| `pressure_pa` | double | Pascal (IEM millibar converted) |
+| `visibility_m` | double | Metres (IEM miles converted) |
+| `humidity_pct` | double |  |
+| `precip_last_hour_mm` | double | Millimetres (IEM inches converted; trace = 0) |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_forecast_periods`
+One row per location, forecast version and period
+
+**Primary key:** `location_key` + `forecast_generated_at` + `period_number`  
+**Foreign keys:** `location_key` -> `dim_location`, `start_date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `location_key` | bigint | Surrogate key (xxhash64 of location_name); joins to dim_location |
+| `forecast_generated_at` | timestamp | When NWS generated the forecast; identifies a forecast version |
+| `period_number` | int |  |
+| `start_date_key` | int | Date the forecast period starts; role of dim_date |
+| `period_name` | string |  |
+| `start_time` | timestamp |  |
+| `end_time` | timestamp |  |
+| `is_daytime` | boolean |  |
+| `temperature_f` | double | Forecast temperature in Fahrenheit (converted if source unit was C) |
+| `temperature_c` | double | Degrees Celsius (IEM Fahrenheit values converted) |
+| `precip_probability_pct` | double |  |
+| `wind_speed_min_mph` | double | Lower wind speed parsed from text such as '5 to 8 mph' |
+| `wind_speed_max_mph` | double | Upper wind speed parsed from text such as '5 to 8 mph' |
+| `wind_direction` | string |  |
+| `short_forecast` | string |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_daily_weather`
+Daily per-station aggregate of observations (aggregate fact)
+
+**Primary key:** `station_key` + `date_key` + `source`  
+**Foreign keys:** `station_key` -> `dim_station`, `date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_key` | bigint | Surrogate key (xxhash64 of station_id); joins to dim_station |
+| `date_key` | int | Surrogate key yyyymmdd; joins to dim_date |
+| `source` | string | nws_api (live) or iem_asos (historical baseline) |
+| `obs_count` | int | Observations aggregated into the day |
+| `avg_temp_c` | double |  |
+| `min_temp_c` | double |  |
+| `max_temp_c` | double |  |
+| `avg_humidity_pct` | double |  |
+| `avg_wind_speed_kmh` | double |  |
+| `max_wind_gust_kmh` | double |  |
+| `avg_pressure_pa` | double |  |
+| `min_visibility_m` | double |  |
+| `precip_sum_mm` | double | Sum of hourly precipitation for the day |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
 | `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
