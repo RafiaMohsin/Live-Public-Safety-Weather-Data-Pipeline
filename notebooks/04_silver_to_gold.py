@@ -118,3 +118,41 @@ q = spark.sql(f"""
   ORDER BY d.year, d.month_name, s.station_id""")
 display(q)
 print(f"query seconds: {time.time() - t0:.1f}")
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT source, min(observation_ts), max(observation_ts), count(*)
+# MAGIC FROM workspace.nws.silver_observations GROUP BY source
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT count(*) AS bronze_iem FROM workspace.nws.bronze_iem_asos;
+# MAGIC SELECT count(*) AS quarantined_iem FROM workspace.nws.quarantine_records WHERE source = 'iem_asos';
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT count(*) AS bronze_iem, count(DISTINCT record_key) AS distinct_keys FROM workspace.nws.bronze_iem_asos
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT layer, round(sum(duration_seconds),1) AS seconds
+# MAGIC FROM workspace.nws.v_pipeline_runs
+# MAGIC WHERE run_date = current_date()
+# MAGIC GROUP BY layer
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT run_id, layer, min(start_time) AS started, round(sum(duration_seconds),1) AS seconds
+# MAGIC FROM workspace.nws.v_pipeline_runs
+# MAGIC WHERE run_date = current_date() AND load_type IN ('incremental')
+# MAGIC GROUP BY run_id, layer
+# MAGIC ORDER BY started DESC
+
+# COMMAND ----------
+
+

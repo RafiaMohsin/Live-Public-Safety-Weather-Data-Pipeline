@@ -1,4 +1,8 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "6"
+# ///
 # MAGIC %md
 # MAGIC # 03 - Demo: idempotency, quarantine and audit log
 # MAGIC Run notebooks 00-02 first. This notebook re-executes the pipeline on the **same raw data** and proves that
