@@ -1,17 +1,11 @@
 # Live Public-Safety Weather Data Pipeline (NWS API)
 
-Data Analysis and Visualisation semester project. 
-
-An automated Spark pipeline on Databricks using the
+Data Analysis and Visualisation semester project. An automated Spark pipeline on Databricks using the
 Medallion Architecture (Bronze -> Silver -> Gold) with a Power BI dashboard.
 
 **Team:** Rafia Mohsin, Shanzay Shahid
-
 **Course:** Data Analysis and Visualization
-
-**Phase 1 proposal:** `docs/NWS_Phase1_Proposal_Updated.docx`; 
-
-**Phase 2:** Bronze + Silver (this repository)
+**Phase 1 proposal:** `docs/NWS_Phase1_Proposal_Updated.docx`; **Phase 2:** Bronze + Silver (this repository)
 
 ## Project summary
 We ingest live weather forecasts, hazardous-weather alerts and station observations for Kansas
@@ -25,7 +19,7 @@ and could forecast data warn of floods before an official alert.
 | NWS API `https://api.weather.gov` (public domain, no key, User-Agent required) | **Incremental** loads: alerts, forecasts, observations | JSON |
 | Iowa Environmental Mesonet ASOS archive (`mesonet.agron.iastate.edu/cgi-bin/request/asos.py`) | **Historical full-load baseline** for observations (same airport stations) | CSV |
 
-Forecasts have no public history, so they are collected live only. Repository sample files are under `data_raw/full/` and `data_raw/incremental/`. These are local sample-data folders; the Databricks Volume uses the runtime folder names `full/` and `incremental/`.
+Forecasts have no public history, so they are collected live only. Repository sample files are under `data_raw/full_load/` and `data_raw/incremental/`. These are local sample-data folders; the Databricks Volume uses the runtime folder names `full/` and `incremental/`.
 
 ## Architecture (Phase 2)
 ```
@@ -57,19 +51,21 @@ How each Phase 2 requirement is met:
 ├── requirements.txt
 ├── nws_pipeline/                  # PySpark code
 │   ├── config.py                  # sources, table names, parameter + file-window helpers
-│   ├── schemas.py                 # ALL explicit StructType schemas (raw, Bronze, Silver, ops)
+│   ├── schemas.py                 # ALL explicit StructType schemas (raw, Bronze, Silver, Gold, ops)
 │   ├── bronze.py                  # raw -> Bronze
 │   ├── silver.py                  # Bronze -> Silver
+│   ├── gold.py                    # Silver -> Gold star schema, OPTIMIZE, BI views
 │   ├── delta_utils.py             # MERGE INTO, table creation, quarantine
 │   ├── audit.py                   # execution logging
 │   └── pipeline.py                # orchestration entry points
 ├── notebooks/                     # Databricks notebooks (import the package above)
 │   ├── 00_setup.py   01_raw_to_bronze.py   02_bronze_to_silver.py   03_demo_idempotency_and_audit.py
+│   └── 04_silver_to_gold.py      # Phase 3: star schema refresh + optimisation
 ├── scripts/
 │   ├── download_iem_asos.py       # historical baseline downloader
 │   └── generate_data_dictionary.py
-├── tests/test_transformations_local.py  # optional local test suite; pipeline execution is in Databricks
-├── docs/                          # proposal, data_dictionary.md, Phase 2 implementation report
+├── tests/test_transformations_local.py, tests/test_gold_local.py  # optional local test suites; pipeline execution is in Databricks
+├── docs/                          # proposal, data_dictionary.md, gold_model.md, Phase 2 implementation report
 └── data_raw/{full_load,incremental}/{alerts,forecasts,observations}/  # local sample files; Volume folders are full/ and incremental/
 ```
 
@@ -161,10 +157,27 @@ The repository also contains `collect_nws.py` and `scripts/download_iem_asos.py`
 
 The repository includes `tests/test_transformations_local.py` for testing transformations outside Databricks. This is a developer test utility, not part of the normal Databricks execution sequence. The recorded project validation included seven passing local tests covering representative input data, casting and validation, malformed input, and schema drift.
 
+## Gold layer (Phase 3)
+
+Silver is reshaped into a star schema in `workspace.nws`: dimensions `dim_date`, `dim_station`, `dim_location`,
+`dim_alert_type`; facts `fact_alerts`, `fact_observations`, `fact_forecast_periods`; and the aggregate fact
+`fact_daily_weather`. ER diagram, grain, refresh strategy and clustering: [`docs/gold_model.md`](docs/gold_model.md).
+
+### Run Silver -> Gold
+- **First load:** run `notebooks/04_silver_to_gold` with `mode = full`.
+- **Every run after:** `mode = incremental` (Silver rows loaded in the last `lookback_days`), or `mode = backfill` with
+  `start_date` / `end_date` (dates of the Silver `load_timestamp`).
+- **Optimise reads:** set `optimize = yes` (Liquid Clustering on the fact join keys + `OPTIMIZE`).
+- **Automated:** the Databricks Job has a fourth task, `silver_to_gold`, that runs notebook 04 (`mode = incremental`)
+  after `bronze_to_silver`, so new data flows raw -> Bronze -> Silver -> Gold in one run.
+- **Logging:** each Gold table writes a row to `pipeline_execution_logs` (`layer = silver_to_gold`) with rows read,
+  inserted, updated, start and end time. BI views `v_pipeline_runs` and `v_quarantine_summary` feed the dashboard's audit page.
+- **Tests:** `python tests/test_gold_local.py` checks contracts, grain, referential integrity and aggregate maths locally.
+
 ## Known limitations
 - The NWS observations endpoint returns at most 500 records per station per request (about 1.5 days); the IEM archive provides the historical baseline instead.
 - Alert update chains (`referenced_alert_ids`) are stored in Silver; grouping them into events is part of the Gold layer (Phase 3).
-- The Gold layer and dashboard are Phase 3. A Databricks job for six-hourly pipeline execution was also configured and successfully ran approximately four to five times during testing; it was paused during later verification.
+- The dashboard is built in Power BI from the Gold tables (see Phase 3 deliverables). A Databricks job for six-hourly pipeline execution was also configured and successfully ran approximately four to five times during testing; it was paused during later verification.
 
 ## Security and PII
 No PII. The data is public-domain government weather data with no personal records; the alert `sender` field is a shared
@@ -394,7 +407,7 @@ One row per file (raw_to_bronze) or table run (bronze_to_silver)
 |---|---|---|
 | `run_id` | string |  |
 | `batch_id` | string | Label of the pipeline run that loaded the record |
-| `layer` | string | raw_to_bronze or bronze_to_silver |
+| `layer` | string | raw_to_bronze, bronze_to_silver or silver_to_gold |
 | `source` | string | nws_api (live) or iem_asos (historical baseline) |
 | `load_type` | string |  |
 | `parameter` | string | File path (raw_to_bronze) or date window (bronze_to_silver) that was processed |
@@ -413,10 +426,186 @@ Records rejected by schema, type or business-rule checks
 
 | Column | Type | Description |
 |---|---|---|
-| `layer` | string | raw_to_bronze or bronze_to_silver |
+| `layer` | string | raw_to_bronze, bronze_to_silver or silver_to_gold |
 | `source` | string | nws_api (live) or iem_asos (historical baseline) |
 | `record_key` | string | SHA-256 of source + business key; identifies the record inside a file |
 | `reason` | string | Why the record was rejected |
 | `raw_payload` | string | The rejected record (or file content) as received |
 | `batch_id` | string | Label of the pipeline run that loaded the record |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### Gold layer (star schema)
+Dimensions and facts joined on deterministic surrogate keys. Full ER diagram in `docs/gold_model.md`.
+
+### `dim_date`
+Calendar dimension, one row per day
+
+**Primary key:** `date_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `date_key` | int | Surrogate key yyyymmdd; joins to dim_date |
+| `date` | date |  |
+| `year` | int |  |
+| `quarter` | int |  |
+| `month` | int |  |
+| `month_name` | string |  |
+| `week_of_year` | int |  |
+| `day` | int |  |
+| `day_of_week` | int |  |
+| `day_name` | string |  |
+| `is_weekend` | boolean |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `dim_station`
+Weather stations (NWS and IEM)
+
+**Primary key:** `station_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_key` | bigint | Surrogate key (xxhash64 of station_id); joins to dim_station |
+| `station_id` | string |  |
+| `sources` | string |  |
+| `first_observation_ts` | timestamp |  |
+| `last_observation_ts` | timestamp |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `dim_location`
+Forecast locations (Kansas grid points)
+
+**Primary key:** `location_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `location_key` | bigint | Surrogate key (xxhash64 of location_name); joins to dim_location |
+| `location_name` | string | Project location (one of 10 Kansas grid points) |
+| `first_forecast_ts` | timestamp |  |
+| `last_forecast_ts` | timestamp |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `dim_alert_type`
+Alert event, severity, certainty and urgency
+
+**Primary key:** `alert_type_key`
+
+| Column | Type | Description |
+|---|---|---|
+| `alert_type_key` | bigint | Surrogate key (xxhash64 of event, category, severity, certainty, urgency); joins to dim_alert_type |
+| `event` | string |  |
+| `category` | string |  |
+| `severity` | string |  |
+| `severity_rank` | int | Extreme 4, Severe 3, Moderate 2, Minor 1, other 0 (for sorting in BI) |
+| `certainty` | string |  |
+| `urgency` | string |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_alerts`
+One row per alert; measures duration, lead time and affected zones
+
+**Primary key:** `alert_id`  
+**Foreign keys:** `alert_type_key` -> `dim_alert_type`, `sent_date_key` -> `dim_date`, `onset_date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `alert_id` | string | NWS alert identifier (urn:oid:...) |
+| `alert_type_key` | bigint | Surrogate key (xxhash64 of event, category, severity, certainty, urgency); joins to dim_alert_type |
+| `sent_date_key` | int | Date alert was sent; role of dim_date |
+| `onset_date_key` | int | Date the hazard begins; role of dim_date |
+| `sent_ts` | timestamp |  |
+| `effective_ts` | timestamp |  |
+| `onset_ts` | timestamp |  |
+| `expires_ts` | timestamp |  |
+| `ends_ts` | timestamp |  |
+| `status` | string |  |
+| `message_type` | string |  |
+| `is_update` | boolean | True when the alert updates or cancels an earlier alert |
+| `duration_hours` | double | Hours between effective and expires |
+| `lead_time_hours` | double | Hours between sent and onset (warning lead time) |
+| `affected_zone_count` | int |  |
+| `ugc_code_count` | int |  |
+| `area_desc` | string |  |
+| `headline` | string |  |
+| `sender_name` | string |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_observations`
+One row per station, timestamp and source
+
+**Primary key:** `station_key` + `observation_ts` + `source`  
+**Foreign keys:** `station_key` -> `dim_station`, `date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_key` | bigint | Surrogate key (xxhash64 of station_id); joins to dim_station |
+| `date_key` | int | Surrogate key yyyymmdd; joins to dim_date |
+| `observation_ts` | timestamp | Time of the observation (UTC) |
+| `source` | string | nws_api (live) or iem_asos (historical baseline) |
+| `observation_hour` | int |  |
+| `text_description` | string |  |
+| `temperature_c` | double | Degrees Celsius (IEM Fahrenheit values converted) |
+| `dewpoint_c` | double |  |
+| `wind_direction_deg` | double |  |
+| `wind_speed_kmh` | double | km/h (IEM knots converted) |
+| `wind_gust_kmh` | double |  |
+| `pressure_pa` | double | Pascal (IEM millibar converted) |
+| `visibility_m` | double | Metres (IEM miles converted) |
+| `humidity_pct` | double |  |
+| `precip_last_hour_mm` | double | Millimetres (IEM inches converted; trace = 0) |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_forecast_periods`
+One row per location, forecast version and period
+
+**Primary key:** `location_key` + `forecast_generated_at` + `period_number`  
+**Foreign keys:** `location_key` -> `dim_location`, `start_date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `location_key` | bigint | Surrogate key (xxhash64 of location_name); joins to dim_location |
+| `forecast_generated_at` | timestamp | When NWS generated the forecast; identifies a forecast version |
+| `period_number` | int |  |
+| `start_date_key` | int | Date the forecast period starts; role of dim_date |
+| `period_name` | string |  |
+| `start_time` | timestamp |  |
+| `end_time` | timestamp |  |
+| `is_daytime` | boolean |  |
+| `temperature_f` | double | Forecast temperature in Fahrenheit (converted if source unit was C) |
+| `temperature_c` | double | Degrees Celsius (IEM Fahrenheit values converted) |
+| `precip_probability_pct` | double |  |
+| `wind_speed_min_mph` | double | Lower wind speed parsed from text such as '5 to 8 mph' |
+| `wind_speed_max_mph` | double | Upper wind speed parsed from text such as '5 to 8 mph' |
+| `wind_direction` | string |  |
+| `short_forecast` | string |  |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
+| `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
+
+### `fact_daily_weather`
+Daily per-station aggregate of observations (aggregate fact)
+
+**Primary key:** `station_key` + `date_key` + `source`  
+**Foreign keys:** `station_key` -> `dim_station`, `date_key` -> `dim_date`
+
+| Column | Type | Description |
+|---|---|---|
+| `station_key` | bigint | Surrogate key (xxhash64 of station_id); joins to dim_station |
+| `date_key` | int | Surrogate key yyyymmdd; joins to dim_date |
+| `source` | string | nws_api (live) or iem_asos (historical baseline) |
+| `obs_count` | int | Observations aggregated into the day |
+| `avg_temp_c` | double |  |
+| `min_temp_c` | double |  |
+| `max_temp_c` | double |  |
+| `avg_humidity_pct` | double |  |
+| `avg_wind_speed_kmh` | double |  |
+| `max_wind_gust_kmh` | double |  |
+| `avg_pressure_pa` | double |  |
+| `min_visibility_m` | double |  |
+| `precip_sum_mm` | double | Sum of hourly precipitation for the day |
+| `row_hash` | string | SHA-256 of the business columns; MERGE updates a row only if it changed |
 | `load_timestamp` | timestamp | When this record was ingested / processed (UTC) |
