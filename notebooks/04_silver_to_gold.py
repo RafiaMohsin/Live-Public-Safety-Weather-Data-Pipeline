@@ -122,6 +122,11 @@ print(f"query seconds: {time.time() - t0:.1f}")
 # COMMAND ----------
 
 # MAGIC %sql
+# MAGIC    ALTER TABLE workspace.nws.fact_observations CLUSTER BY NONE
+
+# COMMAND ----------
+
+# MAGIC %sql
 # MAGIC SELECT source, min(observation_ts), max(observation_ts), count(*)
 # MAGIC FROM workspace.nws.silver_observations GROUP BY source
 
@@ -155,4 +160,12 @@ print(f"query seconds: {time.time() - t0:.1f}")
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC SELECT 'fact_observations' AS t, count(*) AS n, max(observation_ts) AS latest FROM workspace.nws.fact_observations
+# MAGIC UNION ALL
+# MAGIC SELECT 'fact_forecast_periods', count(*), max(forecast_generated_at) FROM workspace.nws.fact_forecast_periods
+# MAGIC UNION ALL
+# MAGIC SELECT 'fact_alerts', count(*), max(sent_ts) FROM workspace.nws.fact_alerts
+
+# COMMAND ----------
 
